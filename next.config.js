@@ -1,4 +1,4 @@
-import { join } from 'node:path'
+const { join } =  require('node:path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
