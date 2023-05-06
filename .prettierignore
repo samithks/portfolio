@@ -1,0 +1,20 @@
+# don't ever lint node_modules
+node_modules
+
+# Ignore build output directories
+.next
+dist
+
+# Ignore public directory (typically contains only static files)
+public
+
+# Ignore lock files
+pnpm-lock.yaml
+
+# Ignore cache directories
+.cache
+.npm
+
+*.log*
+.env
+

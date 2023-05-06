@@ -1,0 +1,18 @@
+# Directories
+node_modules/
+
+# ignore package-lock.json or yarn.lock files
+pnpm-lock.yaml
+
+# ignore public directory (typically contains only static files)
+public
+
+# ignore build directory (typically contains the latest build)
+.next
+dist/
+
+# ignore cache directories
+.cache
+.npm
+
+*.env
