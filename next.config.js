@@ -1,9 +1,12 @@
 const { join } = require('node:path')
 const { withContentlayer } = require('next-contentlayer')
-const  securityHeaders = require('./security-headers')
+const securityHeaders = require('./security-headers')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    typedRoutes: true,
+  },
   async headers() {
     return [
       {
