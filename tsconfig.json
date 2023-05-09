@@ -23,18 +23,19 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ],
       "@@/*": [
-        "./src/pages/*"
+        "./src/app/*"
       ],
       "~/*": [
         "./public/*"
       ],
       "~~/*": [
-        "."
+        "./"
       ],
       "contentlayer/generated": [
         "./.contentlayer/generated"
