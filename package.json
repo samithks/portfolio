@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@opentelemetry/api": "1.1.0",
+    "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/node": "20.1.0",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.4",
@@ -32,6 +33,9 @@
     "eslint-config-next": "13.4.1",
     "eslint-config-prettier": "8.8.0",
     "postcss": "8.4.23",
+    "prettier": "2.8.8",
+    "prettier-plugin-jsdoc": "0.4.2",
+    "prettier-plugin-tailwindcss": "0.2.8",
     "rimraf": "5.0.0",
     "sass": "1.62.1",
     "tailwindcss": "3.3.2",
