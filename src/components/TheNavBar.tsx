@@ -1,8 +1,7 @@
 'use client'
 
-import { faCodePullRequest } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
+import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
 
@@ -18,7 +17,7 @@ export default function TheNavBar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <FontAwesomeIcon icon={faCodePullRequest} />
+              <TbGitPullRequestDraft color="white" fontSize="2em" />
             </Link>
           </div>
 
