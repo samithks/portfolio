@@ -1,6 +1,15 @@
+import { config } from '@fortawesome/fontawesome-svg-core'
+
 import '@/styles/globals.scss'
-import { Inter } from 'next/font/google'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
 import type { Metadata } from 'next'
+
+import { Inter } from 'next/font/google'
+
+import TheNavBar from '@/components/TheNavBar'
+
+config.autoAddCss = false
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +35,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header>
+          <TheNavBar />
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   )
 }
