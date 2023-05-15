@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 
 import { Inter } from 'next/font/google'
 
+import TheFooter from '@/components/TheFooter'
 import TheNavBar from '@/components/TheNavBar'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <TheNavBar />
         </header>
         <main>{children}</main>
+        <TheFooter />
       </body>
     </html>
   )
