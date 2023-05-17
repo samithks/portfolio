@@ -6,13 +6,14 @@ import { Command, CommandInput, CommandList, CommandOption } from 'superkey'
 
 import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import DynamicIcon from './DynamicIcon'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Route } from 'next'
 
 interface ICommandOptions {
   id: number
   name: string
-  action: () => void
+  pagePath: Route<string>
   icon: IconType
   shortcut: string[]
 }
@@ -22,92 +23,132 @@ interface Props {
   setIsOpen: (open: boolean) => void
 }
 
-/**
- * This is a TypeScript React component that renders a command menu with options that can be filtered by a search query.
- *
- * @param {Props} - - `isOpen`: a boolean value indicating whether the command menu is open or not
- * @returns The component `TheCommandMenu` is being returned, which renders a `Command` component with a search input
- *   and a list of command options. The command options are filtered based on the user's search query and are displayed
- *   with their respective icons, names, and shortcuts. When a command option is selected, it triggers the corresponding
- *   action, which navigates the user to a different page using the `router
- */
-const TheCommandMenu = ({ isOpen, setIsOpen }: Props) => {
-  const [query, setQuery] = useState('')
+const commandOptions: ICommandOptions[] = [
+  {
+    id: 1,
+    name: 'Home',
+    pagePath: '/',
+    icon: AiOutlineHome,
+    shortcut: ['h', 'o'],
+  },
+  {
+    id: 2,
+    name: 'About',
+    pagePath: '/about',
+    icon: AiOutlineSearch,
+    shortcut: ['a', 'b'],
+  },
+  {
+    id: 3,
+    name: 'Contact',
+    pagePath: '/contact',
+    icon: AiOutlineUser,
+    shortcut: ['c', 'o'],
+  },
+]
+
+/** This is a React component that renders a command menu with search functionality and keyboard shortcut support. */
+const TheCommandMenu: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleMenu = () => setIsOpen(!isOpen)
+  const [query, setQuery] = useState<string>('')
   const router = useRouter()
-  const commandOptions: ICommandOptions[] = [
-    {
-      id: 1,
-      name: 'Home',
-      action: () => router.push('/'),
-      icon: AiOutlineHome,
-      shortcut: ['h', 'o'],
-    },
-    {
-      id: 2,
-      name: 'About',
-      action: () => router.push('/about'),
-      icon: AiOutlineSearch,
-      shortcut: ['a', 'b'],
-    },
-    {
-      id: 3,
-      name: 'Contact',
-      action: () => router.push('/contact'),
-      icon: AiOutlineUser,
-      shortcut: ['c', 'o'],
-    },
-  ]
+
+  // Ctrl+k to open command =>
+  useEffect(() => {
+    function handleKeyDown(event?: KeyboardEvent) {
+      if (event?.key === 'k' && (event?.metaKey || event?.ctrlKey)) {
+        event?.preventDefault()
+        setIsOpen(!isOpen)
+      }
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    }
+  }, [isOpen, setIsOpen])
+
   // Filter data =>
   const filteredData = query
     ? commandOptions.filter((action) => action.name.toLowerCase().includes(query.toLowerCase()))
     : commandOptions
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value)
+  }
+
+  const navigateToPage = (pagePath: Route<string>) => {
+    router.push(pagePath)
+  }
   return (
-    <Command
-      open={isOpen}
-      onClose={() => {
-        setIsOpen(false)
-      }}
-      afterLeave={() => {
-        setQuery('')
-      }}
-      commandFunction={() => {
-        setIsOpen(false)
-      }}
-    >
-      <CommandInput
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setQuery(e.target.value)
+    <>
+      <button
+        type="button"
+        onClick={toggleMenu}
+        className="transition duration-300 ease-in-out hover:scale-105 focus:outline-none"
+      >
+        <svg
+          className="h-10 w-8"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <Command
+        open={isOpen}
+        onClose={() => {
+          setIsOpen(false)
         }}
-      />
-      <CommandList>
-        {filteredData.map((option) => {
-          return (
-            <CommandOption value={option.action} key={option.id} activeClassName="bg-gray-100 dark:bg-zinc-700/25">
-              <div className="flex items-center justify-between space-x-1 py-1">
-                <div className="flex items-center space-x-1">
-                  <div className="mr-2">
-                    <DynamicIcon icon={option.icon} />
+        afterLeave={() => {
+          setQuery('')
+        }}
+        commandFunction={() => {
+          setIsOpen(false)
+        }}
+      >
+        <CommandInput onChange={handleQueryChange} />
+        <CommandList>
+          {filteredData.map((option) => {
+            return (
+              <CommandOption
+                value={() => navigateToPage(option.pagePath)}
+                key={option.id}
+                activeClassName="bg-gray-100 dark:bg-zinc-700/25"
+              >
+                <div className="flex items-center justify-between space-x-1 py-1">
+                  <div className="flex items-center space-x-1">
+                    <div className="mr-2">
+                      <DynamicIcon icon={option.icon} />
+                    </div>
+                    <h1>{option.name}</h1>
                   </div>
-                  <h1>{option.name}</h1>
+                  <div className="flex items-center space-x-1">
+                    {option.shortcut.map((shortcut) => {
+                      return (
+                        <span
+                          className="rounded-md border border-zinc-300 bg-zinc-100 p-2 text-xs lowercase dark:border-zinc-800 dark:bg-zinc-900 dark:text-gray-200"
+                          key={shortcut}
+                        >
+                          {shortcut}
+                        </span>
+                      )
+                    })}
+                  </div>
                 </div>
-                <div className="flex items-center space-x-1">
-                  {option.shortcut.map((shortcut) => {
-                    return (
-                      <span
-                        className="rounded-md border border-zinc-300 bg-zinc-100 p-2 text-xs lowercase dark:border-zinc-800 dark:bg-zinc-900 dark:text-gray-200"
-                        key={shortcut}
-                      >
-                        {shortcut}
-                      </span>
-                    )
-                  })}
-                </div>
-              </div>
-            </CommandOption>
-          )
-        })}
-      </CommandList>
-    </Command>
+              </CommandOption>
+            )
+          })}
+        </CommandList>
+      </Command>
+    </>
   )
 }
 
