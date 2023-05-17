@@ -1,4 +1,5 @@
 import '@/styles/globals.scss'
+import 'superkey/styles.css'
 
 import type { Metadata } from 'next'
 
@@ -30,12 +31,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${inter.className} container px-4`}>
         <header>
           <TheNavBar />
         </header>
-        <main>{children}</main>
+        <main className="pb-4">{children}</main>
         <TheFooter />
       </body>
     </html>

@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@headlessui/react':
+    specifier: 1.7.14
+    version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
   contentlayer:
     specifier: 0.3.2
     version: 0.3.2(esbuild@0.17.19)(typescript@5.0.4)
@@ -19,6 +22,9 @@ dependencies:
   react-icons:
     specifier: 4.8.0
     version: 4.8.0(react@18.2.0)
+  superkey:
+    specifier: 0.2.2
+    version: 0.2.2(@headlessui/react@1.7.14)(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
@@ -733,6 +739,18 @@ packages:
       long: 4.0.0
       protobufjs: 7.2.3
       yargs: 17.7.2
+    dev: false
+
+  /@headlessui/react@1.7.14(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-znzdq9PG8rkwcu9oQ2FwIy0ZFtP9Z7ycS+BAqJ3R5EIqC/0bJGvhT7193rFf+45i9nnPsYvCQVW4V/bB9Xc+gA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
@@ -1741,6 +1759,11 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: false
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert@1.9.3:
@@ -4889,6 +4912,19 @@ packages:
       pirates: 4.0.5
       ts-interface-checker: 0.1.13
     dev: true
+
+  /superkey@0.2.2(@headlessui/react@1.7.14)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-MayRaG3/fgUZ0vSZt0E29mSh+VCFp1DGV4GImD4v79z9lAEAKfAqIe0O8IE/Z05fwvStbzlhMf0wNrNZcgf18A==}
+    peerDependencies:
+      '@headlessui/react': '>=1.6.0'
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+    dependencies:
+      '@headlessui/react': 1.7.14(react-dom@18.2.0)(react@18.2.0)
+      clsx: 1.2.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}

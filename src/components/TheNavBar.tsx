@@ -1,14 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
+import TheCommandMenu from './TheCommandMenu'
 
 export default function TheNavBar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen)
+
+  // Ctrl+k to open command =>
+  useEffect(() => {
+    function handleKeyDown(event?: KeyboardEvent) {
+      if (event?.key === 'k' && (event?.metaKey || event?.ctrlKey)) {
+        event?.preventDefault()
+        setIsOpen(!isOpen)
+      }
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    }
+  }, [isOpen])
 
   return (
     <nav>
@@ -44,8 +62,11 @@ export default function TheNavBar() {
         </div>
       </div>
 
+      {/* Command menu */}
+      <TheCommandMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+
       {/* Dropdown menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'}`}>
+      {/* <div className={`${isOpen ? 'block' : 'hidden'}`}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="py-3">
             <Link href="/" className="block rounded-md px-3 py-2 text-base font-medium">
@@ -59,7 +80,7 @@ export default function TheNavBar() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </nav>
   )
 }
