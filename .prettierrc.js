@@ -1,6 +1,6 @@
 /** @type {import('@ianvs/prettier-plugin-sort-imports').PrettierConfig} */
 module.exports = {
-  plugins: ['prettier-plugin-jsdoc', '@ianvs/prettier-plugin-sort-imports' /* 'prettier-plugin-tailwindcss' */],
+  plugins: ['prettier-plugin-jsdoc', '@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
   importOrder: [
     '<TYPES>',
     '<TYPES>^[./]',

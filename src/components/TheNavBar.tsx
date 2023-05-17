@@ -12,7 +12,7 @@ export default function TheNavBar() {
 
   return (
     <nav>
-      <div className="w-full pt-4">
+      <div className="w-full pt-6">
         <div className="flex flex-row items-center justify-between">
           {/* Logo */}
           <div className=" h-10 w-10 flex-shrink-0 rounded-md bg-gray-100 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105">
