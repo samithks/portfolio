@@ -1,5 +1,4 @@
 import '@/styles/globals.scss'
-import 'superkey/styles.css'
 
 import type { Metadata } from 'next'
 
