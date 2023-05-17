@@ -12,20 +12,24 @@ export default function TheNavBar() {
 
   return (
     <nav>
-      <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+      <div className="w-full pt-4">
+        <div className="flex flex-row items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/">
-              <TbGitPullRequestDraft color="white" fontSize="2em" />
+          <div className=" h-10 w-10 flex-shrink-0 rounded-md bg-gray-100 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105">
+            <Link href="/" className="items-center">
+              <TbGitPullRequestDraft color="black" fontSize="2em" />
             </Link>
           </div>
 
           {/* Hamburger menu */}
           <div className="flex items-center">
-            <button type="button" onClick={toggleMenu} className="focus:outline-none">
+            <button
+              type="button"
+              onClick={toggleMenu}
+              className="transition duration-300 ease-in-out hover:scale-105 focus:outline-none"
+            >
               <svg
-                className="h-6 w-6"
+                className="h-10 w-8"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth="2"
