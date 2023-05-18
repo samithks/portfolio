@@ -26,7 +26,7 @@ const TheLogo: React.FC = () => {
 export default function TheNavBar() {
   return (
     <nav>
-      <div className="w-full pt-6">
+      <div className="w-full pb-4 pt-6">
         <div className="flex flex-row items-center justify-between">
           {/* Logo */}
           <TheLogo />
