@@ -5,8 +5,8 @@ import type { JsonStructure } from 'react-cmdk'
 
 import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
 
-import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import { useEffect, useState } from 'react'
+import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 
 const commandOptions: JsonStructure = [
   {
