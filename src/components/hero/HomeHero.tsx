@@ -8,7 +8,7 @@ const homeHeroIcons = ['typescript', 'nodejs', 'javascript'] as BrandIconProps['
 
 const HomeHero: React.FC = () => {
   return (
-    <>
+    <section id="hero" className="mx-5 my-16 flex flex-col items-center justify-between gap-y-3 px-5 py-10">
       <Image src="/images/avatar.png" className="rounded-full" width={300} height={300} alt="avatar" />
       <h1 className="text-4xl font-semibold leading-normal">Full-stack web developer</h1>
       <div className="flex flex-wrap gap-x-3 gap-y-2">
@@ -26,7 +26,7 @@ const HomeHero: React.FC = () => {
           </Link>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 

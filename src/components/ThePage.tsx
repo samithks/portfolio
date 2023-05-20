@@ -55,7 +55,7 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
 
 const ThePages: React.FC = () => {
   return (
-    <>
+    <section id="pages" className="mx-5 flex flex-col gap-y-3 px-5 py-10">
       <div className="">
         <h2 className="text-sm font-medium uppercase text-white/60">pages</h2>
       </div>
@@ -68,7 +68,7 @@ const ThePages: React.FC = () => {
           )
         })}
       </div>
-    </>
+    </section>
   )
 }
 
