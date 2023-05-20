@@ -28,21 +28,6 @@ const HomeEllipsisButton: React.FC = () => {
 }
 
 /**
- * This code renders the home page's technology icons. It creates a new HomeTechIcons component for each technology
- * icon, and passes the name of the icon as a prop.
- */
-const HomeTechIcons: React.FC<{ name: BrandIconProps['name']; key: string }> = ({ name, key }) => {
-  return (
-    <div
-      className="rounded-md border px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
-      key={key}
-    >
-      <BrandIcon name={name} fontSize="1.5em" />
-    </div>
-  )
-}
-
-/**
  * The HomeIcons component displays a list of icons. It is used in the HomeScreen component to show the tech stack
  * icons.
  */
@@ -50,7 +35,12 @@ const HomeIcons: React.FC<{ iconsArray: BrandIconProps['name'][] }> = ({ iconsAr
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-2">
       {iconsArray.map((icon) => (
-        <HomeTechIcons name={icon} key={icon} />
+        <div
+          className="rounded-md border px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
+          key={icon}
+        >
+          <BrandIcon name={icon} fontSize="1.5em" />
+        </div>
       ))}
       <HomeEllipsisButton />
     </div>
