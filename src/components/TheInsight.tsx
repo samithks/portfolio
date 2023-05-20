@@ -64,6 +64,7 @@ const theInsightData: ITheInsightData = {
   education,
 }
 
+/** This is a TypeScript React functional component that renders a card. */
 const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, link }) => {
   return (
     <Link
@@ -81,46 +82,61 @@ const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, li
   )
 }
 
-const TheInsightSection: React.FC = () => {
+/** This is a TypeScript React functional component that renders a section of InsightCard components. */
+const InsightCardSection: React.FC<{ data: InsightCardProps[] }> = ({ data }) => {
   return (
-    <>
-      {Object.keys(theInsightData).map((key) => {
+    <div className="flex flex-col gap-y-4 pt-3">
+      {data.map((item) => {
         return (
-          <section id={key} className="w-1/2" key={key}>
-            <div className="flex flex-col gap-y-4">
-              <div className="flex flex-row justify-between">
-                <h2 className="text-sm font-medium uppercase text-white/60">{key}</h2>
-                <h4 className="text-xs font-light text-white/60">more</h4>
-              </div>
-              <div className="flex flex-col gap-y-4 pt-3">
-                {theInsightData[key].map((item) => {
-                  return (
-                    <InsightCard
-                      title={item.title}
-                      organization={item.organization}
-                      year={item.year}
-                      link={item.link}
-                      key={item.title}
-                    />
-                  )
-                })}
-              </div>
-            </div>
-          </section>
+          <InsightCard
+            title={item.title}
+            organization={item.organization}
+            year={item.year}
+            link={item.link}
+            key={item.title}
+          />
         )
       })}
+    </div>
+  )
+}
+
+/**
+ * This is a TypeScript React functional component that renders a section of InsightCard components with a heading and a
+ * card section.
+ */
+const TheInsight: React.FC<{ data: InsightCardProps[]; key: keyof ITheInsightData }> = ({ data, key }) => {
+  return (
+    <>
+      <div className="flex flex-col gap-y-4">
+        <div className="flex flex-row justify-between">
+          <h2 className="section-heading">{key}</h2>
+          <h4 className="text-xs font-light text-white/60">more</h4>
+        </div>
+      </div>
+      <InsightCardSection data={data} />
     </>
   )
 }
 
-const TheInsight: React.FC = () => {
+/**
+ * TheInsightSection is a React functional component that renders a section with multiple TheInsight components based on
+ * data from theInsightData object.
+ */
+const TheInsightSection: React.FC = () => {
   return (
     <section id="insight" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="flex flex-row gap-x-5">
-        <TheInsightSection />
+        {Object.keys(theInsightData).map((key) => {
+          return (
+            <section id={key} className="w-1/2" key={key}>
+              <TheInsight data={theInsightData[key]} key={key} />
+            </section>
+          )
+        })}
       </div>
     </section>
   )
 }
 
-export default TheInsight
+export default TheInsightSection

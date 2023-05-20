@@ -35,7 +35,7 @@ const pages: IPage[] = [
     to: '/about',
   },
 ]
-
+/** This component renders a page as a card. */
 const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
   return (
     <Link
@@ -53,21 +53,32 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
   )
 }
 
+/** This component renders a list of pages as cards. */
+const ThePagesSection: React.FC<{ pages: IPage[] }> = ({ pages }) => {
+  return (
+    <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-10">
+      {pages.map((page) => {
+        return (
+          <div className="col-span-1" key={page.title}>
+            <PageCard title={page.title} description={page.description} icon={page.icon} to={page.to} />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+/**
+ * This is the main entry point of our app. It renders a single component, TheApp, which is the root component of our
+ * app.
+ */
 const ThePages: React.FC = () => {
   return (
     <section id="pages" className="mx-5 flex flex-col gap-y-3 px-5">
-      <div className="">
-        <h2 className="text-sm font-medium uppercase text-white/60">pages</h2>
+      <div className="flex flex-none">
+        <h2 className="section-heading">pages</h2>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-10">
-        {pages.map((page) => {
-          return (
-            <div className="col-span-1" key={page.title}>
-              <PageCard title={page.title} description={page.description} icon={page.icon} to={page.to} />
-            </div>
-          )
-        })}
-      </div>
+      <ThePagesSection pages={pages} />
     </section>
   )
 }

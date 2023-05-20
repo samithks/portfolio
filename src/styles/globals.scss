@@ -22,3 +22,10 @@ body {
             transparent,
             rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+
+@layer components {
+    .section-heading {
+        @apply text-base font-medium uppercase text-white/70;
+    }
+}

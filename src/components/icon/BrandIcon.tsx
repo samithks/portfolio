@@ -616,6 +616,17 @@ function LogosDockerIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+function SkillIconsVercelDark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256" {...props}>
+      <g fill="none">
+        <rect width="256" height="256" fill="#242938" rx="60"></rect>
+        <path fill="#fff" d="m128 34l95 164.853H33L128 34Z"></path>
+      </g>
+    </svg>
+  )
+}
+
 const icons = {
   typescript: LogosTypescriptIcon,
   nodejs: SkillIconsNodejsLight,
@@ -651,12 +662,21 @@ const icons = {
   auth0: LogosAuth0Icon,
   launchdarkly: LogosLaunchdarklyIcon,
   docker: LogosDockerIcon,
+  vercel: SkillIconsVercelDark,
 }
 
 export interface BrandIconProps extends SVGProps<SVGSVGElement> {
   name: keyof typeof icons
 }
 
+/**
+ * This is a TypeScript React function that renders an SVG icon based on the provided name prop.
+ *
+ * @param {BrandIconProps} - The `BrandIcon` function takes in a `name` parameter and spreads the rest of the props into
+ *   the `props` object. The `name` parameter is used to look up an icon from the `icons` object. If the icon is found,
+ *   it is returned as an SVG component with
+ * @returns The `BrandIcon` component is being returned.
+ */
 export function BrandIcon({ name, ...props }: BrandIconProps) {
   const Icon = icons[name]
   if (!Icon) {
