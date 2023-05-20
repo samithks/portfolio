@@ -6,7 +6,7 @@ import Link from 'next/link'
 import TheCommandMenu from './TheCommandMenu'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */
-const TheLogo: React.FC = () => {
+function TheLogo() {
   return (
     <>
       <div className=" h-10 w-10 flex-shrink-0 rounded-md bg-gray-100 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105">
