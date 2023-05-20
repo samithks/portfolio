@@ -40,10 +40,10 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
   return (
     <Link
       href={{ pathname: to }}
-      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition-shadow duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
+      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
     >
       <div className="flex flex-row gap-x-2">
-        <SVGIcon name={icon} fontSize={'2em'} />
+        <SVGIcon name={icon} fontSize={'2em'} className="stroke-2" />
         <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
           {title}
         </h2>
@@ -55,11 +55,11 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
 
 const ThePages: React.FC = () => {
   return (
-    <section id="pages" className="mx-5 flex flex-col gap-y-3 px-5 py-10">
+    <section id="pages" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="">
         <h2 className="text-sm font-medium uppercase text-white/60">pages</h2>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-4">
+      <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-10">
         {pages.map((page) => {
           return (
             <div className="col-span-1" key={page.title}>

@@ -6,7 +6,7 @@ import HomeHero from '@/components/hero/HomeHero'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="mb-10 space-y-24">
+      <div className="mb-10 space-y-20">
         <HomeHero />
         <ThePages />
         <TheInsight />

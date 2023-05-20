@@ -126,7 +126,7 @@ const techStack: ITechStack = {
 
 const TheTechStack: React.FC = () => {
   return (
-    <section id="tech_stack" className="mx-5 flex flex-col gap-y-3 px-5 py-10">
+    <section id="tech_stack" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="">
         <h2 className="text-sm font-medium uppercase text-white/60">Tech Stack</h2>
       </div>
