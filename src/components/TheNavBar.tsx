@@ -3,6 +3,7 @@
 import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
+
 import TheCommandMenu from './TheCommandMenu'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */

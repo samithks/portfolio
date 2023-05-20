@@ -1,5 +1,7 @@
-import Link from 'next/link'
 import type { SVGIconProps } from '@/components/icon/SVGIcon'
+
+import Link from 'next/link'
+
 import { SVGIcon } from '@/components/icon/SVGIcon'
 
 interface IPage {

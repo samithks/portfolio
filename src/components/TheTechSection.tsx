@@ -1,4 +1,5 @@
 import type { BrandIconProps } from '@/components/icon/BrandIcon'
+
 import { BrandIcon } from '@/components/icon/BrandIcon'
 
 interface ITechnology {

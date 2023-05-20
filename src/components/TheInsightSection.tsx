@@ -13,49 +13,43 @@ interface ITheInsightData {
 
 const education: InsightCardProps[] = [
   {
-    title: 'BSc Computer Science',
-    organization: 'University of the West Indies',
-    year: '2016 - 2019',
-    link: 'https://www.mona.uwi.edu/',
+    title: 'MTech in Computer Science',
+    organization: 'Calicut University',
+    year: '2013 ‐ 2015',
+    link: 'https://www.uoc.ac.in/',
   },
   {
-    title: 'A-Level',
-    organization: "St. George's College",
-    year: '2014 - 2016',
-    link: 'https://www.stgc.org/',
-  },
-  {
-    title: 'CXC',
-    organization: "St. George's College",
-    year: '2009 - 2014',
-    link: 'https://www.stgc.org/',
+    title: 'BTech in Information Technology',
+    organization: 'MG University',
+    year: '2008 - 2012',
+    link: 'https://www.mgu.ac.in/',
   },
 ]
 
 const experience: InsightCardProps[] = [
   {
-    title: 'Software Engineer',
-    organization: 'Colabra',
-    year: '2020 - Present',
-    link: 'https://colabra.app/',
+    title: 'Senior Software Engineer',
+    organization: 'Colabra Inc',
+    year: 'JAN 2023 -',
+    link: 'https://www.colabra.app/',
   },
   {
-    title: 'Software Engineer',
+    title: 'Lead Engineer',
     organization: 'Qburst Technologies',
-    year: '2020 - Present',
+    year: 'Mar 2021 - Dec 2022',
     link: 'https://www.qburst.com/',
   },
   {
-    title: 'Software Engineer',
+    title: 'Lead Engineer',
     organization: 'Perfomatix Solutions',
-    year: '2020 - Present',
+    year: 'Sep 2019 - Mar 2021',
     link: 'https://www.perfomatix.com/',
   },
   {
-    title: 'Software Engineer',
-    organization: 'Kottakal Business Solutions',
-    year: '2020 - Present',
-    link: 'https://www.kottakaltech.com/',
+    title: 'Senior Software Engineer',
+    organization: 'Perfomatix Solutions',
+    year: 'Mar 2017 - Sep 2019',
+    link: 'https://www.perfomatix.com/',
   },
 ]
 
@@ -105,12 +99,12 @@ const InsightCardSection: React.FC<{ data: InsightCardProps[] }> = ({ data }) =>
  * This is a TypeScript React functional component that renders a section of InsightCard components with a heading and a
  * card section.
  */
-const TheInsight: React.FC<{ data: InsightCardProps[]; key: keyof ITheInsightData }> = ({ data, key }) => {
+const TheInsight: React.FC<{ data: InsightCardProps[]; insight: keyof ITheInsightData }> = ({ data, insight }) => {
   return (
     <>
       <div className="flex flex-col gap-y-4">
         <div className="flex flex-row justify-between">
-          <h2 className="section-heading">{key}</h2>
+          <h2 className="section-heading">{insight}</h2>
           <h4 className="text-xs font-light text-white/60">more</h4>
         </div>
       </div>
@@ -127,10 +121,10 @@ const TheInsightSection: React.FC = () => {
   return (
     <section id="insight" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="flex flex-row gap-x-5">
-        {Object.keys(theInsightData).map((key) => {
+        {Object.keys(theInsightData).map((insightKey) => {
           return (
-            <section id={key} className="w-1/2" key={key}>
-              <TheInsight data={theInsightData[key]} key={key} />
+            <section id={insightKey} className="w-1/2" key={insightKey}>
+              <TheInsight data={theInsightData[insightKey]} insight={insightKey} />
             </section>
           )
         })}

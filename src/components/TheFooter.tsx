@@ -1,7 +1,8 @@
 import type { UrlObject } from 'node:url'
 
-import Link from 'next/link'
 import { DOMAIN_NAME } from '@/constant'
+
+import Link from 'next/link'
 
 const footerReference: UrlObject = {
   pathname: '/',

@@ -1,10 +1,18 @@
-import Image from 'next/image'
 import type { BrandIconProps } from '@/components/icon/BrandIcon'
-import { BrandIcon } from '@/components/icon/BrandIcon'
+
 import { FaEllipsisH } from 'react-icons/fa'
+import avatar from '~/images/avatar.png'
+
+import { Roboto_Mono } from 'next/font/google'
+import Image from 'next/image'
 import Link from 'next/link'
 
-import avatar from '~/images/avatar.png'
+import { BrandIcon } from '@/components/icon/BrandIcon'
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const homeHeroIcons = ['typescript', 'nodejs', 'javascript'] as BrandIconProps['name'][]
 
@@ -60,7 +68,7 @@ const HomeHero: React.FC = () => {
   return (
     <section id="hero" className="mx-5 my-16 flex flex-col items-center justify-between gap-y-3 px-5">
       <Image src={avatar} className="w-44 rounded-full md:w-64 lg:w-72" alt="avatar" placeholder={'empty'} priority />
-      <h1 className="text-4xl font-semibold leading-relaxed">Full-stack web developer</h1>
+      <h1 className={`${robotoMono.className} text-4xl font-medium leading-relaxed`}>Full-stack web developer</h1>
       <HomeIcons iconsArray={homeHeroIcons} />
     </section>
   )

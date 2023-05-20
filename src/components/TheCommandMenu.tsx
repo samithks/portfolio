@@ -1,11 +1,11 @@
 'use client'
+
 import 'react-cmdk/dist/cmdk.css'
 
 import type { JsonStructure } from 'react-cmdk'
 
-import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
-
 import { useEffect, useState } from 'react'
+import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
 import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 
 const commandOptions: JsonStructure = [
