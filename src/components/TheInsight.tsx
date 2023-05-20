@@ -67,7 +67,7 @@ const theInsightData: ITheInsightData = {
 const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, link }) => {
   return (
     <Link
-      href={{ href: link }}
+      href={{ pathname: link }}
       className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
     >
       <div className="flex flex-row justify-between">
