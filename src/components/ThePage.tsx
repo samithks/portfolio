@@ -43,7 +43,7 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
       className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition-shadow duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
     >
       <div className="flex flex-row gap-x-2">
-        <SVGIcon name={icon} fontSize={`2em`} />
+        <SVGIcon name={icon} fontSize={'2em'} />
         <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
           {title}
         </h2>
