@@ -213,7 +213,6 @@ const TheTechStack: React.FC<{ stack: ITechStack }> = ({ stack }) => {
   return (
     <div className="mt-4 flex flex-col gap-x-5 gap-y-10">
       {Object.keys(stack).map((key) => {
-        console.log('key', stack)
         return (
           <div className="flex-1" key={key}>
             <h3 className="text-xs font-semibold uppercase text-white/50">{key}</h3>
