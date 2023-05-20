@@ -72,7 +72,7 @@ const ThePagesSection: React.FC<{ pages: IPage[] }> = ({ pages }) => {
  * This is the main entry point of our app. It renders a single component, TheApp, which is the root component of our
  * app.
  */
-const ThePages: React.FC = () => {
+const ThePageSection: React.FC = () => {
   return (
     <section id="pages" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="flex flex-none">
@@ -83,4 +83,4 @@ const ThePages: React.FC = () => {
   )
 }
 
-export default ThePages
+export default ThePageSection

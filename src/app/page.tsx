@@ -1,6 +1,6 @@
-import TheInsightSection from '@/components/TheInsight'
-import ThePages from '@/components/ThePage'
-import TheTechSection from '@/components/TheTechStack'
+import TheInsightSection from '@/components/TheInsightSection'
+import ThePageSection from '@/components/ThePageSection'
+import TheTechSection from '@/components/TheTechSection'
 import HomeHero from '@/components/hero/HomeHero'
 
 /** Home page */
@@ -9,7 +9,7 @@ export default function Home() {
     <main className="min-h-screen">
       <div className="mb-10 space-y-20">
         <HomeHero />
-        <ThePages />
+        <ThePageSection />
         <TheInsightSection />
         <TheTechSection />
       </div>
