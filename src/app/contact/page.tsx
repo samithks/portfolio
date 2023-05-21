@@ -5,10 +5,11 @@ export const metadata: Metadata = {
   description: 'Contact me',
 }
 
+/** Contact page */
 export default function Contact() {
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif">Contatc Me</h1>
+      <h1 className="font-serif text-3xl font-bold">Contatc Me</h1>
     </section>
   )
 }
