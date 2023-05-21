@@ -3,18 +3,17 @@
 import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
+
 import TheCommandMenu from './TheCommandMenu'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */
 function TheLogo() {
   return (
-    <>
-      <div className=" h-10 w-10 flex-shrink-0 rounded-md bg-gray-100 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105">
-        <Link href="/" className="items-center">
-          <TbGitPullRequestDraft color="black" fontSize="2em" />
-        </Link>
-      </div>
-    </>
+    <div className="h-12 w-12 flex-shrink-0 rounded-md bg-gray-100 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105">
+      <Link href="/" className="items-center">
+        <TbGitPullRequestDraft color="black" fontSize="2.4em" />
+      </Link>
+    </div>
   )
 }
 

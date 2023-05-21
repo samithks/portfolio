@@ -1,11 +1,11 @@
 'use client'
+
 import 'react-cmdk/dist/cmdk.css'
 
 import type { JsonStructure } from 'react-cmdk'
 
-import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
-
 import { useEffect, useState } from 'react'
+import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
 import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 
 const commandOptions: JsonStructure = [
@@ -48,11 +48,7 @@ interface TheHamburgerIconProps {
  */
 const TheHamburgerIcon: React.FC<TheHamburgerIconProps> = ({ toggle }: TheHamburgerIconProps) => {
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="transition duration-300 ease-in-out hover:scale-105 focus:outline-none"
-    >
+    <button type="button" onClick={toggle} className="transition duration-300 ease-in-out hover:scale-105">
       <svg
         className="h-10 w-8"
         viewBox="0 0 24 24"
