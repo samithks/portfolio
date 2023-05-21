@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header>
           <TheNavBar />
         </header>
-        <main className="pb-4">{children}</main>
+        <main className="min-h-screen pb-4">{children}</main>
         <TheFooter />
         <Analytics />
       </body>
