@@ -1,24 +1,14 @@
 'use client'
 
-import Lottie from 'lottie-react'
-import codingBoy from '~/animations/coding-boy.json'
+import AboutHeroAnime from '@/components/hero/AboutHeroAnime'
 
-/** The AboutHero function returns a React component that displays a Lottie animation of a coding boy. */
-const AboutHero: React.FC = () => {
-  const animeOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: codingBoy,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  }
+const AboutHero: React.FC<{ name: string; designation: string }> = ({ name, designation }) => {
   return (
-    <div className="flex flex-row items-center justify-center py-3">
-      <div className="w-3/5">
-        <Lottie {...animeOptions} />
-      </div>
-    </div>
+    <section id="about_hero" className="flex flex-col items-center gap-y-2">
+      <AboutHeroAnime />
+      <h1 className="text-4xl font-medium uppercase">{name}</h1>
+      <h4 className="text-base uppercase text-black dark:text-gray-300">{designation}</h4>
+    </section>
   )
 }
 
