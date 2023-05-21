@@ -1,16 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
-export default function ErrorPage({ error, reset }: { error: Error; reset: () => void }) {
-  useEffect(() => {
+/** This is a TypeScript React component for displaying an error message and logging the error to a reporting service. */
+export default function ErrorPage({ error, _reset }: { error: Error; _reset: () => void }) {
+  const logError = useCallback(() => {
     // Log the error to an error reporting service
     console.error(error)
   }, [error])
 
+  useEffect(() => {
+    logError()
+  }, [logError])
+
   return (
-    <div>
+    <>
       <p>Oh no, something went wrong... maybe refresh?</p>
-    </div>
+    </>
   )
 }

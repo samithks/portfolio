@@ -4,7 +4,7 @@ import 'react-cmdk/dist/cmdk.css'
 
 import type { JsonStructure } from 'react-cmdk'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
 import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 
@@ -84,7 +84,8 @@ const TheMenuFooter: React.FC = () => {
 /** This is a functional component called `TheCommandMenu` that renders a button and a command palette. */
 const TheCommandMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const toggle = () => setIsOpen(!isOpen)
+  /** This is a function that toggles the state of the component. */
+  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const [query, setQuery] = useState<string>('')
 
   /**
@@ -92,11 +93,14 @@ const TheCommandMenu: React.FC = () => {
    * the user to open and close the command palette by pressing `Ctrl/Cmd + k`.
    */
   useEffect(() => {
+    /**
+     * This function handles a keydown event and toggles the state of a component if the key pressed is 'k' and either
+     * the meta or ctrl key is also pressed.
+     */
     function handleKeyDown(event?: KeyboardEvent) {
       const { key, metaKey, ctrlKey } = event || {}
       if (key === 'k' && (metaKey || ctrlKey)) {
-        event?.preventDefault()
-        event?.stopPropagation()
+        event?.stopImmediatePropagation()
         setIsOpen((currentValue) => {
           return !currentValue
         })
@@ -105,7 +109,10 @@ const TheCommandMenu: React.FC = () => {
 
     if (typeof window !== 'undefined') {
       window.addEventListener('keydown', handleKeyDown)
-      return () => {
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
         window.removeEventListener('keydown', handleKeyDown)
       }
     }

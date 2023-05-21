@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   },
 }
 
+/** This is a React functional component that renders the root layout for the application. */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">

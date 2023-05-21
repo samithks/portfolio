@@ -3,6 +3,7 @@
 import Lottie from 'lottie-react'
 import codingBoy from '~/animations/coding-boy.json'
 
+/** The AboutHero function returns a React component that displays a Lottie animation of a coding boy. */
 const AboutHero: React.FC = () => {
   const animeOptions = {
     loop: true,
