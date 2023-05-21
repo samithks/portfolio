@@ -18,6 +18,7 @@ const aboutData = {
     'My journey as a software engineer has been focused primarily on backend development. I have extensive knowledge of various programming languages and technologies commonly used in this domain. From designing scalable architectures to implementing complex algorithms, I take pride in crafting efficient and reliable backend systems that meet the needs of the project. In addition to my backend skills, I also possess a strong understanding of frontend frameworks. This versatility allows me to collaborate effectively with frontend developers, bridging the gap between the backend and the user interface. I can seamlessly integrate the backend functionalities into visually appealing and user-friendly interfaces, providing a holistic and cohesive experience for end-users.',
 }
 
+/** The AboutSection function returns a React component that displays a description of the author. */
 const AboutSection: React.FC<{
   description: string
   identifyYourself: string

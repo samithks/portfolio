@@ -2,6 +2,7 @@
 
 import AboutHeroAnime from '@/components/hero/AboutHeroAnime'
 
+/** The AboutHero function returns a React component that displays a hero section with the author's name and designation. */
 const AboutHero: React.FC<{ name: string; designation: string }> = ({ name, designation }) => {
   return (
     <section id="about_hero" className="flex flex-col items-center gap-y-2">
