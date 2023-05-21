@@ -2,6 +2,7 @@ import '@/styles/globals.scss'
 
 import type { Metadata } from 'next'
 
+import { Analytics } from '@vercel/analytics/react'
 import { IBM_Plex_Mono } from 'next/font/google'
 
 import TheFooter from '@/components/TheFooter'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main className="pb-4">{children}</main>
         <TheFooter />
+        <Analytics />
       </body>
     </html>
   )
