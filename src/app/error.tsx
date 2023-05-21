@@ -14,8 +14,8 @@ export default function ErrorPage({ error, _reset }: { error: Error; _reset: () 
   }, [logError])
 
   return (
-    <>
+    <div className="flex flex-none justify-center">
       <p>Oh no, something went wrong... maybe refresh?</p>
-    </>
+    </div>
   )
 }
