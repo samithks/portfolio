@@ -18,12 +18,16 @@ const TheDarkModeButton: React.FC<{ toggle: () => void; mode: boolean }> = ({ to
  * @returns TheDarkMode component is being returned, which renders a div containing TheDarkModeButton component.
  */
 const TheDarkMode: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(
-    typeof window !== 'undefined' ? localStorage.getItem('darkMode') === 'true' : false
-  )
+  const [darkMode, setDarkMode] = useState<boolean>(localStorage.getItem('darkMode') === 'true')
 
   const switchMode = useCallback(() => {
     setDarkMode((mode) => !mode)
+  }, [])
+
+  useEffect(() => {
+    if (localStorage.getItem('darkMode') === 'true') {
+      setDarkMode(true)
+    }
   }, [])
 
   useEffect(() => {
