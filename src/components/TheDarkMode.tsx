@@ -31,6 +31,15 @@ const TheDarkMode: React.FC = () => {
     localStorage.setItem('darkMode', darkMode.toString())
   }, [darkMode])
 
+  // Switch dark mode based on system preference
+  /* useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode(true)
+    } else {
+      setDarkMode(false)
+    }
+  }, []) */
+
   return (
     <div>
       <TheDarkModeButton toggle={switchMode} mode={darkMode} />

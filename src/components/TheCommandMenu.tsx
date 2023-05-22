@@ -72,10 +72,8 @@ const TheMenuFooter: React.FC = () => {
   return (
     <div style={{ paddingInline: '1rem', paddingBlock: '0.75rem' }} className="px-4 py-3">
       <p>
-        <span className="inline-flex items-center justify-center rounded-md px-2 py-1 text-xs font-medium dark:bg-gray-800 dark:text-gray-500">
-          Esc
-        </span>{' '}
-        to close
+        <span className="inline-flex items-center justify-center rounded-md px-2 py-1 text-xs font-medium">Esc</span> to
+        close
       </p>
     </div>
   )
