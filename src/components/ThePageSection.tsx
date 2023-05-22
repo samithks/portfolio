@@ -22,7 +22,7 @@ const pages: IPage[] = [
     title: 'Projects',
     description: 'My projects',
     icon: 'project',
-    to: '/projects',
+    to: '/project',
   },
   {
     title: 'Contact',
