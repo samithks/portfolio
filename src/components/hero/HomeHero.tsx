@@ -5,9 +5,9 @@ import avatar from '~/images/avatar.png'
 
 import { Roboto_Mono } from 'next/font/google'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { BrandIcon } from '@/components/_icon/BrandIcon'
+import HomeEllipsisButton from '@/components/_button/HomeEllipsisButton'
 
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
@@ -15,17 +15,6 @@ const robotoMono = Roboto_Mono({
 })
 
 const homeHeroIcons = ['typescript', 'nodejs', 'javascript'] as BrandIconProps['name'][]
-
-/** This is a React functional component that renders an ellipsis button with a link to a specific section on the page. */
-const HomeEllipsisButton: React.FC = () => {
-  return (
-    <div className="rounded-md border px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10">
-      <Link href={{ hash: '#tech_stack' }}>
-        <FaEllipsisH fontSize="1.5em" className="stroke-2" />
-      </Link>
-    </div>
-  )
-}
 
 /**
  * The HomeIcons component displays a list of icons. It is used in the HomeScreen component to show the tech stack
