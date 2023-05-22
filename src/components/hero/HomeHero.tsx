@@ -1,4 +1,4 @@
-import type { BrandIconProps } from '@/components/icon/BrandIcon'
+import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 
 import { FaEllipsisH } from 'react-icons/fa'
 import avatar from '~/images/avatar.png'
@@ -7,7 +7,7 @@ import { Roboto_Mono } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { BrandIcon } from '@/components/icon/BrandIcon'
+import { BrandIcon } from '@/components/_icon/BrandIcon'
 
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],

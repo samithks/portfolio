@@ -4,7 +4,8 @@ import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
 
-import TheCommandMenu from './TheCommandMenu'
+import TheCommandMenu from '@/components/TheCommandMenu'
+import TheDarkMode from '@/components/TheDarkMode'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */
 function TheLogo() {
@@ -30,8 +31,9 @@ export default function TheNavBar() {
           {/* Logo */}
           <TheLogo />
           {/* Command menu */}
-          <div className="flex items-center">
+          <div className="flex flex-row items-center gap-2">
             <TheCommandMenu />
+            <TheDarkMode />
           </div>
         </div>
       </div>

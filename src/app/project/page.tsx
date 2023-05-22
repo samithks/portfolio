@@ -4,8 +4,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Contact me',
+  title: 'Projects',
+  description: 'My Projects',
 }
 
 interface IContact {
