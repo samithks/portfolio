@@ -5,7 +5,7 @@ import { SVGIcon } from './_icon/SVGIcon'
 const TheDarkModeButton: React.FC<{ toggle: () => void; mode: boolean }> = ({ toggle, mode }) => {
   return (
     <button type="button" onClick={toggle} className="transition duration-300 ease-in-out hover:scale-105">
-      <SVGIcon name={mode ? 'moon' : 'sun'} fontSize={'2em'} fill={mode ? 'white' : 'black'} />
+      <SVGIcon name={mode ? 'moon' : 'sun'} fontSize={'2em'} fill="currentColor" />
     </button>
   )
 }
