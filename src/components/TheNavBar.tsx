@@ -9,7 +9,7 @@ import TheDarkMode from '@/components/TheDarkMode'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */
 function TheLogo() {
-  const currentMode = localStorage.getItem('darkMode') === 'true'
+  const currentMode = typeof window !== 'undefined' ? localStorage.getItem('darkMode') === 'true' : null
   return (
     <div className="h-12 w-12 flex-shrink-0 rounded-md bg-slate-700 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105 dark:bg-gray-100">
       <Link href="/" className="items-center">
