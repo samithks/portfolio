@@ -130,36 +130,52 @@ const projects: IProject[] = [
 ]
 
 type ProjectCardProps = Omit<IProject, 'id'>
+type ProjectHeaderProps = Pick<IProject, 'company' | 'title' | 'technologies'>
+type ProjectCardMainProps = Pick<IProject, 'summary' | 'responsibility' | 'role'>
+
+/** This component renders the header of a project card. */
+const ProjectHeader: React.FC<ProjectHeaderProps> = ({ company, title, technologies }) => {
+  return (
+    <div className="flex flex-col">
+      <div className="flex flex-row items-center justify-between">
+        <h2 className="text-md truncate font-medium text-black dark:text-white">{title}</h2>
+        <h6 className="text-sm font-medium text-black dark:text-white">{company}</h6>
+      </div>
+      <div className="flex flex-none">
+        <h6 className="text-xs uppercase text-black dark:text-gray-400 ">{technologies.toString()}</h6>
+      </div>
+    </div>
+  )
+}
+
+/** This component renders the main content of a project card. */
+const ProjectCardMain: React.FC<ProjectCardMainProps> = ({ summary, responsibility, role }) => {
+  return (
+    <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col gap-y-1">
+        <h6 className="text-sm text-black dark:text-white">Role:{role}</h6>
+        <h6 className="text-justify text-sm text-black dark:text-white">Summary:{summary}</h6>
+      </div>
+      <ul className="list-inside list-disc">
+        {responsibility.map((item) => {
+          return (
+            <li className="text-justify text-sm text-black dark:text-gray-400" key={item}>
+              {item}
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
 
 /** This component renders a project card. */
 const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies, summary, responsibility, role }) => {
   return (
     <div className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20">
       <div className="flex flex-col justify-between gap-y-4">
-        <div className="flex flex-col">
-          <div className="flex flex-row items-center justify-between">
-            <h2 className="text-md truncate font-medium text-black dark:text-white">{title}</h2>
-            <h6 className="text-sm font-medium text-black dark:text-white">{company}</h6>
-          </div>
-          <div className="flex flex-none">
-            <h6 className="text-xs uppercase text-black dark:text-gray-400 ">{technologies.toString()}</h6>
-          </div>
-        </div>
-        <div className="flex flex-col gap-y-2">
-          <div className="flex flex-col gap-y-1">
-            <h6 className="text-sm text-black dark:text-white">Role:{role}</h6>
-            <h6 className="text-justify text-sm text-black dark:text-white">Summary:{summary}</h6>
-          </div>
-          <ul className="list-inside list-disc">
-            {responsibility.map((item) => {
-              return (
-                <li className="text-justify text-sm text-black dark:text-gray-400" key={item}>
-                  {item}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <ProjectHeader company={company} title={title} technologies={technologies} />
+        <ProjectCardMain summary={summary} responsibility={responsibility} role={role} />
       </div>
     </div>
   )

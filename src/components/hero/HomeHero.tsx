@@ -1,6 +1,5 @@
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 
-import { FaEllipsisH } from 'react-icons/fa'
 import avatar from '~/images/avatar.png'
 
 import { Roboto_Mono } from 'next/font/google'
