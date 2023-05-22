@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${ibm_plex_mono.className} container px-4`}>
+      <body className={`${ibm_plex_mono.className} container px-4 dark:bg-black dark:text-white`}>
         <header>
           <TheNavBar />
         </header>
