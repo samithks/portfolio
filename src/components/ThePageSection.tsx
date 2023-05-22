@@ -1,8 +1,8 @@
-import type { SVGIconProps } from '@/components/icon/SVGIcon'
+import type { SVGIconProps } from '@/components/_icon/SVGIcon'
 
 import Link from 'next/link'
 
-import { SVGIcon } from '@/components/icon/SVGIcon'
+import { SVGIcon } from '@/components/_icon/SVGIcon'
 
 interface IPage {
   title: string

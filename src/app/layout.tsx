@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 /** This is a React functional component that renders the root layout for the application. */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${ibm_plex_mono.className} container px-4`}>
+    <html lang="en">
+      <body className={`${ibm_plex_mono.className} container px-4 dark:bg-black dark:text-white`}>
         <header>
           <TheNavBar />
         </header>

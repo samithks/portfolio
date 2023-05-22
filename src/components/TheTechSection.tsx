@@ -1,6 +1,6 @@
-import type { BrandIconProps } from '@/components/icon/BrandIcon'
+import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 
-import { BrandIcon } from '@/components/icon/BrandIcon'
+import { BrandIcon } from '@/components/_icon/BrandIcon'
 
 interface ITechnology {
   title: string

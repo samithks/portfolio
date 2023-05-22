@@ -13,7 +13,7 @@ const aboutData = {
   identifyYourself: 'Hey, I am Samith K S',
   designation: 'Tech Lead | Senior Software Engineer | Backend Developer',
   summary:
-    'I am a software engineer with a passion for backend development and a good understanding of frontend frameworks',
+    'With over 7 years of experience as a skilled backend web developer proficient in Node.js and JavaScript, and expertise in software design, data modeling, and handling both SQL and NoSQL databases, I am passionate about seeking a full stack developer role to drive company growth and contribute to innovative projects.',
   description:
     'My journey as a software engineer has been focused primarily on backend development. I have extensive knowledge of various programming languages and technologies commonly used in this domain. From designing scalable architectures to implementing complex algorithms, I take pride in crafting efficient and reliable backend systems that meet the needs of the project. In addition to my backend skills, I also possess a strong understanding of frontend frameworks. This versatility allows me to collaborate effectively with frontend developers, bridging the gap between the backend and the user interface. I can seamlessly integrate the backend functionalities into visually appealing and user-friendly interfaces, providing a holistic and cohesive experience for end-users.',
 }
@@ -29,10 +29,10 @@ const AboutSection: React.FC<{
       <div id="about_heading" className="w-4/5">
         <h1 className="text-4xl font-medium leading-relaxed">About Me</h1>
         <h4 className="text-lg text-black dark:text-white">{identifyYourself}</h4>
-        <h6 className="text-base text-black dark:text-white">{summary}</h6>
+        <h6 className="text-justify text-sm text-black dark:text-white">{summary}</h6>
       </div>
       <div id="about_header_description" className="w-4/5">
-        <p className="text-justify  text-sm text-black dark:text-gray-400">{description}</p>
+        <p className="text-justify text-sm text-black dark:text-gray-400">{description}</p>
       </div>
       <Link
         href={{ pathname: '/icons/favicon.ico' }}
