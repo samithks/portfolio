@@ -117,10 +117,10 @@ const TheInsight: React.FC<{ data: InsightCardProps[]; insight: keyof ITheInsigh
 const TheInsightSection: React.FC = () => {
   return (
     <section id="insight" className="mx-5 flex flex-col gap-y-3 px-5">
-      <div className="flex flex-row gap-x-5">
+      <div className="grid grid-cols-2 gap-x-5">
         {Object.keys(theInsightData).map((insightKey) => {
           return (
-            <section id={insightKey} className="w-1/2" key={insightKey}>
+            <section id={insightKey} className="sm:col-span-2 md:col-span-1" key={insightKey}>
               <TheInsight data={theInsightData[insightKey]} insight={insightKey} />
             </section>
           )
