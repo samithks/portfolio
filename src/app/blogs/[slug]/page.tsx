@@ -8,10 +8,7 @@ const findBlogBySlug = (slug: string) => {
 }
 
 /** This function generates the static paths for a blog post. */
-export const generateStaticParams = async function () {
-  return allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
-}
-/* export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath })) */
+export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
 
 /** This function generates the metadata for a blog post. */
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
