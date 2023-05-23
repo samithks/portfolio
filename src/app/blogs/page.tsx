@@ -5,6 +5,7 @@ import type { Blog } from 'contentlayer/generated'
 import { allBlogs } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer/hooks'
 
+/** This component renders a blog post as a card. */
 function PostCard(blog: Blog) {
   const Content = getMDXComponent(blog.body.code)
 
@@ -25,6 +26,7 @@ function PostCard(blog: Blog) {
   )
 }
 
+/** The blogs page. */
 export default function Blogs() {
   const posts = allBlogs
     .slice()
