@@ -43,9 +43,9 @@ const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
     <Link href={{ pathname: to }} className="card">
       <div className="flex flex-row gap-x-2">
         <SVGIcon name={icon} fontSize={'2em'} className="stroke-2" />
-        <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight">{title}</h2>
+        <h2 className="text-md mb-2 font-medium leading-snug tracking-tight">{title}</h2>
       </div>
-      <p className="truncate text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
+      <p className="text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
     </Link>
   )
 }

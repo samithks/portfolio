@@ -46,7 +46,7 @@ const HomeHero: React.FC = () => {
   return (
     <section id="hero" className="mx-5 my-16 flex flex-col items-center justify-between gap-y-3 px-5">
       <Image src={avatar} className="w-44 rounded-full md:w-64 lg:w-72" alt="avatar" placeholder={'empty'} priority />
-      <h1 className={`${robotoMono.className} text-2xl font-medium leading-relaxed md:text-4xl`}>
+      <h1 className={`${robotoMono.className} text-center text-2xl font-medium leading-relaxed md:text-4xl`}>
         Full-stack web developer
       </h1>
       <HomeIcons iconsArray={homeHeroIcons} />
