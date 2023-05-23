@@ -1,11 +1,12 @@
 'use client'
 
+import type { LottieComponentProps } from 'lottie-react'
 import Lottie from 'lottie-react'
 import codingBoy from '~/animations/coding-boy.json'
 
 /** The AboutHero function returns a React component that displays a Lottie animation of a coding boy. */
 const AboutHeroAnime: React.FC = () => {
-  const animeOptions = {
+  const animeOptions: LottieComponentProps = {
     loop: true,
     autoplay: true,
     animationData: codingBoy,

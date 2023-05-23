@@ -24,6 +24,9 @@ body {
 
 @layer components {
   .section-heading {
-    @apply text-base font-medium uppercase text-white/70;
+    @apply text-base font-medium uppercase dark:text-white/70;
+  }
+  .card {
+    @apply block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md shadow-black/10 transition duration-300 hover:bg-slate-100 hover:shadow-lg hover:shadow-black/20 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-white/20
   }
 }

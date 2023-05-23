@@ -22,7 +22,7 @@ const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 const HomeEllipsisButton: React.FC = () => {
   const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleScroll(e), [])
   return (
-    <div className="rounded-md border px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10">
+    <div className="rounded-md border border-slate-200 bg-white px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10">
       <Link href="/#tech_stack" scroll={false} onClick={handleClick} rel="noopener noreferrer">
         <FaEllipsisH fontSize="1.5em" className="stroke-2" />
       </Link>

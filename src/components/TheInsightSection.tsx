@@ -30,7 +30,7 @@ const experience: InsightCardProps[] = [
   {
     title: 'Senior Software Engineer',
     organization: 'Colabra Inc',
-    year: 'JAN 2023 -',
+    year: 'Jan 2023 -',
     link: 'https://www.colabra.app/',
   },
   {
@@ -61,17 +61,14 @@ const theInsightData: ITheInsightData = {
 /** This is a TypeScript React functional component that renders a card. */
 const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, link }) => {
   return (
-    <Link
-      href={{ pathname: link }}
-      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
-    >
+    <Link href={{ pathname: link }} className="card">
       <div className="flex flex-row justify-between">
         <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
           {title}
         </h2>
-        <h4 className="text-sm font-light text-black/50 dark:text-white/50">{year}</h4>
+        <h4 className="text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
       </div>
-      <p className="line-clamp-3 truncate text-sm font-normal text-black/10 dark:text-gray-400">{organization}</p>
+      <p className="truncate text-sm font-medium text-black/50 dark:text-gray-400">{organization}</p>
     </Link>
   )
 }
@@ -105,7 +102,7 @@ const TheInsight: React.FC<{ data: InsightCardProps[]; insight: keyof ITheInsigh
       <div className="flex flex-col gap-y-4">
         <div className="flex flex-row justify-between">
           <h2 className="section-heading">{insight}</h2>
-          <h4 className="text-xs font-light text-white/60">more</h4>
+          {/* <h4 className="text-xs font-light text-black/50 dark:text-white/50">more</h4> */}
         </div>
       </div>
       <InsightCardSection data={data} />

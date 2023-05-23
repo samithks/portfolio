@@ -24,7 +24,7 @@ const HomeIcons: React.FC<{ iconsArray: BrandIconProps['name'][] }> = ({ iconsAr
     <div className="flex flex-wrap gap-x-3 gap-y-2">
       {iconsArray.map((icon) => (
         <div
-          className="rounded-md border px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
+          className="rounded-md border border-slate-200 bg-white px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
           key={icon}
         >
           <BrandIcon name={icon} fontSize="1.5em" />
