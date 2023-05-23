@@ -42,11 +42,7 @@ const TheDarkMode: React.FC = () => {
     }
   }, []) */
 
-  return (
-    <div>
-      <TheDarkModeButton toggle={switchMode} mode={darkMode} />
-    </div>
-  )
+  return <TheDarkModeButton toggle={switchMode} mode={darkMode} />
 }
 
 export default TheDarkMode

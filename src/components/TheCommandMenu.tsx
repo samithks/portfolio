@@ -35,21 +35,32 @@ const commandOptions: JsonStructure = [
   },
 ]
 
-interface TheHamburgerIconProps {
+interface TheNavIconProps {
   toggle: () => void
 }
 
 /**
  * This is a React functional component that renders a hamburger icon button with a toggle function.
  *
- * @param {TheHamburgerIconProps} props The props for this component.
+ * @param {TheNavIconProps} props The props for this component.
  * @returns A React functional component that renders a button with a hamburger icon. The component takes a prop called
  *   `toggle` which is a function that will be called when the button is clicked. The function will toggle the command
  */
-const TheHamburgerIcon: React.FC<TheHamburgerIconProps> = ({ toggle }: TheHamburgerIconProps) => {
+const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
   return (
     <button type="button" onClick={toggle} className="transition duration-300 ease-in-out hover:scale-105">
-      <svg
+      {/* Command icon */}
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 14 14">
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M11.75 10A1.75 1.75 0 1 1 10 11.75v-9.5A1.75 1.75 0 1 1 11.75 4h-9.5A1.75 1.75 0 1 1 4 2.25v9.5A1.75 1.75 0 1 1 2.25 10Z"
+        />
+      </svg>
+      {/* Hamburger icon */}
+      {/*  <svg
         className="h-10 w-8"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -59,7 +70,7 @@ const TheHamburgerIcon: React.FC<TheHamburgerIconProps> = ({ toggle }: TheHambur
         strokeLinejoin="round"
       >
         <path d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
+      </svg> */}
     </button>
   )
 }
@@ -71,9 +82,8 @@ const TheHamburgerIcon: React.FC<TheHamburgerIconProps> = ({ toggle }: TheHambur
 const TheMenuFooter: React.FC = () => {
   return (
     <div style={{ paddingInline: '1rem', paddingBlock: '0.75rem' }} className="px-4 py-3">
-      <p>
-        <span className="inline-flex items-center justify-center rounded-md px-2 py-1 text-xs font-medium">Esc</span> to
-        close
+      <p className="inline-flex items-center justify-center gap-x-1 rounded-md text-xs font-light">
+        <span className="font-medium">Esc</span> <span>to close</span>
       </p>
     </div>
   )
@@ -121,7 +131,7 @@ const TheCommandMenu: React.FC = () => {
 
   return (
     <>
-      <TheHamburgerIcon toggle={toggle} />
+      <TheNavIcon toggle={toggle} />
       <CommandPalette
         onChangeSearch={setQuery}
         onChangeOpen={setIsOpen}
