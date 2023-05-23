@@ -63,12 +63,10 @@ const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, li
   return (
     <Link href={{ pathname: link }} className="card">
       <div className="flex flex-row justify-between">
-        <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
-          {title}
-        </h2>
-        <h4 className="text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
+        <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
+        <h4 className="truncate text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
       </div>
-      <p className="truncate text-sm font-medium text-black/50 dark:text-gray-400">{organization}</p>
+      <p className="text-sm font-medium text-black/50 dark:text-gray-400">{organization}</p>
     </Link>
   )
 }

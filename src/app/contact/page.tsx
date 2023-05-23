@@ -42,10 +42,8 @@ const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
     <Link href={{ pathname: to }} className="card">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-col">
-          <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
-            {title}
-          </h2>
-          <p className="line-clamp-3 truncate text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
+          <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
+          <p className="line-clamp-3 text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
         </div>
         <BrandIcon name={icon} fontSize={'2em'} fill="currentColor" />
       </div>

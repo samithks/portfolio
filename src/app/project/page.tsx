@@ -138,7 +138,7 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ company, title, technolog
   return (
     <div className="flex flex-col">
       <div className="flex flex-row items-center justify-between">
-        <h2 className="text-md truncate font-medium">{title}</h2>
+        <h2 className="text-md font-medium">{title}</h2>
         <h6 className="text-sm font-medium text-gray-600 dark:text-gray-400">{company}</h6>
       </div>
       <div className="flex flex-none">

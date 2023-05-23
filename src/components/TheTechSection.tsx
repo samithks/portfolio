@@ -183,9 +183,7 @@ const TechCard: React.FC<ITechnology> = ({ title, icon }) => {
     <div className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20">
       <div className="flex flex-row gap-x-2">
         <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
-        <h2 className="mb-2 truncate text-sm font-medium leading-snug tracking-tight text-black dark:text-white">
-          {title}
-        </h2>
+        <h2 className="mb-2 text-sm font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
       </div>
     </div>
   )
@@ -200,7 +198,7 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
     <div className="mt-3 grid grid-cols-4 gap-3">
       {stack.map((tech) => {
         return (
-          <div className="col-span-2 md:col-span-1" key={tech.title}>
+          <div className="col-span-4 md:col-span-1" key={tech.title}>
             <TechCard title={tech.title} icon={tech.icon} />
           </div>
         )
