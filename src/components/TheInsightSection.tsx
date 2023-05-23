@@ -120,7 +120,7 @@ const TheInsightSection: React.FC = () => {
       <div className="grid grid-cols-2 gap-x-5">
         {Object.keys(theInsightData).map((insightKey) => {
           return (
-            <section id={insightKey} className="sm:col-span-2 md:col-span-1" key={insightKey}>
+            <section id={insightKey} className="col-span-2 md:col-span-1" key={insightKey}>
               <TheInsight data={theInsightData[insightKey]} insight={insightKey} />
             </section>
           )

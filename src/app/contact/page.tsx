@@ -59,7 +59,7 @@ const TheContactSection: React.FC<{ data: IContact[] }> = ({ data }) => {
     <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-10">
       {data.map((page) => {
         return (
-          <div className="sm:col-span-2 md:col-span-1" key={page.title}>
+          <div className="col-span-2 md:col-span-1" key={page.title}>
             <ContactCard title={page.title} description={page.description} icon={page.icon} to={page.to} />
           </div>
         )
