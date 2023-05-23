@@ -3,7 +3,9 @@ import { allBlogs } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer/hooks'
 
 /** This function generates the static paths for a blog post. */
-export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
+/* export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath })) */
+export const generateStaticParams = async () =>
+  await Promise.all(allBlogs.map(async (blog) => ({ slug: blog._raw.flattenedPath })))
 
 /** This function generates the metadata for a blog post. */
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
