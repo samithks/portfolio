@@ -2,14 +2,17 @@ import { format, parseISO } from 'date-fns'
 import { allBlogs } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer/hooks'
 
+/** This function generates the static paths for a blog post. */
 export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
 
+/** This function generates the metadata for a blog post. */
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const post = allBlogs.find((post) => post._raw.flattenedPath === params.slug)
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
   return { title: post.title }
 }
 
+/** The blog post page. */
 const BlogLayout = ({ params }: { params: { slug: string } }) => {
   const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug)
   if (!blog) throw new Error(`Post not found for slug: ${params.slug}`)
