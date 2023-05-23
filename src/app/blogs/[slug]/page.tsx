@@ -7,15 +7,15 @@ export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: 
 
 /** This function generates the metadata for a blog post. */
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allBlogs.find((post) => post._raw.flattenedPath === params.slug)
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
-  return { title: post.title }
+  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug)
+  if (!blog) throw new Error(`Blog not found for slug: ${params.slug}`)
+  return { title: blog.title }
 }
 
 /** The blog post page. */
 const BlogLayout = ({ params }: { params: { slug: string } }) => {
   const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug)
-  if (!blog) throw new Error(`Post not found for slug: ${params.slug}`)
+  if (!blog) throw new Error(`Blog not found for slug: ${params.slug}`)
 
   const Content = getMDXComponent(blog.body.code)
 
