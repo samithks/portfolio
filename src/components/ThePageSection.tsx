@@ -16,7 +16,7 @@ const pages: IPage[] = [
     title: 'Blog',
     description: 'My thoughts on various topics',
     icon: 'blog',
-    to: '/blog',
+    to: '/blogs',
   },
   {
     title: 'Projects',
