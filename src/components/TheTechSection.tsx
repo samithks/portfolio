@@ -200,7 +200,7 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
     <div className="mt-3 grid grid-cols-4 gap-3">
       {stack.map((tech) => {
         return (
-          <div className="col-span-1" key={tech.title}>
+          <div className="sm:col-span-2 md:col-span-1" key={tech.title}>
             <TechCard title={tech.title} icon={tech.icon} />
           </div>
         )
