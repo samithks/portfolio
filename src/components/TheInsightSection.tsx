@@ -15,7 +15,7 @@ const education: InsightCardProps[] = [
   {
     title: 'MTech in Computer Science',
     organization: 'Calicut University',
-    year: '2013 ‐ 2015',
+    year: '2013 - 2015',
     link: 'https://www.uoc.ac.in/',
   },
   {
