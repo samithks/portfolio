@@ -216,7 +216,7 @@ const TheTechStack: React.FC<{ stack: ITechStack }> = ({ stack }) => {
       {Object.keys(stack).map((key) => {
         return (
           <div className="flex-1" key={key}>
-            <h3 className="text-xs font-semibold uppercase text-white/50">{key}</h3>
+            <h3 className="text-xs font-semibold uppercase text-black/50 dark:text-white/50">{key}</h3>
             <TheStack stack={stack[key as TechStackKeys]} />
           </div>
         )

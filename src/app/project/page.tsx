@@ -138,11 +138,11 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ company, title, technolog
   return (
     <div className="flex flex-col">
       <div className="flex flex-row items-center justify-between">
-        <h2 className="text-md truncate font-medium text-black dark:text-white">{title}</h2>
-        <h6 className="text-sm font-medium text-black dark:text-white">{company}</h6>
+        <h2 className="text-md truncate font-medium">{title}</h2>
+        <h6 className="text-sm font-medium text-gray-600 dark:text-gray-400">{company}</h6>
       </div>
       <div className="flex flex-none">
-        <h6 className="text-xs uppercase text-black dark:text-gray-400 ">{technologies.toString()}</h6>
+        <h6 className="text-xs uppercase text-gray-600 dark:text-gray-400">{technologies.toString()}</h6>
       </div>
     </div>
   )
@@ -153,13 +153,13 @@ const ProjectCardMain: React.FC<ProjectCardMainProps> = ({ summary, responsibili
   return (
     <div className="flex flex-col gap-y-2">
       <div className="flex flex-col gap-y-1">
-        <h6 className="text-sm text-black dark:text-white">Role:{role}</h6>
-        <h6 className="text-justify text-sm text-black dark:text-white">Summary:{summary}</h6>
+        <h6 className="text-sm text-gray-600 dark:text-gray-400">Role:{role}</h6>
+        <h6 className="text-justify text-sm text-gray-600 dark:text-gray-400">Summary:{summary}</h6>
       </div>
       <ul className="list-inside list-disc">
         {responsibility.map((item) => {
           return (
-            <li className="text-justify text-sm text-black dark:text-gray-400" key={item}>
+            <li className="text-justify text-sm text-gray-600 dark:text-gray-400" key={item}>
               {item}
             </li>
           )
@@ -172,7 +172,7 @@ const ProjectCardMain: React.FC<ProjectCardMainProps> = ({ summary, responsibili
 /** This component renders a project card. */
 const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies, summary, responsibility, role }) => {
   return (
-    <div className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20">
+    <div className="card">
       <div className="flex flex-col justify-between gap-y-4">
         <ProjectHeader company={company} title={title} technologies={technologies} />
         <ProjectCardMain summary={summary} responsibility={responsibility} role={role} />
@@ -200,7 +200,7 @@ const TheProjectSection: React.FC<{ data: IProject[] }> = ({ data }) => {
 /** Project page */
 export default function Project() {
   return (
-    <div className="mb-10 space-y-20">
+    <div className="mb-10 space-y-10">
       <section id="heading" className="flex flex-col gap-y-3">
         <div id="project_heading">
           <h1 className="font-serif text-4xl font-medium">Project</h1>
