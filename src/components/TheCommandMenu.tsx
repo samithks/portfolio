@@ -3,6 +3,7 @@
 import 'react-cmdk/dist/cmdk.css'
 
 import type { JsonStructure } from 'react-cmdk'
+import { Tooltip } from 'react-tooltip'
 
 import { useCallback, useEffect, useState } from 'react'
 import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
@@ -48,19 +49,26 @@ interface TheNavIconProps {
  */
 const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
   return (
-    <button type="button" onClick={toggle} className="transition duration-300 ease-in-out hover:scale-105">
-      {/* Command icon */}
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 14 14">
-        <path
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M11.75 10A1.75 1.75 0 1 1 10 11.75v-9.5A1.75 1.75 0 1 1 11.75 4h-9.5A1.75 1.75 0 1 1 4 2.25v9.5A1.75 1.75 0 1 1 2.25 10Z"
-        />
-      </svg>
-      {/* Hamburger icon */}
-      {/*  <svg
+    <>
+      <button
+        type="button"
+        onClick={toggle}
+        data-tooltip-id="command_icon"
+        data-tooltip-content="cmd+k/ctrl+k"
+        className="transition duration-300 ease-in-out hover:scale-105"
+      >
+        {/* Command icon */}
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 14 14">
+          <path
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M11.75 10A1.75 1.75 0 1 1 10 11.75v-9.5A1.75 1.75 0 1 1 11.75 4h-9.5A1.75 1.75 0 1 1 4 2.25v9.5A1.75 1.75 0 1 1 2.25 10Z"
+          />
+        </svg>
+        {/* Hamburger icon */}
+        {/*  <svg
         className="h-10 w-8"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -71,7 +79,9 @@ const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
       >
         <path d="M4 6h16M4 12h16M4 18h16"></path>
       </svg> */}
-    </button>
+      </button>
+      <Tooltip id="command_icon" />
+    </>
   )
 }
 
