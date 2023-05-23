@@ -39,18 +39,15 @@ const contacts: IContact[] = [
 /** This component renders a contact card. */
 const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
   return (
-    <Link
-      href={{ pathname: to }}
-      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
-    >
+    <Link href={{ pathname: to }} className="card">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-col">
           <h2 className="text-md mb-2 truncate font-medium leading-snug tracking-tight text-black dark:text-white">
             {title}
           </h2>
-          <p className="line-clamp-3 truncate text-sm font-normal text-black/10 dark:text-gray-400">{description}</p>
+          <p className="line-clamp-3 truncate text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
         </div>
-        <BrandIcon name={icon} fontSize={'2em'} />
+        <BrandIcon name={icon} fontSize={'2em'} fill="currentColor" />
       </div>
     </Link>
   )
@@ -80,7 +77,7 @@ export default function Contact() {
           <h1 className="font-serif text-4xl font-medium">Contact</h1>
         </div>
         <div id="contact_header_description">
-          <p className="text-sm text-black dark:text-gray-400">If you have any questions please feel free to contact</p>
+          <p className="text-sm dark:text-gray-400">If you have any questions please feel free to contact</p>
         </div>
       </section>
       <section id="Contact" className="mt-10">

@@ -28,15 +28,15 @@ const AboutSection: React.FC<{
     <section id="about_section" className="flex flex-col items-center gap-y-4">
       <div id="about_heading" className="w-4/5">
         <h1 className="text-4xl font-medium leading-relaxed">About Me</h1>
-        <h4 className="text-lg text-black dark:text-white">{identifyYourself}</h4>
-        <h6 className="text-justify text-sm text-black dark:text-white">{summary}</h6>
+        <h4 className="text-lg">{identifyYourself}</h4>
+        <h6 className="text-justify text-sm">{summary}</h6>
       </div>
       <div id="about_header_description" className="w-4/5">
-        <p className="text-justify text-sm text-black dark:text-gray-400">{description}</p>
+        <p className="text-justify text-sm text-slate-700 dark:text-gray-400">{description}</p>
       </div>
       <Link
         href={{ pathname: '/icons/favicon.ico' }}
-        className="mb-2 mr-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-black hover:animate-bounce hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-black dark:text-white dark:hover:border-gray-600 dark:hover:bg-white/10 dark:focus:ring-gray-700"
+        className="mb-2 mr-2 rounded-lg border border-gray-600 bg-[#d6dbdc] px-5 py-2.5 text-sm font-medium text-slate-700 hover:animate-bounce hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-black dark:text-white dark:hover:border-gray-600 dark:hover:bg-white/10 dark:focus:ring-gray-700"
       >
         Download CV
       </Link>

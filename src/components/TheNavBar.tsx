@@ -1,11 +1,8 @@
-'use client'
-
 import { TbGitPullRequestDraft } from 'react-icons/tb'
 
 import Link from 'next/link'
 
 import TheCommandMenu from '@/components/TheCommandMenu'
-import { useEffect } from 'react'
 
 /** This is a React functional component that renders a logo with a link to the home page of the website. */
 function TheLogo() {
@@ -24,14 +21,6 @@ function TheLogo() {
  * @returns A React component that renders a navigation bar with a logo and a command menu.
  */
 export default function TheNavBar() {
-  // Switch dark mode based on system preference
-  useEffect(() => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      window.document.documentElement.classList.add('dark')
-    } else {
-      window.document.documentElement.classList.remove('dark')
-    }
-  }, [])
   return (
     <nav>
       <div className="w-full pb-4 pt-6">
