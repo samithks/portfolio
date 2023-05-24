@@ -39,7 +39,7 @@ const contacts: IContact[] = [
 /** This component renders a contact card. */
 const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
   return (
-    <Link href={{ pathname: to }} className="card">
+    <Link href={{ pathname: to }} className="card" target="_blank">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-col">
           <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>

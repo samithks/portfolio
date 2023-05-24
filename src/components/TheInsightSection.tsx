@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 
 interface InsightCardProps {
+  id: string
   title: string
   organization: string
   year: string
@@ -13,12 +16,14 @@ interface ITheInsightData {
 
 const education: InsightCardProps[] = [
   {
+    id: '1',
     title: 'MTech in Computer Science',
     organization: 'Calicut University',
     year: '2013 - 2015',
     link: 'https://www.uoc.ac.in/',
   },
   {
+    id: '2',
     title: 'BTech in Information Technology',
     organization: 'MG University',
     year: '2008 - 2012',
@@ -28,24 +33,28 @@ const education: InsightCardProps[] = [
 
 const experience: InsightCardProps[] = [
   {
+    id: '1',
     title: 'Senior Software Engineer',
     organization: 'Colabra Inc',
     year: 'Jan 2023 -',
     link: 'https://www.colabra.app/',
   },
   {
+    id: '2',
     title: 'Lead Engineer',
     organization: 'Qburst Technologies',
     year: 'Mar 2021 - Dec 2022',
     link: 'https://www.qburst.com/',
   },
   {
+    id: '3',
     title: 'Lead Engineer',
     organization: 'Perfomatix Solutions',
     year: 'Sep 2019 - Mar 2021',
     link: 'https://www.perfomatix.com/',
   },
   {
+    id: '4',
     title: 'Senior Software Engineer',
     organization: 'Perfomatix Solutions',
     year: 'Mar 2017 - Sep 2019',
@@ -59,9 +68,9 @@ const theInsightData: ITheInsightData = {
 }
 
 /** This is a TypeScript React functional component that renders a card. */
-const InsightCard: React.FC<InsightCardProps> = ({ title, organization, year, link }) => {
+const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organization, year, link }) => {
   return (
-    <Link href={{ pathname: link }} className="card">
+    <Link href={{ pathname: link }} className="card" target="_blank">
       <div className="flex flex-row justify-between">
         <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
         <h4 className="truncate text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
@@ -82,7 +91,7 @@ const InsightCardSection: React.FC<{ data: InsightCardProps[] }> = ({ data }) =>
             organization={item.organization}
             year={item.year}
             link={item.link}
-            key={item.title}
+            key={item.id}
           />
         )
       })}
