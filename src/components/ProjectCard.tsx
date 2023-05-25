@@ -1,8 +1,20 @@
 'use client'
 
-import { IProject } from '@/app/project/page'
 import { useCallback, useState } from 'react'
 import Accordion from '@/components/Accordion'
+
+export interface IProject {
+  id: string
+  company: string
+  title: string
+  technologies: string[]
+  role: string
+  summary: string
+  responsibility: {
+    id: string
+    title: string
+  }[]
+}
 
 type ProjectCardProps = Omit<IProject, 'id'>
 type ProjectHeaderProps = Pick<IProject, 'company' | 'title' | 'technologies'>
@@ -46,8 +58,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies,
     setIsExpanded((isShowing) => !isShowing)
   }, [])
   return (
-    <div className="card">
-      <div className="flex flex-col justify-between gap-y-4" onClick={toggleExpansion}>
+    <div
+      className="card"
+      role="button"
+      tabIndex={0}
+      onClick={toggleExpansion}
+      onKeyDown={(e) => e.key === 'Enter' && toggleExpansion()}
+    >
+      <div className="flex cursor-pointer flex-col justify-between gap-y-4">
         <ProjectHeader company={company} title={title} technologies={technologies} />
         <ProjectCardMain summary={summary} responsibility={responsibility} role={role} isExpanded={isExpanded} />
       </div>

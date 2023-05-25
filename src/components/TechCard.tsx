@@ -1,15 +1,36 @@
 'use client'
 
+import type { BrandIconProps } from '@/components/_icon/BrandIcon'
+
 import { BrandIcon } from '@/components/_icon/BrandIcon'
-import { ITechnology } from '@/components/TheTechSection'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useState } from 'react'
+
+export interface ITechnology {
+  title: string
+  icon: BrandIconProps['name']
+  rating: number
+}
 
 interface TechAccordionProps {
   isExpanded: boolean
   rating: number
 }
 
+/** This component renders the rating of a technology card. */
+const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
+  const stars = []
+  for (let i = 0; i < rating; i++) {
+    stars.push(
+      <span key={i} className="text-2xl text-green-500">
+        ★
+      </span>
+    )
+  }
+  return <>{stars}</>
+}
+
+/** This component renders the accordion of a technology card. */
 const TechAccordion: React.FC<TechAccordionProps> = ({ isExpanded, rating }) => {
   return (
     <AnimatePresence>
@@ -36,18 +57,6 @@ const TechAccordion: React.FC<TechAccordionProps> = ({ isExpanded, rating }) => 
   )
 }
 
-const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
-  const stars = []
-  for (let i = 0; i < rating; i++) {
-    stars.push(
-      <span key={i} className="text-2xl text-green-500">
-        ★
-      </span>
-    )
-  }
-  return <>{stars}</>
-}
-
 /** This is a React functional component that renders a technology card with a title and an icon */
 const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
@@ -56,8 +65,14 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
     setIsExpanded((isShowing) => !isShowing)
   }, [])
   return (
-    <div className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20">
-      <div className="flex cursor-pointer flex-row gap-x-2" onClick={toggleExpansion}>
+    <div
+      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
+      role="button"
+      tabIndex={0}
+      onClick={toggleExpansion}
+      onKeyDown={(e) => e.key === 'Enter' && toggleExpansion()}
+    >
+      <div className="flex cursor-pointer flex-row gap-x-2">
         <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
         <h2 className="mb-2 text-sm font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
       </div>

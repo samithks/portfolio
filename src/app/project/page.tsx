@@ -1,23 +1,11 @@
 import type { Metadata } from 'next'
+import type { IProject } from '@/components/ProjectCard'
 
 import ProjectCard from '@/components/ProjectCard'
 
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'My Projects',
-}
-
-export interface IProject {
-  id: string
-  company: string
-  title: string
-  technologies: string[]
-  role: string
-  summary: string
-  responsibility: {
-    id: string
-    title: string
-  }[]
 }
 
 const projects: IProject[] = [

@@ -152,12 +152,12 @@ const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organizati
   return (
     <div className="card">
       <div className="flex cursor-pointer flex-row justify-between">
-        <h2
+        <button
           className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white"
-          onClick={() => toggleExpansion()}
+          onClick={toggleExpansion}
         >
           {title}
-        </h2>
+        </button>
         <h4 className="truncate text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
       </div>
       <Link href={{ pathname: link }} className="text-sm font-medium text-black/50 dark:text-gray-400" target="_blank">
