@@ -1,18 +1,23 @@
 import type { Metadata } from 'next'
 
+import ProjectCard from '@/components/ProjectCard'
+
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'My Projects',
 }
 
-interface IProject {
+export interface IProject {
   id: string
   company: string
   title: string
   technologies: string[]
   role: string
   summary: string
-  responsibility: string[]
+  responsibility: {
+    id: string
+    title: string
+  }[]
 }
 
 const projects: IProject[] = [
@@ -21,14 +26,15 @@ const projects: IProject[] = [
     company: 'Colabra',
     title: 'R&D workflow visibility platform',
     technologies: [
-      'PostgreSQL',
-      'CubeJS',
+      'Postgresql',
       'Hasura',
-      'Node.js',
+      'Vue js',
+      'Cube js',
+      'Auth0',
+      'Node js',
+      'Azure',
       'Express',
       'TypeScript',
-      'Azure',
-      'Vue.js',
       'Uploadcare',
       'LaunchDarkly',
     ],
@@ -36,7 +42,11 @@ const projects: IProject[] = [
     summary:
       'A platform simplifies tracking,documenting,and organizing lab work with an intuitive interface that improves project visibility and enables better collaboration. Its features increase productivity and streamline lab processes.',
     responsibility: [
-      'Experience in Hasura authentication and authorization with Auth0, developing analytics page using Vue.js andGoogleCharts integrated with CubeJS, and optimizing file uploads.',
+      {
+        id: '1',
+        title:
+          'Experience in Hasura authentication and authorization with Auth0, developing analytics page using Vue.js and GoogleCharts integrated with CubeJS, and optimizing file uploads.',
+      },
     ],
   },
   {
@@ -48,9 +58,21 @@ const projects: IProject[] = [
     summary:
       ' A telecom vendor web application that enables customers to perform various services, including recharging, changing pin, requesting technical support, and submitting identification documents.',
     responsibility: [
-      'Led the re-architecture and bootstrapping of the application into a mono-repository, which resulted in improved code reusability and scalability across multiple countries.',
-      'Implemented various code quality tools and clean coding principles to enhance codebase readability and scalability, resulting in a more streamlined development process.',
-      'Managed the expiration of fields within Redis hashes, despite the limitations of TTL only being able to be set at the key level.',
+      {
+        id: '1',
+        title:
+          'Led the re-architecture and bootstrapping of the application into a mono-repository, which resulted in improved code reusability and scalability across multiple countries.',
+      },
+      {
+        id: '2',
+        title:
+          'Implemented various code quality tools and clean coding principles to enhance codebase readability and scalability, resulting in a more streamlined development process.',
+      },
+      {
+        id: '3',
+        title:
+          'Managed the expiration of fields within Redis hashes, despite the limitations of TTL only being able to be set at the key level.',
+      },
     ],
   },
   {
@@ -72,8 +94,16 @@ const projects: IProject[] = [
     summary:
       'A productivity platform for professional services that provides real-time insights to help teams confidently plan projects, manage team capacity, forecast budgets, optimize team utilization, and make informed hiring decisions.',
     responsibility: [
-      'Contributed to feature discussions, integrated Cube.js for analytics, dockerized services, created GraphQL and REST APIs, and handled application design and database modeling.',
-      'Implemented Keycloak authentication, including authentication hooks in Hasura and Cube.js for force logout.',
+      {
+        id: '1',
+        title:
+          'Contributed to feature discussions, integrated Cube.js for analytics, dockerized services, created GraphQL and REST APIs, and handled application design and database modeling.',
+      },
+      {
+        id: '2',
+        title:
+          'Implemented Keycloak authentication, including authentication hooks in Hasura and Cube.js for force logout.',
+      },
     ],
   },
   {
@@ -92,12 +122,34 @@ const projects: IProject[] = [
     role: 'Lead Engineer',
     summary: 'A Mobile Platform to Upload Short Videos',
     responsibility: [
-      'A mobile application for uploading or recording short videos, with features such as liking, commenting, sharing, and chat functionality.',
-      'Designed and data-modeled an application architecture for a scalable video sharing platform that includes features such as file storage, video streaming, and email notifications.',
-      'Implemented video upload and transcoding using AWS Elemental MediaConvert, and integrated Amazon CloudFront and Amazon S3 for video storage.',
-      'Developed a storage service that utilizes Amazon S3 to upload and download files, and integrated video streaming using AWS Elemental Media Convert, AWS Lambda, Amazon S3, and Amazon CloudFront for optimized content delivery.',
-      'Implemented an email service using AWS SES to ensure seamless communication and user engagement.',
-      'Utilized PM2 clustering for improved performance and reliability of the application.',
+      {
+        id: '1',
+        title:
+          'A mobile application for uploading or recording short videos, with features such as liking, commenting, sharing, and chat functionality.',
+      },
+      {
+        id: '2',
+        title:
+          'Designed and data-modeled an application architecture for a scalable video sharing platform that includes features such as file storage, video streaming, and email notifications.',
+      },
+      {
+        id: '3',
+        title:
+          'Implemented video upload and transcoding using AWS Elemental MediaConvert, and integrated Amazon CloudFront and Amazon S3 for video storage.',
+      },
+      {
+        id: '4',
+        title:
+          'Developed a storage service that utilizes Amazon S3 to upload and download files, and integrated video streaming using AWS Elemental Media Convert, AWS Lambda, Amazon S3, and Amazon CloudFront for optimized content delivery.',
+      },
+      {
+        id: '5',
+        title: 'Implemented an email service using AWS SES to ensure seamless communication and user engagement.',
+      },
+      {
+        id: '6',
+        title: 'Utilized PM2 clustering for improved performance and reliability of the application.',
+      },
     ],
   },
   {
@@ -109,8 +161,16 @@ const projects: IProject[] = [
       'A water usage monitoring system, which receives data from IoT based smart water meters and processes the data to make ML based predictions for leak detection.',
     role: 'Lead Engineer',
     responsibility: [
-      'Ensured Role-Based Access Control to protect sensitive data and created APIs with LoopBack for efficient communication between the application and users.',
-      'Conducted data modeling for a NoSQL database, streamed data from IoT devices via IoT Hub, transformed data with PySpark, employed API caching for better responsiveness, and implemented a notification service using Azure Functions.',
+      {
+        id: '1',
+        title:
+          'Ensured Role-Based Access Control to protect sensitive data and created APIs with LoopBack for efficient communication between the application and users.',
+      },
+      {
+        id: '2',
+        title:
+          'Conducted data modeling for a NoSQL database, streamed data from IoT devices via IoT Hub, transformed data with PySpark, employed API caching for better responsiveness, and implemented a notification service using Azure Functions.',
+      },
     ],
   },
   {
@@ -122,64 +182,24 @@ const projects: IProject[] = [
     summary:
       'The application integrates event monitoring, management, and machine learning to deliver actionable analytics for IT operations, enabling efficient management of intricate IT environments.',
     responsibility: [
-      'Collaborated with clients to design data models and application architecture to meet their requirements.',
-      'Employed a high-velocity development process with continuous product releases to ensure timely delivery of new features and improvements.',
-      "Developed REST endpoints and effectively managed deployment processes using LoopBack and Strong-PM to optimize the application's performance and scalability.",
+      {
+        id: '1',
+        title:
+          'Collaborated with clients to design data models and application architecture to meet their requirements.',
+      },
+      {
+        id: '2',
+        title:
+          'Employed a high-velocity development process with continuous product releases to ensure timely delivery of new features and improvements.',
+      },
+      {
+        id: '3',
+        title:
+          "Developed REST endpoints and effectively managed deployment processes using LoopBack and Strong-PM to optimize the application's performance and scalability.",
+      },
     ],
   },
 ]
-
-type ProjectCardProps = Omit<IProject, 'id'>
-type ProjectHeaderProps = Pick<IProject, 'company' | 'title' | 'technologies'>
-type ProjectCardMainProps = Pick<IProject, 'summary' | 'responsibility' | 'role'>
-
-/** This component renders the header of a project card. */
-const ProjectHeader: React.FC<ProjectHeaderProps> = ({ company, title, technologies }) => {
-  return (
-    <div className="flex flex-col">
-      <div className="flex flex-row items-center justify-between">
-        <h2 className="text-md font-medium">{title}</h2>
-        <h6 className="text-sm font-medium text-gray-600 dark:text-gray-400">{company}</h6>
-      </div>
-      <div className="flex flex-none">
-        <h6 className="text-xs uppercase text-gray-600 dark:text-gray-400">{technologies.toString()}</h6>
-      </div>
-    </div>
-  )
-}
-
-/** This component renders the main content of a project card. */
-const ProjectCardMain: React.FC<ProjectCardMainProps> = ({ summary, responsibility, role }) => {
-  return (
-    <div className="flex flex-col gap-y-2">
-      <div className="flex flex-col gap-y-1">
-        <h6 className="text-sm text-gray-600 dark:text-gray-400">Role:{role}</h6>
-        <h6 className="text-justify text-sm text-gray-600 dark:text-gray-400">Summary:{summary}</h6>
-      </div>
-      <ul className="list-inside list-disc">
-        {responsibility.map((item) => {
-          return (
-            <li className="text-justify text-sm text-gray-600 dark:text-gray-400" key={item}>
-              {item}
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
-}
-
-/** This component renders a project card. */
-const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies, summary, responsibility, role }) => {
-  return (
-    <div className="card">
-      <div className="flex flex-col justify-between gap-y-4">
-        <ProjectHeader company={company} title={title} technologies={technologies} />
-        <ProjectCardMain summary={summary} responsibility={responsibility} role={role} />
-      </div>
-    </div>
-  )
-}
 
 /** This component renders a list of projects as cards. */
 const TheProjectSection: React.FC<{ data: IProject[] }> = ({ data }) => {

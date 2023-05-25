@@ -1,8 +1,8 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useCallback, useState } from 'react'
+import Accordion from '@/components/Accordion'
 
 interface InsightCardProps {
   id: string
@@ -141,38 +141,6 @@ const theInsightData: ITheInsightData = {
   education,
 }
 
-const Accordion: React.FC<{ data: InsightCardProps['achievements']; isExpanded: boolean }> = ({ data, isExpanded }) => {
-  return (
-    <AnimatePresence>
-      {isExpanded && (
-        <motion.ul
-          layout
-          initial="collapsed"
-          animate="open"
-          exit="collapsed"
-          transition={{
-            opacity: { duration: 0.3, ease: 'backInOut' },
-            layout: { duration: 0.2, ease: 'backInOut' },
-          }}
-          variants={{
-            open: { opacity: 1, height: 'auto' },
-            collapsed: { opacity: 0, height: 0 },
-          }}
-        >
-          {data.map((achievement) => (
-            <motion.li
-              key={achievement.id}
-              className="text-justify text-sm font-medium text-black/50 dark:text-gray-400"
-            >
-              {achievement.title}
-            </motion.li>
-          ))}
-        </motion.ul>
-      )}
-    </AnimatePresence>
-  )
-}
-
 /** This is a TypeScript React functional component that renders a card. */
 const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organization, year, achievements, link }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
@@ -195,7 +163,7 @@ const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organizati
       <Link href={{ pathname: link }} className="text-sm font-medium text-black/50 dark:text-gray-400" target="_blank">
         {organization}
       </Link>
-      <Accordion data={achievements} isExpanded={isExpanded} />
+      <Accordion body={achievements} isExpanded={isExpanded} />
     </div>
   )
 }
