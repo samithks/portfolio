@@ -1,10 +1,9 @@
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
-
-import { BrandIcon } from '@/components/_icon/BrandIcon'
-
-interface ITechnology {
+import TechCard from '@/components/TechCard'
+export interface ITechnology {
   title: string
   icon: BrandIconProps['name']
+  rating: number
 }
 
 interface ITechStack {
@@ -23,170 +22,194 @@ const techStack: ITechStack = {
     {
       title: 'Typescript',
       icon: 'typescript',
+      rating: 4,
     },
     {
       title: 'JavaScript',
       icon: 'javascript',
+      rating: 4.5,
     },
     {
       title: 'HTML',
       icon: 'html',
+      rating: 3,
     },
     {
       title: 'CSS',
       icon: 'css',
+      rating: 3.5,
     },
     {
       title: 'Python',
       icon: 'python',
+      rating: 2.5,
     },
     {
       title: 'Sass',
       icon: 'sass',
+      rating: 2.5,
     },
   ],
   backend: [
     {
       title: 'NodeJS',
       icon: 'nodejs',
+      rating: 5,
     },
     {
       title: 'Express',
       icon: 'express',
+      rating: 5,
     },
     {
       title: 'NestJs',
       icon: 'nestjs',
+      rating: 5,
     },
     {
       title: 'Loopback',
       icon: 'loopback',
+      rating: 5,
     },
     {
       title: 'TypeGraphQL',
       icon: 'graphql',
+      rating: 4,
     },
   ],
   frontend: [
     {
       title: 'VueJS',
       icon: 'vue',
+      rating: 3,
     },
     {
       title: 'ReactJS',
       icon: 'react',
+      rating: 3,
     },
     {
       title: 'NextJS',
       icon: 'nextjs',
+      rating: 3,
     },
     {
       title: 'NuxtJS',
       icon: 'nuxtjs',
+      rating: 3,
     },
     {
       title: 'TailwindCSS',
       icon: 'tailwindcss',
+      rating: 3.5,
     },
   ],
   datastore: [
     {
       title: 'MongoDB',
       icon: 'mongodb',
+      rating: 4,
     },
     {
       title: 'MySQL',
       icon: 'mysql',
+      rating: 4,
     },
     {
       title: 'PostgreSQL',
       icon: 'postgresql',
+      rating: 4,
     },
     {
       title: 'Redis',
       icon: 'redis',
+      rating: 4,
     },
     {
       title: 'InfluxDB',
       icon: 'influxdb',
+      rating: 3,
     },
   ],
   platform: [
     {
       title: 'AWS',
       icon: 'aws',
+      rating: 3,
     },
     {
       title: 'Azure',
       icon: 'azure',
+      rating: 3,
     },
     {
       title: 'Heroku',
       icon: 'heroku',
+      rating: 5,
     },
     {
       title: 'Github',
       icon: 'github',
+      rating: 4,
     },
     {
       title: 'Bitbucket',
       icon: 'bitbucket',
+      rating: 4,
     },
     {
       title: 'Gitlab',
       icon: 'gitlab',
+      rating: 4,
     },
   ],
   tools: [
     {
       title: 'Hasura',
       icon: 'hasura',
+      rating: 4,
     },
     {
       title: 'GraphQL',
       icon: 'graphql',
+      rating: 4,
     },
     {
       title: 'Keycloak',
       icon: 'keycloak',
+      rating: 4,
     },
     {
       title: 'SSO',
       icon: 'sso',
+      rating: 4,
     },
     {
       title: 'CubeJS',
       icon: 'cubejs',
+      rating: 4,
     },
     {
       title: 'Auth0',
       icon: 'auth0',
+      rating: 5,
     },
     {
       title: 'LaunchDarkly',
       icon: 'launchdarkly',
+      rating: 4,
     },
     {
       title: 'Docker',
       icon: 'docker',
+      rating: 4,
     },
     {
       title: 'Vercel',
       icon: 'vercel',
+      rating: 4,
     },
   ],
-}
-
-/** This is a React functional component that renders a technology card with a title and an icon */
-const TechCard: React.FC<ITechnology> = ({ title, icon }) => {
-  return (
-    <div className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20">
-      <div className="flex flex-row gap-x-2">
-        <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
-        <h2 className="mb-2 text-sm font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
-      </div>
-    </div>
-  )
 }
 
 /**
@@ -199,7 +222,7 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
       {stack.map((tech) => {
         return (
           <div className="col-span-4 md:col-span-1" key={tech.title}>
-            <TechCard title={tech.title} icon={tech.icon} />
+            <TechCard title={tech.title} icon={tech.icon} rating={tech.rating} />
           </div>
         )
       })}
