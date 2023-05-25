@@ -1,1 +1,1 @@
-export const DOMAIN_NAME = 'samithks.com'
+export const DOMAIN_NAME = 'samithks.website'

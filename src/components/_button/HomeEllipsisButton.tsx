@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { Tooltip } from 'react-tooltip'
 import { useCallback } from 'react'
 import { FaEllipsisH } from 'react-icons/fa'
 
@@ -22,11 +23,18 @@ const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 const HomeEllipsisButton: React.FC = () => {
   const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleScroll(e), [])
   return (
-    <div className="rounded-md border border-slate-200 bg-white px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10">
-      <Link href="/#tech_stack" scroll={false} onClick={handleClick} rel="noopener noreferrer">
-        <FaEllipsisH fontSize="1.5em" className="stroke-2" />
-      </Link>
-    </div>
+    <>
+      <div
+        className="rounded-md border border-slate-200 bg-white px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
+        data-tooltip-id="tech_stack_id"
+        data-tooltip-content="more"
+      >
+        <Link href="/#tech_stack" scroll={false} onClick={handleClick} rel="noopener noreferrer">
+          <FaEllipsisH fontSize="1.5em" className="stroke-2" />
+        </Link>
+      </div>
+      <Tooltip id="tech_stack_id" place="bottom" />
+    </>
   )
 }
 

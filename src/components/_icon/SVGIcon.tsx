@@ -78,6 +78,38 @@ function PhMoon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export function StreamlineInterfaceAwardHalfStarRewardRatingRateSocialStarMediaFavoriteLikeStarsHalf(
+  props: SVGProps<SVGSVGElement>
+) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10.25.5a.54.54 0 0 0-.49.32L8.17 4.18a.52.52 0 0 1-.41.31L4.22 5a.58.58 0 0 0-.3 1l2.56 2.63a.58.58 0 0 1 .16.5L6 12.83a.56.56 0 0 0 .8.6l3.2-1.74a.59.59 0 0 1 .26-.07Z"
+      ></path>
+    </svg>
+  )
+}
+
+export function StreamlineInterfaceFavoriteStarRewardRatingRateSocialStarMediaFavoriteLikeStars(
+  props: SVGProps<SVGSVGElement>
+) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7.49 1.09L9.08 4.3a.51.51 0 0 0 .41.3l3.51.52a.54.54 0 0 1 .3.93l-2.53 2.51a.53.53 0 0 0-.16.48l.61 3.53a.55.55 0 0 1-.8.58l-3.16-1.67a.59.59 0 0 0-.52 0l-3.16 1.67a.55.55 0 0 1-.8-.58L3.39 9a.53.53 0 0 0-.16-.48L.67 6.05A.54.54 0 0 1 1 5.12l3.51-.52a.51.51 0 0 0 .41-.3l1.59-3.21a.54.54 0 0 1 .98 0Z"
+      ></path>
+    </svg>
+  )
+}
+
 const icons = {
   blog: CarbonBlog,
   project: ArcticonsZohoProjects,
@@ -85,6 +117,8 @@ const icons = {
   aboutMe: StreamlineInterfaceHelpQuestionSquareFrameHelpMarkQueryQuestionSquare,
   sun: PhSun,
   moon: PhMoon,
+  star: StreamlineInterfaceFavoriteStarRewardRatingRateSocialStarMediaFavoriteLikeStars,
+  halfStar: StreamlineInterfaceAwardHalfStarRewardRatingRateSocialStarMediaFavoriteLikeStarsHalf,
 }
 
 export interface SVGIconProps extends SVGProps<SVGSVGElement> {
