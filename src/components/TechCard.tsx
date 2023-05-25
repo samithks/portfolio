@@ -65,6 +65,12 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
     setIsExpanded((isShowing) => !isShowing)
   }, [])
 
+  /** This component renders a project card. */
+  const handleClick = () => {
+    toggleExpansion()
+  }
+
+  /*This function is used to toggle the expansion of the accordion when the user presses the Enter key. */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       toggleExpansion()
@@ -75,7 +81,7 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
       className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
       role="button"
       tabIndex={0}
-      onClick={toggleExpansion}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
       <div className="flex cursor-pointer flex-row gap-x-2">

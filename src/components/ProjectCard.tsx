@@ -58,6 +58,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies,
     setIsExpanded((isShowing) => !isShowing)
   }, [])
 
+  /** This component renders a project card. */
+  const handleClick = () => {
+    toggleExpansion()
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       toggleExpansion()
@@ -65,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies,
   }
 
   return (
-    <div className="card" role="button" tabIndex={0} onClick={toggleExpansion} onKeyDown={handleKeyDown}>
+    <div className="card" role="button" tabIndex={0} onClick={handleClick} onKeyDown={handleKeyDown}>
       <div className="flex cursor-pointer flex-col justify-between gap-y-4">
         <ProjectHeader company={company} title={title} technologies={technologies} />
         <ProjectCardMain summary={summary} responsibility={responsibility} role={role} isExpanded={isExpanded} />
