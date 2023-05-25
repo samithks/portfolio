@@ -1,6 +1,8 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
+import { useCallback, useState } from 'react'
 
 interface InsightCardProps {
   id: string
@@ -8,6 +10,10 @@ interface InsightCardProps {
   organization: string
   year: string
   link: string
+  achievements: {
+    id: string
+    title: string
+  }[]
 }
 
 interface ITheInsightData {
@@ -21,6 +27,12 @@ const education: InsightCardProps[] = [
     organization: 'Calicut University',
     year: '2013 - 2015',
     link: 'https://www.uoc.ac.in/',
+    achievements: [
+      {
+        id: '1',
+        title: 'Secured Distinction',
+      },
+    ],
   },
   {
     id: '2',
@@ -28,6 +40,16 @@ const education: InsightCardProps[] = [
     organization: 'MG University',
     year: '2008 - 2012',
     link: 'https://www.mgu.ac.in/',
+    achievements: [
+      {
+        id: '1',
+        title: 'Winner of GATE Scholarship',
+      },
+      {
+        id: '2',
+        title: 'Secured First Class',
+      },
+    ],
   },
 ]
 
@@ -38,6 +60,22 @@ const experience: InsightCardProps[] = [
     organization: 'Colabra Inc',
     year: 'Jan 2023 -',
     link: 'https://www.colabra.app/',
+    achievements: [
+      {
+        id: '1',
+        title:
+          'Worked as full stack developer experienced in working collaboratively with developers in an asynchronous culture.',
+      },
+      {
+        id: '2',
+        title: 'Skilled in authentication and authorization, with a strong background in optimizing file uploads.',
+      },
+      {
+        id: '3',
+        title:
+          'Independently developed an Analytics page using CubeJS and Google Charts, showcasing abilities in data visualization and integration.',
+      },
+    ],
   },
   {
     id: '2',
@@ -45,6 +83,18 @@ const experience: InsightCardProps[] = [
     organization: 'Qburst Technologies',
     year: 'Mar 2021 - Dec 2022',
     link: 'https://www.qburst.com/',
+    achievements: [
+      {
+        id: '1',
+        title:
+          'Successfully re-architected and bootstrapped unmanageable code into a mono repo, resulting in a 10% reduction in backend work while enabling code reusability and scalability.',
+      },
+      {
+        id: '2',
+        title:
+          'Designed and built a highly efficient gRPC-based microservice for a telecom-based web application, resulting in the caching of multi-step customer workflow states and a significantly enhanced user experience.',
+      },
+    ],
   },
   {
     id: '3',
@@ -52,6 +102,18 @@ const experience: InsightCardProps[] = [
     organization: 'Perfomatix Solutions',
     year: 'Sep 2019 - Mar 2021',
     link: 'https://www.perfomatix.com/',
+    achievements: [
+      {
+        id: '1',
+        title:
+          'Architected a real-time resource planning platform for project planning, team capacity, and hiring needs, leveraging Cube.js for analytics, Docker for containerization, Keycloak for Single Sign-On, and Hasura for API creation.',
+      },
+      {
+        id: '2',
+        title:
+          'Designed and implemented the backend architecture and data model for a dynamic content-sharing social networking platform, utilizing AWS Elemental MediaConvert, CloudFront, and Amazon S3 to ensure seamless video playback and high user engagement.',
+      },
+    ],
   },
   {
     id: '4',
@@ -59,6 +121,18 @@ const experience: InsightCardProps[] = [
     organization: 'Perfomatix Solutions',
     year: 'Mar 2017 - Sep 2019',
     link: 'https://www.perfomatix.com/',
+    achievements: [
+      {
+        id: '1',
+        title:
+          'Led the design and implementation of a data ingestion pipeline for a web application featuring a resource monitoring dashboard and actionable insights generated from IoT data. Integrated an ML service for prediction and anomaly detection, resulting in a highly effective solution.',
+      },
+      {
+        id: '2',
+        title:
+          'Developed efficient backend APIs for IT service management tasks, integrating event monitoring, management, and machine learning for actionable analytics using Express, LoopBack, MySQL, Kafka, and Redis',
+      },
+    ],
   },
 ]
 
@@ -67,16 +141,62 @@ const theInsightData: ITheInsightData = {
   education,
 }
 
-/** This is a TypeScript React functional component that renders a card. */
-const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organization, year, link }) => {
+const Accordion: React.FC<{ data: InsightCardProps['achievements']; isExpanded: boolean }> = ({ data, isExpanded }) => {
   return (
-    <Link href={{ pathname: link }} className="card" target="_blank">
-      <div className="flex flex-row justify-between">
-        <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
+    <AnimatePresence>
+      {isExpanded && (
+        <motion.ul
+          layout
+          initial="collapsed"
+          animate="open"
+          exit="collapsed"
+          transition={{
+            opacity: { duration: 0.3, ease: 'backInOut' },
+            layout: { duration: 0.2, ease: 'backInOut' },
+          }}
+          variants={{
+            open: { opacity: 1, height: 'auto' },
+            collapsed: { opacity: 0, height: 0 },
+          }}
+        >
+          {data.map((achievement) => (
+            <motion.li
+              key={achievement.id}
+              className="text-justify text-sm font-medium text-black/50 dark:text-gray-400"
+            >
+              {achievement.title}
+            </motion.li>
+          ))}
+        </motion.ul>
+      )}
+    </AnimatePresence>
+  )
+}
+
+/** This is a TypeScript React functional component that renders a card. */
+const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organization, year, achievements, link }) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
+
+  const toggleExpansion = useCallback(() => {
+    setIsExpanded((isShowing) => !isShowing)
+  }, [])
+
+  return (
+    <div className="card">
+      <div className="flex cursor-pointer flex-row justify-between">
+        <h2
+          className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white"
+          onClick={() => toggleExpansion()}
+        >
+          {title}
+        </h2>
         <h4 className="truncate text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
       </div>
-      <p className="text-sm font-medium text-black/50 dark:text-gray-400">{organization}</p>
-    </Link>
+      <Link href={{ pathname: link }} className="text-sm font-medium text-black/50 dark:text-gray-400" target="_blank">
+        {organization}
+      </Link>
+      <Accordion data={achievements} isExpanded={isExpanded} />
+    </div>
   )
 }
 
@@ -91,6 +211,7 @@ const InsightCardSection: React.FC<{ data: InsightCardProps[] }> = ({ data }) =>
             organization={item.organization}
             year={item.year}
             link={item.link}
+            achievements={item.achievements}
             key={item.id}
           />
         )
