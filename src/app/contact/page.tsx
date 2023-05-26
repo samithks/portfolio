@@ -1,18 +1,12 @@
-import type { BrandIconProps } from '@/components/_icon/BrandIcon'
-import { BrandIcon } from '@/components/_icon/BrandIcon'
 import type { Metadata } from 'next'
-import Link from 'next/link'
+
+import type { IContact } from '@/components/card/ContactCard'
+
+import ContactCard from '@/components/card/ContactCard'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Contact me',
-}
-
-interface IContact {
-  title: string
-  description: string
-  icon: BrandIconProps['name']
-  to: string
 }
 
 const contacts: IContact[] = [
@@ -35,21 +29,6 @@ const contacts: IContact[] = [
     to: 'https://github.com/samithks',
   },
 ]
-
-/** This component renders a contact card. */
-const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
-  return (
-    <Link href={{ pathname: to }} className="card" target="_blank">
-      <div className="flex flex-row items-center justify-between">
-        <div className="flex flex-col">
-          <h2 className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white">{title}</h2>
-          <p className="line-clamp-3 text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
-        </div>
-        <BrandIcon name={icon} fontSize={'2em'} fill="currentColor" />
-      </div>
-    </Link>
-  )
-}
 
 /** This component renders a list of contact as cards. */
 const TheContactSection: React.FC<{ data: IContact[] }> = ({ data }) => {
