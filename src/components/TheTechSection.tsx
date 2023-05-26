@@ -1,10 +1,5 @@
-import type { BrandIconProps } from '@/components/_icon/BrandIcon'
+import type { ITechnology } from '@/components/TechCard'
 import TechCard from '@/components/TechCard'
-export interface ITechnology {
-  title: string
-  icon: BrandIconProps['name']
-  rating: number
-}
 
 interface ITechStack {
   languages: ITechnology[]
