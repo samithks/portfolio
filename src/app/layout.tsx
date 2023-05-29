@@ -7,6 +7,7 @@ import { IBM_Plex_Mono } from 'next/font/google'
 
 import TheFooter from '@/components/TheFooter'
 import TheNavBar from '@/components/TheNavBar'
+import ThemeProvider from '@/utils/ThemeProvider'
 
 const ibm_plex_mono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -38,14 +39,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${ibm_plex_mono.className} container px-4 dark:bg-black dark:text-white`}>
-        <header>
-          <TheNavBar />
-        </header>
-        <main className="min-h-screen pb-4">{children}</main>
-        <TheFooter />
-        <Analytics />
-      </body>
+      <ThemeProvider>
+        <body className={`${ibm_plex_mono.className} container px-4 dark:bg-black dark:text-white`}>
+          <header>
+            <TheNavBar />
+          </header>
+          <main className="min-h-screen pb-4">{children}</main>
+          <TheFooter />
+          <Analytics />
+        </body>
+      </ThemeProvider>
     </html>
   )
 }

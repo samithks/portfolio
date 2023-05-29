@@ -23,6 +23,7 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
   const fullStars = Math.floor(rating)
   const hasHalfStar = rating % 1 !== 0
 
+  /** This function renders the full stars of a technology card. */
   const renderFullStars = () => {
     const stars = []
     for (let i = 0; i < fullStars; i++) {
@@ -31,16 +32,15 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
     return stars
   }
 
+  /** This function renders the half star of a technology card. */
   const renderHalfStar = () => {
-    if (hasHalfStar) {
-      return <SVGIcon className="h-auto w-5 fill-green-600" name={'halfStar'} />
-    }
+    return <SVGIcon className="h-auto w-5 fill-green-600" name={'halfStar'} />
   }
 
   return (
     <div className="flex flex-row gap-x-1">
       {renderFullStars()}
-      {renderHalfStar()}
+      {hasHalfStar && renderHalfStar()}
     </div>
   )
 }
