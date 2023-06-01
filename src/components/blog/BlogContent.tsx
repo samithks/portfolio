@@ -4,6 +4,7 @@ import { memo, useState, useEffect } from 'react'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import NoSSR from '@/utils/NoSSR'
 
 interface BlogContentProps {
   params: {
@@ -15,15 +16,7 @@ interface BlogContentProps {
 }
 
 /* This component renders the content of a blog post. **/
-const BlogContent: React.FC<BlogContentProps> = memo(({ params }) => {
-  const [showMDX, setShowMDX] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setShowMDX(true)
-    }
-  }, [])
-
+const BlogContent: React.FC<BlogContentProps> = ({ params }) => {
   const components = {
     Image,
   }
@@ -32,7 +25,7 @@ const BlogContent: React.FC<BlogContentProps> = memo(({ params }) => {
 
   const MDXContent = useMDXComponent(params.code)
 
-  return showMDX ? (
+  return (
     <article className="prose mx-auto max-w-xl py-8 dark:prose-invert">
       <div className="mb-8 text-center">
         <h1 className="max-w-[650px] text-3xl font-bold">{params?.title}</h1>
@@ -40,10 +33,11 @@ const BlogContent: React.FC<BlogContentProps> = memo(({ params }) => {
           {params?.formattedDate}
         </time>
       </div>
-      <MDXContent components={components} />
+      <NoSSR>
+        <MDXContent components={components} />
+      </NoSSR>
     </article>
-  ) : null
-})
+  )
+}
 
-BlogContent.displayName = 'BlogContent'
-export default BlogContent
+export default memo(BlogContent)
