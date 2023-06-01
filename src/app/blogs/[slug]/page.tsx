@@ -22,6 +22,7 @@ export const generateMetadata = ({ params: { slug } }: { params: { slug: string 
   return { title, description }
 }
 
+/** This function generates the static props for a blog post. */
 const BlogLayout = ({ params: { slug } }: { params: { slug: string } }) => {
   const blog = findBlogBySlug(slug)
   // if (!blog) throw new Error(`Blog not found for slug: ${slug}`)
