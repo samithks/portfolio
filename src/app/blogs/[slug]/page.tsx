@@ -4,6 +4,7 @@ import { format, parseISO } from 'date-fns'
 import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import BlogContent from '@/components/blog/BlogContent'
+import Script from 'next/script'
 
 /** This function finds a blog post by its slug. */
 const findBlogBySlug = (slug: string) => {
@@ -14,17 +15,16 @@ const findBlogBySlug = (slug: string) => {
 export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
 
 /** This function generates the metadata for a blog post. */
-export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => {
-  const blog = findBlogBySlug(params.slug)
-  if (!blog) throw new Error(`Blog not found for slug: ${params.slug}`)
+export const generateMetadata = ({ params: { slug } }: { params: { slug: string } }): Metadata => {
+  const blog = findBlogBySlug(slug)
+  if (!blog) throw new Error(`Blog not found for slug: ${slug}`)
   const { title, description } = blog
   return { title, description }
 }
 
-/** The blog post page. */
-const BlogLayout = ({ params }: { params: { slug: string } }) => {
-  const blog = findBlogBySlug(params.slug)
-  // if (!blog) throw new Error(`Blog not found for slug: ${params.slug}`)
+const BlogLayout = ({ params: { slug } }: { params: { slug: string } }) => {
+  const blog = findBlogBySlug(slug)
+  // if (!blog) throw new Error(`Blog not found for slug: ${slug}`)
   // 404 if the post does not exist.
   if (!blog) notFound()
 
@@ -33,7 +33,11 @@ const BlogLayout = ({ params }: { params: { slug: string } }) => {
 
   return (
     <section>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blog.structuredData) }} />
+      <Script
+        id="blog-app-ld-json"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blog.structuredData) }}
+      />
       <BlogContent
         params={{
           title: blog.title,
