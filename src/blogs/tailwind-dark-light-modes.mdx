@@ -1,0 +1,48 @@
+---
+title: How to Implement Dark Mode or Light Mode Using Tailwind CSS
+shortTitle: Dark Mode With Tailwind CSS
+publishedAt: 2022-02-22
+category: Frontend
+description: In this blog post, we discovered how to detect the system's preferred mode (dark mode or light mode) using Tailwind CSS. Tailwind CSS, a utility-first CSS framework, streamlines the creation of responsive and customizable user interfaces. By combining CSS media queries and JavaScript, we efficiently determined the system mode by leveraging the prefers-color-scheme media query.
+---
+
+**Introduction**
+
+With the rising popularity of dark mode in operating systems, it has become increasingly common to design a dark version of your website alongside the default design. Tailwind CSS, a highly customizable utility-first CSS framework, makes it easy to support both light and dark modes using the `prefers-color-scheme` CSS media feature.
+
+**Understanding Tailwind CSS**
+
+Tailwind CSS is a utility-first CSS framework that offers a set of pre-defined CSS classes, enabling developers to efficiently build responsive and customizable user interfaces. It focuses on composing classes rather than writing custom CSS, making project maintenance and scalability easier.
+
+**Detecting System Mode**
+
+To enable dark mode in Tailwind CSS, you can utilize the `dark` variant, which allows you to style your site differently when dark mode is enabled. The `prefers-color-scheme` media query, introduced in CSS Level 5, allows us to detect the user's preferred color scheme. By default, the `dark` variant uses the `prefers-color-scheme media` feature to detect whether the user has enabled dark mode in their operating system. You can also manually toggle dark mode using the class strategy.
+
+Here's an example of how to enable dark mode in Tailwind CSS using the media strategy:
+
+1. Configuring Tailwind
+
+```jsx title="tailwind.config.js"
+// tailwind.config.js
+module.exports = {
+  darkMode: 'media',
+  // ...
+}
+```
+
+This sets the `darkMode` option to `media`, which enables the dark variant based on the `prefers-color-scheme` media feature. You can also use the class strategy by setting `darkMode` to `class`.
+
+2. Applying dark mode styles
+
+```jsx showLineNumbers
+<div class="bg-white dark:bg-gray-800">
+  <h1 class="text-gray-900 dark:text-white">Dark mode is here!</h1>
+  <p class="text-gray-600 dark:text-gray-300">Lorem ipsum...</p>
+</div>
+```
+
+This sets the background color to white in light mode and gray-800 in dark mode, and sets the text color to gray-900 in light mode and white in dark mode
+
+**Conclusion**
+
+Detecting the dark mode or light mode of a system and adapting your website's appearance accordingly is crucial for providing an optimal user experience. By combining CSS media queries and JavaScript with Tailwind CSS, you can easily implement this feature in your web applications. Tailwind CSS's utility-first approach simplifies the process of creating and applying dark mode styles, allowing you to focus on building robust and visually appealing user interfaces. Embrace dark mode and light mode detection using Tailwind CSS to cater to your users' preferences and enhance their browsing experience.
