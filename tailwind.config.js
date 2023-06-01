@@ -3,7 +3,7 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   darkMode: 'media',
   mode: 'jit',
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   theme: {
     fontFamily: {
       display: ['"IBM Plex Mono"', 'Menlo', 'monospace'],

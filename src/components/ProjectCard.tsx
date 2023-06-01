@@ -63,6 +63,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ company, title, technologies,
     toggleExpansion()
   }
 
+  /**
+   * This function handles the keydown event.
+   *
+   * @param e
+   */
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       toggleExpansion()

@@ -3,7 +3,7 @@
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 import { BrandIcon } from '@/components/_icon/BrandIcon'
 import Link from 'next/link'
-import { use, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { Tooltip } from 'react-tooltip'
 
@@ -24,6 +24,7 @@ const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
     setCopyState('Copied!')
   }, [])
 
+  /** This function copy content on click */
   const onClickCopy = () => copyToClipboard(to)
 
   return (
