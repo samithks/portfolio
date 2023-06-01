@@ -14,6 +14,7 @@ interface BlogContentProps {
   }
 }
 
+/* This component renders the content of a blog post. **/
 const BlogContent: React.FC<BlogContentProps> = memo(({ params }) => {
   const [showMDX, setShowMDX] = useState<boolean>(false)
 
