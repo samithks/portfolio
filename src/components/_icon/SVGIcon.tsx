@@ -78,29 +78,25 @@ function PhMoon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-export function StreamlineInterfaceAwardHalfStarRewardRatingRateSocialStarMediaFavoriteLikeStarsHalf(
-  props: SVGProps<SVGSVGElement>
-) {
+function FluentStarHalf16Regular(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" {...props}>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M10.25.5a.54.54 0 0 0-.49.32L8.17 4.18a.52.52 0 0 1-.41.31L4.22 5a.58.58 0 0 0-.3 1l2.56 2.63a.58.58 0 0 1 .16.5L6 12.83a.56.56 0 0 0 .8.6l3.2-1.74a.59.59 0 0 1 .26-.07Z"
+        d="m5.673 5.183l1.52-3.082A.89.89 0 0 1 8 1.6a.89.89 0 0 1 .808.501l1.521 3.082l3.401.495a.9.9 0 0 1 .5 1.535l-2.462 2.399l.581 3.387a.9.9 0 0 1-1.306.949l-3.042-1.6l-3.042 1.6a.9.9 0 0 1-1.306-.949l.58-3.387l-2.46-2.4a.9.9 0 0 1 .499-1.534l3.4-.495ZM8 11.336c.144 0 .288.034.42.103l2.91 1.53l-.556-3.24a.9.9 0 0 1 .258-.797l2.354-2.294l-3.253-.473a.9.9 0 0 1-.677-.492L8 2.726v8.61Z"
       ></path>
     </svg>
   )
 }
 
-export function StreamlineInterfaceFavoriteStarRewardRatingRateSocialStarMediaFavoriteLikeStars(
-  props: SVGProps<SVGSVGElement>
-) {
+function FluentStar16Filled(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" {...props}>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M7.49 1.09L9.08 4.3a.51.51 0 0 0 .41.3l3.51.52a.54.54 0 0 1 .3.93l-2.53 2.51a.53.53 0 0 0-.16.48l.61 3.53a.55.55 0 0 1-.8.58l-3.16-1.67a.59.59 0 0 0-.52 0l-3.16 1.67a.55.55 0 0 1-.8-.58L3.39 9a.53.53 0 0 0-.16-.48L.67 6.05A.54.54 0 0 1 1 5.12l3.51-.52a.51.51 0 0 0 .41-.3l1.59-3.21a.54.54 0 0 1 .98 0Z"
+        d="M7.194 2.101a.9.9 0 0 1 1.614 0l1.521 3.082l3.401.495a.9.9 0 0 1 .5 1.535l-2.462 2.399l.581 3.387a.9.9 0 0 1-1.306.949l-3.042-1.6l-3.042 1.6a.9.9 0 0 1-1.306-.949l.58-3.387l-2.46-2.4a.9.9 0 0 1 .499-1.534l3.4-.495l1.522-3.082Z"
       ></path>
     </svg>
   )
@@ -113,8 +109,8 @@ const icons = {
   aboutMe: StreamlineInterfaceHelpQuestionSquareFrameHelpMarkQueryQuestionSquare,
   sun: PhSun,
   moon: PhMoon,
-  star: StreamlineInterfaceFavoriteStarRewardRatingRateSocialStarMediaFavoriteLikeStars,
-  halfStar: StreamlineInterfaceAwardHalfStarRewardRatingRateSocialStarMediaFavoriteLikeStarsHalf,
+  star: FluentStar16Filled,
+  halfStar: FluentStarHalf16Regular,
 }
 
 export interface SVGIconProps extends SVGProps<SVGSVGElement> {
