@@ -151,7 +151,7 @@ const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organizati
 
   return (
     <div className="card">
-      <div className="flex cursor-pointer flex-row justify-between">
+      <div className="flex cursor-pointer flex-row justify-between flex-wrap">
         <button
           className="text-md mb-2 font-medium leading-snug tracking-tight text-black dark:text-white"
           onClick={toggleExpansion}

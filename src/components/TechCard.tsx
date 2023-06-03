@@ -43,7 +43,7 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
   const renderEmptyStar = () => {
     const stars = []
     for (let i = 0; i < emptyStar; i++) {
-      stars.push(<SVGIcon key={i} className="h-auto w-5 stroke-green-600" name={'star'} />)
+      stars.push(<SVGIcon key={i} className="h-auto w-5 stroke-green-600 fill-transparent" name={'star'} />)
     }
     return stars
   }
@@ -111,11 +111,11 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
       onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
-      <div className="flex cursor-pointer flex-row gap-x-2">
-        <div className="w-1/6">
+      <div className="flex flex-wrap cursor-pointer flex-row">
+        <div className="basis-1/6">
           <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
         </div>
-        <div className="flex w-5/6 justify-start items-center">
+        <div className="flex basis-5/6 justify-start items-center">
           <h2 className="text-xs text-left font-medium">{title}</h2>
         </div>
       </div>
