@@ -43,7 +43,7 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
   const renderEmptyStar = () => {
     const stars = []
     for (let i = 0; i < emptyStar; i++) {
-      stars.push(<SVGIcon key={i} className="h-auto w-5 stroke-green-600 fill-transparent" name={'star'} />)
+      stars.push(<SVGIcon key={i} className="h-auto w-5 fill-transparent stroke-green-600" name={'star'} />)
     }
     return stars
   }
@@ -104,23 +104,27 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
     }
   }
   return (
-    <div
-      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20 mx-1 mb-1"
+    <motion.div
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeIn', duration: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      className="mx-1 mb-1 block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
       role="button"
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
-      <div className="flex flex-wrap cursor-pointer flex-row">
+      <div className="flex cursor-pointer flex-row flex-wrap">
         <div className="basis-1/6">
           <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
         </div>
-        <div className="flex basis-5/6 justify-start items-center">
-          <h2 className="text-xs text-left font-medium">{title}</h2>
+        <div className="flex basis-5/6 items-center justify-start">
+          <h2 className="text-left text-xs font-medium">{title}</h2>
         </div>
       </div>
       <TechAccordion isExpanded={isExpanded} rating={rating} />
-    </div>
+    </motion.div>
   )
 }
 

@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from 'react'
 import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
 import { AiOutlineHome, AiOutlineSearch, AiOutlineUser, AiOutlineProject } from 'react-icons/ai'
 import { TbBrandBlogger, TbCertificate, TbStack } from 'react-icons/tb'
+import { motion } from 'framer-motion'
 
 const commandOptions: JsonStructure = [
   {
@@ -80,7 +81,7 @@ interface TheNavIconProps {
  */
 const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
   return (
-    <>
+    <motion.div whileTap={{ scale: 0.9 }}>
       <button
         type="button"
         onClick={toggle}
@@ -112,7 +113,7 @@ const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
       </svg> */}
       </button>
       <Tooltip id="command_icon" />
-    </>
+    </motion.div>
   )
 }
 

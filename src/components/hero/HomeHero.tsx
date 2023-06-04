@@ -30,7 +30,7 @@ const HomeIcons: React.FC<{ iconsArray: BrandIconProps['name'][] }> = ({ iconsAr
           <BrandIcon name={icon} fontSize="1.5em" />
         </div>
       ))}
-      <HomeEllipsisButton data-tooltip-id="command_icon" data-tooltip-content="cmd+k/ctrl+k" />
+      <HomeEllipsisButton />
     </div>
   )
 }

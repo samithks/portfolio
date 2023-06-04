@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Tooltip } from 'react-tooltip'
 import { useCallback } from 'react'
 import { FaEllipsisH } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
   // first prevent the default behavior
@@ -23,7 +24,7 @@ const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 const HomeEllipsisButton: React.FC = () => {
   const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleScroll(e), [])
   return (
-    <>
+    <motion.div whileTap={{ scale: 0.9 }}>
       <div
         className="rounded-md border border-slate-200 bg-white px-3 py-2 shadow-md transition-transform duration-300 ease-in-out hover:scale-110 dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10"
         data-tooltip-id="tech_stack_id"
@@ -34,7 +35,7 @@ const HomeEllipsisButton: React.FC = () => {
         </Link>
       </div>
       <Tooltip id="tech_stack_id" place="bottom" />
-    </>
+    </motion.div>
   )
 }
 
