@@ -1,7 +1,7 @@
 import TheInsightSection from '@/components/TheInsightSection'
 import ThePageSection from '@/components/ThePageSection'
 import TheTechSection from '@/components/TheTechSection'
-import HomeHero from '@/components/hero/HomeHero'
+import HomeHero from '@/components/home/HomeHero'
 
 /** Home page */
 export default function Home() {
