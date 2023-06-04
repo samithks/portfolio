@@ -8,7 +8,6 @@ import { IBM_Plex_Mono } from 'next/font/google'
 import TheFooter from '@/components/TheFooter'
 import TheNavBar from '@/components/TheNavBar'
 import ThemeProvider from '@/utils/ThemeProvider'
-import PageTransition from '@/components/PageTransition'
 
 const ibm_plex_mono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
