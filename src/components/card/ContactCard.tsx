@@ -48,6 +48,7 @@ const ContactCard: React.FC<IContact> = ({ title, description, icon, to }) => {
           onClick={onClickCopy}
           data-tooltip-id="contact_tip"
           data-tooltip-content={copyState}
+          className="cursor-copy"
         />
       </div>
       <Tooltip id="contact_tip" />

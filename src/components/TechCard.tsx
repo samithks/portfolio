@@ -20,8 +20,11 @@ interface TechAccordionProps {
 
 /** This component renders the rating of a technology card. */
 const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
+  const TOTAL_STAR = 5
   const fullStars = Math.floor(rating)
   const hasHalfStar = rating % 1 !== 0
+  const emptyStar = TOTAL_STAR - (fullStars + Number(hasHalfStar))
+  const hasEmptyStar = emptyStar > 0
 
   /** This function renders the full stars of a technology card. */
   const renderFullStars = () => {
@@ -37,10 +40,20 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
     return <SVGIcon className="h-auto w-5 fill-green-600" name={'halfStar'} />
   }
 
+  // This function renders the empty stars of a technology card.
+  const renderEmptyStar = () => {
+    const stars = []
+    for (let i = 0; i < emptyStar; i++) {
+      stars.push(<SVGIcon key={i} className="h-auto w-5 fill-transparent stroke-green-600" name={'star'} />)
+    }
+    return stars
+  }
+
   return (
     <div className="flex flex-row gap-x-1">
       {renderFullStars()}
       {hasHalfStar && renderHalfStar()}
+      {hasEmptyStar && renderEmptyStar()}
     </div>
   )
 }
@@ -92,23 +105,27 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
     }
   }
   return (
-    <div
-      className="block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
+    <motion.div
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeIn', duration: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      className="mx-1 mb-1 block space-y-2 rounded-md border border-slate-200 bg-white p-6 pt-5 shadow-md transition duration-300 hover:bg-slate-100 hover:shadow-lg dark:border-gray-200 dark:bg-black/5 dark:shadow-white/10 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/20"
       role="button"
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
-      <div className="flex cursor-pointer flex-row gap-x-2">
-        <div className="w-1/6">
+      <div className="flex cursor-pointer flex-row flex-wrap">
+        <div className="basis-1/6">
           <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
         </div>
-        <div className="w-5/4">
-          <h2 className="inline-block align-middle text-sm font-medium">{title}</h2>
+        <div className="flex basis-5/6 items-center justify-start">
+          <h2 className="text-left text-xs font-medium">{title}</h2>
         </div>
       </div>
       <TechAccordion isExpanded={isExpanded} rating={rating} />
-    </div>
+    </motion.div>
   )
 }
 

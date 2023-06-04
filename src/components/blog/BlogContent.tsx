@@ -26,7 +26,7 @@ const BlogContent: React.FC<BlogContentProps> = ({ params }) => {
   const MDXContent = useMDXComponent(params.code)
 
   return (
-    <article className="lg:prose-md prose mx-auto max-w-xl py-8 dark:prose-invert md:prose-lg prose-headings:underline prose-p:text-justify prose-a:text-blue-600">
+    <article className="lg:prose-md prose mx-auto py-8 dark:prose-invert md:prose-lg prose-headings:underline prose-p:text-justify prose-a:text-blue-600">
       <div className="mb-8 text-center">
         <h1 className="max-w-[650px] text-3xl font-bold">{params?.title}</h1>
         <time dateTime={params?.publishedAt} className="mb-1 text-xs text-gray-600">

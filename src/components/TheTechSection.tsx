@@ -32,44 +32,44 @@ const techStack: ITechStack = {
     {
       title: 'CSS',
       icon: 'css',
-      rating: 3.5,
+      rating: 3,
     },
     {
       title: 'Python',
       icon: 'python',
-      rating: 2.5,
+      rating: 2,
     },
     {
       title: 'Sass',
       icon: 'sass',
-      rating: 2.5,
+      rating: 2,
     },
   ],
   backend: [
     {
       title: 'NodeJS',
       icon: 'nodejs',
-      rating: 5,
+      rating: 4.5,
     },
     {
       title: 'Express',
       icon: 'express',
-      rating: 5,
+      rating: 4.5,
     },
     {
       title: 'NestJs',
       icon: 'nestjs',
-      rating: 5,
+      rating: 4,
     },
     {
       title: 'Loopback',
       icon: 'loopback',
-      rating: 5,
+      rating: 4.5,
     },
     {
       title: 'TypeGraphQL',
       icon: 'graphql',
-      rating: 4,
+      rating: 3.5,
     },
   ],
   frontend: [
@@ -91,7 +91,7 @@ const techStack: ITechStack = {
     {
       title: 'NuxtJS',
       icon: 'nuxtjs',
-      rating: 3,
+      rating: 2.5,
     },
     {
       title: 'TailwindCSS',
@@ -140,69 +140,69 @@ const techStack: ITechStack = {
     {
       title: 'Heroku',
       icon: 'heroku',
-      rating: 5,
+      rating: 3,
     },
     {
       title: 'Github',
       icon: 'github',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'Bitbucket',
       icon: 'bitbucket',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'Gitlab',
       icon: 'gitlab',
-      rating: 4,
+      rating: 3.5,
     },
   ],
   tools: [
     {
       title: 'Hasura',
       icon: 'hasura',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'GraphQL',
       icon: 'graphql',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'Keycloak',
       icon: 'keycloak',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'SSO',
       icon: 'sso',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'CubeJS',
       icon: 'cubejs',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'Auth0',
       icon: 'auth0',
-      rating: 5,
+      rating: 3.5,
     },
     {
       title: 'LaunchDarkly',
       icon: 'launchdarkly',
-      rating: 4,
+      rating: 3,
     },
     {
       title: 'Docker',
       icon: 'docker',
-      rating: 4,
+      rating: 3.5,
     },
     {
       title: 'Vercel',
       icon: 'vercel',
-      rating: 4,
+      rating: 3,
     },
   ],
 }

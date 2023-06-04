@@ -7,7 +7,9 @@ import { Tooltip } from 'react-tooltip'
 
 import { useCallback, useEffect, useState } from 'react'
 import CommandPalette, { filterItems, getItemIndex } from 'react-cmdk'
-import { AiOutlineHome, AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineSearch, AiOutlineUser, AiOutlineProject } from 'react-icons/ai'
+import { TbBrandBlogger, TbCertificate, TbStack } from 'react-icons/tb'
+import { motion } from 'framer-motion'
 
 const commandOptions: JsonStructure = [
   {
@@ -22,15 +24,45 @@ const commandOptions: JsonStructure = [
       },
       {
         id: '2',
+        children: 'Blog',
+        href: '/blogs',
+        icon: TbBrandBlogger,
+      },
+      {
+        id: '3',
+        children: 'Projects',
+        href: '/project',
+        icon: AiOutlineProject,
+      },
+      {
+        id: '4',
+        children: 'Contact',
+        href: '/contact',
+        icon: AiOutlineUser,
+      },
+      {
+        id: '5',
         children: 'About',
         href: '/about',
         icon: AiOutlineSearch,
       },
+    ],
+  },
+  {
+    heading: 'Section',
+    id: 'section',
+    items: [
       {
-        id: '3',
-        children: 'Contact',
-        href: '/contact',
-        icon: AiOutlineUser,
+        id: '5',
+        children: 'Experience',
+        href: '/#experience',
+        icon: TbCertificate,
+      },
+      {
+        id: '6',
+        children: 'Tech Stack',
+        href: '/#tech_stack',
+        icon: TbStack,
       },
     ],
   },
@@ -49,7 +81,7 @@ interface TheNavIconProps {
  */
 const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
   return (
-    <>
+    <motion.div whileTap={{ scale: 0.9 }}>
       <button
         type="button"
         onClick={toggle}
@@ -81,7 +113,7 @@ const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
       </svg> */}
       </button>
       <Tooltip id="command_icon" />
-    </>
+    </motion.div>
   )
 }
 
@@ -105,6 +137,7 @@ const TheCommandMenu: React.FC = () => {
   /** This is a function that toggles the state of the component. */
   const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const [query, setQuery] = useState<string>('')
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   /**
    * This is a `useEffect` hook that adds an event listener for the `keydown` event on the window object. This allows
@@ -145,8 +178,10 @@ const TheCommandMenu: React.FC = () => {
       <CommandPalette
         onChangeSearch={setQuery}
         onChangeOpen={setIsOpen}
+        onChangeSelected={setSelectedIndex}
         search={query}
         isOpen={isOpen}
+        selected={selectedIndex}
         footer={<TheMenuFooter />}
       >
         {filteredData.length > 0 &&

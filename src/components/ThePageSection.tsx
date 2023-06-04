@@ -1,15 +1,4 @@
-import type { SVGIconProps } from '@/components/_icon/SVGIcon'
-
-import Link from 'next/link'
-
-import { SVGIcon } from '@/components/_icon/SVGIcon'
-
-interface IPage {
-  title: string
-  description: string
-  icon: SVGIconProps['name']
-  to: string
-}
+import PageCard, { IPage } from "@/components/card/PageCard"
 
 const pages: IPage[] = [
   {
@@ -37,18 +26,6 @@ const pages: IPage[] = [
     to: '/about',
   },
 ]
-/** This component renders a page as a card. */
-const PageCard: React.FC<IPage> = ({ title, description, icon, to }) => {
-  return (
-    <Link href={{ pathname: to }} className="card">
-      <div className="flex flex-row gap-x-2">
-        <SVGIcon name={icon} fontSize={'2em'} className="stroke-2" />
-        <h2 className="text-md mb-2 font-medium leading-snug tracking-tight">{title}</h2>
-      </div>
-      <p className="text-sm font-normal text-black/50 dark:text-gray-400">{description}</p>
-    </Link>
-  )
-}
 
 /** This component renders a list of pages as cards. */
 const ThePagesSection: React.FC<{ pages: IPage[] }> = ({ pages }) => {
