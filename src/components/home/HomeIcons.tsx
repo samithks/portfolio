@@ -3,7 +3,6 @@
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { BrandIcon } from '@/components/_icon/BrandIcon'
 import HomeEllipsisButton from '@/components/_button/HomeEllipsisButton'
 

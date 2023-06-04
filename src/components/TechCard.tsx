@@ -40,6 +40,7 @@ const TechRatings: React.FC<{ rating: number }> = ({ rating }) => {
     return <SVGIcon className="h-auto w-5 fill-green-600" name={'halfStar'} />
   }
 
+  // This function renders the empty stars of a technology card.
   const renderEmptyStar = () => {
     const stars = []
     for (let i = 0; i < emptyStar; i++) {

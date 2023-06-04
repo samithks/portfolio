@@ -45,9 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header>
             <TheNavBar />
           </header>
-          <PageTransition>
-            <main className="min-h-screen pb-4">{children}</main>
-          </PageTransition>
+          <main className="min-h-screen pb-4">{children}</main>
           <TheFooter />
           <Analytics />
         </body>
