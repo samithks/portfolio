@@ -1,0 +1,124 @@
+---
+title: How to apply animation on loading a page in Next.js app router with Framer Motion.
+shortTitle: Apply loading animation in Next.js
+publishedAt: 2023-02-23
+category: Frontend
+description: This blog post explains how to add page loading animations to a Next.js app router using the Framer Motion library. The tutorial provides step-by-step instructions for setting up page transitions and applying animations to enhance the user experience. By following these steps, developers can easily integrate visually appealing loading animations, resulting in a more engaging and dynamic app.
+---
+
+### Introduction
+
+To make the loading process more engaging and visually appealing, adding animations can be a great solution. In this tutorial, we will explore how to apply animations to page loading in a Next.js app router using the popular animation library, Framer Motion.
+
+> **Prerequisites**: Before proceeding with this tutorial, make sure you have a basic understanding of **Next.js** and have set up a Next.js project. Familiarity with JavaScript and React would also be beneficial. Additionally, ensure that you have **Framer Motion** installed in your project. You can install it using the following command:
+
+```
+npm install framer-motion
+```
+
+#### Step 1: Setting up Page Transition
+
+Using the framer-motion we can easily enable the transition on pages.
+
+ 1. To enable page transitions, create a component called PageTransition that takes a children property of type React.ReactNode.
+
+ ```jsx title="component/PageTansition.tsx" showLineNumbers
+export default function PageTransition({
+  children, // will be a page or nested layout
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}
+ ```
+ 2. Next, we'll add transition to the pages using the framer motion
+
+ ``` jsx title="component/PageTansition.tsx" showLineNumbers
+ 'use client'
+
+import { motion } from 'framer-motion'
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    x: -50,
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      type: 'spring',
+      bounce: 0.5,
+      mass: 1.2,
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: 50,
+    transition: {
+      duration: 0.3,
+    },
+  },
+}
+
+/**
+ * React component that wraps its children in a motion section with page transition animations.
+ */
+export default function PageTransition({
+  children, // will be a page or nested layout
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <motion.div initial="initial" animate="animate" exit="exit" variants={pageVariants}>
+      {children}
+    </motion.div>
+  )
+}
+ ```
+
+The entire app is wrapped in a `motion.div` component, with defined `initial` and `animate` variants for the page transition animation. When entering, the pages will transition from the left with a bounce effect due to the specified `type:spring` transition and have an (opacity: 1). On exit, they will fade out with an (opacity: 0) and move to the right.
+
+> Don't forget to add the `use client` at the top of the file.
+
+#### Step 2: Add a template in Next.js App Router
+
+In the Next.js `app` folder, create a file called `template.tsx` to apply styles to all pages.
+
+``` jsx title="app/template.tsx" showLineNumbers
+// app/template.tsx
+/** This is a React functional component that renders the root template for the application. */
+export default function Template({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>
+}
+```
+
+#### Step 3: Apply the transition by importing the  `PageTansition` component.
+
+Import the `PageTransition` component and wrap it around the entire app in `template.tsx`.
+
+``` jsx title="app/template.tsx" showLineNumbers
+// app/template.tsx
+import PageTransition from '@/components/PageTransition'
+
+/** This is a React functional component that renders the root layout for the application. */
+export default function Template({ children }: { children: React.ReactNode }) {
+  return <PageTransition>{children}</PageTransition>
+}
+
+```
+
+By wrapping the app in the `PageTransition` component, we apply the transition animation to all pages. The `entry` and `exit` variants define the animation when transitioning between pages.
+
+#### Step 4: Customizing Animation Transitions
+
+Framer Motion offers various options to customize animation transitions. You can modify the `initial`, `animate`, and `exit` variants according to your requirements.
+
+#### Conclusion:
+
+In this tutorial, we learned how to add page loading animations to a **Next.js** app router using **Framer Motion**. By following these steps, you can make the loading process more engaging and visually appealing for your users. Experiment with different animation options provided by Framer Motion to create unique and captivating page transitions.
