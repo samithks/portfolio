@@ -97,7 +97,7 @@ const projects: IProject[] = [
   {
     id: '4',
     company: 'Perfomatix',
-    title: 'A Mobile Platform to Upload Short Videos',
+    title: 'Short Video Content Manager',
     technologies: [
       'Node.js',
       'LoopBack',
@@ -108,7 +108,7 @@ const projects: IProject[] = [
       'MySQL',
     ],
     role: 'Lead Engineer',
-    summary: 'A Mobile Platform to Upload Short Videos',
+    summary: 'Short Video Content Manager',
     responsibility: [
       {
         id: '1',

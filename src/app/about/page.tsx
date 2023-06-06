@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import AboutHero from '@/components/hero/AboutHero'
-import Link from 'next/link'
+import ResumeDownloadButton from '@/components/_button/ResumeDownloadButton'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -34,13 +34,7 @@ const AboutSection: React.FC<{
       <div id="about_header_description" className="w-4/5">
         <p className="text-justify text-sm text-slate-700 dark:text-gray-400">{description}</p>
       </div>
-      <Link
-        href={{ pathname: '/Samith_Lead_Engineer_CV.pdf' }}
-        className="mb-2 mr-2 rounded-lg border border-gray-600 bg-[#d6dbdc] px-5 py-2.5 text-sm font-medium text-slate-700 hover:animate-bounce hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-black dark:text-white dark:hover:border-gray-600 dark:hover:bg-white/10 dark:focus:ring-gray-700"
-        target="_blank"
-      >
-        Download CV
-      </Link>
+      <ResumeDownloadButton />
     </section>
   )
 }
