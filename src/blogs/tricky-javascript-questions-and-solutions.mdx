@@ -1,0 +1,113 @@
+---
+title: Tricky JavaScript Coding Questions and Solutions.
+shortTitle: Tricky JavaScript Questions
+publishedAt: 2022-01-01
+category: Frontend
+description: This blog post delves into tricky JavaScript coding questions, covering type coercion, operator behavior, exception handling, precision limits, and strict equality comparisons. The solutions highlight key insights into how JavaScript handles these situations. By understanding these nuances, developers can write more reliable code and conduct thorough testing..
+---
+
+### Introduction
+
+JavaScript is a versatile programming language known for its flexibility and sometimes unexpected behavior. It's not uncommon to encounter some tricky situations when working with JavaScript. In this article, we'll explore some tricky JavaScript coding questions and provide solutions to help you understand these concepts better. Let's dive in!
+
+### Question 1: What will be the value of `5 - "1"`?
+
+Solution: The value will be `4`. JavaScript performs type coercion, which means it automatically converts the string `"1"` to a number. In this case, the `-` operator only works with numbers, so JavaScript converts the string to a number before the subtraction operation.
+
+### Question 2: What will be the value of `5 + "1"`?
+
+Solution: The value will be `"51"`. The `+` operator in JavaScript has different behaviours. It performs addition when used with numbers, but it triggers string concatenation when used with at least one string operand. In this case, JavaScript converts the number `5` to a string and then concatenates it with the string `"1"`.
+
+### Question 3: What will be the value of `[] + {}`?
+
+Solution: The value will be `"[object Object]"`. The `+` operator converts the empty array `[]` and the empty object `{}` to strings. The empty array is represented as an empty string, while the empty object is represented as `"[object Object]"`.
+
+### Question 4: What will be the value of `{} + []`?
+
+Solution: The value will be `0`. In this case, JavaScript treats the empty object `{}` as an empty block of code and not as an object literal.
+
+``` js
+{
+// Nothing
+} + []
+```
+
+Consequently, the expression is evaluated as `+[]`, where the `+` operator converts the empty array `[]` to the number `0`.
+
+### Question 5: What will be the value of `{} == {}`?
+
+Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two objects are different objects, so the comparison evaluates to `false`.
+
+### Question 6: What will be the value of `[] == []`?
+
+Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two arrays are different arrays, so the comparison evaluates to `false`.
+
+### Question 7: What will be the value of `[] == ![]`?
+
+Solution: The value will be `true`. The `!` operator converts the empty array `[]` to `false`. The equality comparison checks for value equality. In this case, the two values are both `false`, so the comparison evaluates to `true`.
+
+### Question 8: What will be the value of `[] == 0`?
+
+Solution: The value will be `true`. The `==` operator performs type coercion. In this case, the empty array `[]` is converted to an empty string, which is then converted to the number `0`. The expression evaluates as `0 == 0`, which yields `true`.
+
+### Question 9: What will be the value of `undefined + 1`?
+
+Solution: The value will be `NaN`. The `+` operator converts the `undefined` value to `NaN`. The expression evaluates as `NaN + 1`, which yields `NaN`.
+
+### Question 10: What will be the value of `true+true+true`?
+
+Solution: The value will be `3`. JavaScript converts boolean values to numbers when used with the `+` operator. The `true` value is equivalent to `1` in numeric form, so the expression is evaluated as `1 + 1 + 1`, resulting in `3`.
+
+### Question 11: What will be the value of `true - true`?
+
+Solution: The value will be `0`. Similar to the previous question, JavaScript converts the boolean values to numbers. In this case, both `true` values are converted to `1`, and the subtraction operation yields `1 - 1`, resulting in `0`.
+
+### Question 12: What is the value of the below function?
+
+``` js
+function noName() {
+  try {
+    return 1;
+  } catch {
+    return 2;
+  } finally {
+    return 3;
+  }
+}
+```
+
+Solution: The value will be `3`. The `try` block always executes whether an exception is thrown or not. It also has the power to override the return from the `try` block. In this case, the `finally` block overrides the return from the `try` block and returns `3`.
+
+### Question 13: What will be the value of `1.0000000000000001.toString()`?
+
+Solution: The value will be `1`. JavaScript is unable to process numbers with more than 16 digits, so it will round off values to `1`.
+
+### Question 14: What will be the value of `0.1 + 0.2 === 0.3`?
+
+Solution: The value will be `false`. JavaScript will try to represent these numbers in binary but end up being a tiny bit more than `0.1` or `0.2`, making the total slightly different than `0.3`.
+
+### Question 15: What will be the value of `true == 1`?
+
+Solution: The result is `true`. JavaScript treats `true` as `1` when it comes to mathematical operations. In this case, the equality comparison returns `true`.
+
+### Question 16: What will be the value of `true === 1`?
+
+Solution: The result is `false`. The `===` operator performs strict equality comparison, which checks for both value and type equality. In this case, `true` is a boolean value, while `1` is a number. Since the types are different, the comparison evaluates to `false`.
+
+### Question 17: What will be the value of `1 < 2 < 3`?
+
+Solution: The value will be `true`. The `<` operator is left-associative, which means the expression is evaluated as `(1 < 2) < 3`. The operation in the parenthesis evaluates as `true < 3`, which yields `true`. The `true` value is converted to `1`, so the expression is evaluated as `1 < 3`, which yields `true`.
+
+### Question 18: What will be the value of `undefined == null`?
+
+Solution: The value will be `true`. The `==` operator performs type coercion. In this case, both operands are converted to `null`, which yields `true`.
+
+### Question 19: What will be the value of `undefined === null`?
+
+Solution: The value will be `false`. The `===` operator performs strict equality comparison, which checks for both value and type equality. In this case, the types are different, so the comparison evaluates to `false`.
+
+### Question 20: What will be the value of `"b" + "a" + +"a" + "a"`?
+
+Solution: The value will be `"baNaNa"`. This expression involves string concatenation and a unary plus operator. The plus sign next to the string `"a"` attempts to convert it to a number. However, since `"a"` is not a valid number, the conversion results in `NaN`. Consequently, the expression evaluates as `"b" + "a" + "NaN" + "a"`, which yields `"baNaNa"`.
+
+These tricky JavaScript coding questions demonstrate the importance of understanding JavaScript's type coercion and operator behavior. By knowing these nuances, you can write more reliable and predictable code.
