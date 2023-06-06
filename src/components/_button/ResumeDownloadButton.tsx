@@ -3,8 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-
-/** This is a React functional component that renders an ellipsis button with a link to a specific section on the page. */
+/** The ResumeDownloadButton function returns a React component that displays a button to download the author's resume. */
 const ResumeDownloadButton: React.FC = () => {
   return (
     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
