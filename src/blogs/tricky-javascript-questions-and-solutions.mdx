@@ -36,19 +36,19 @@ Consequently, the expression is evaluated as `+[]`, where the `+` operator conve
 
 ### Question 5: What will be the value of `{} == {}`?
 
-Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two objects are different objects, so the comparison evaluates to `false`.
+Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two objects are distinct objects, so the comparison evaluates to `false`.
 
 ### Question 6: What will be the value of `[] == []`?
 
-Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two arrays are different arrays, so the comparison evaluates to `false`.
+Solution: The value will be `false`. The equality comparison checks for reference equality. In this case, the two arrays are separate arrays, so the comparison evaluates to `false`.
 
 ### Question 7: What will be the value of `[] == ![]`?
 
-Solution: The value will be `true`. The `!` operator converts the empty array `[]` to `false`. The equality comparison checks for value equality. In this case, the two values are both `false`, so the comparison evaluates to `true`.
+Solution: The value will be `true`. The `!` operator converts the empty array `[]` to `false`. The equality comparison checks for value equality. In this case, both values are `false`, so the comparison evaluates to `true`.
 
 ### Question 8: What will be the value of `[] == 0`?
 
-Solution: The value will be `true`. The `==` operator performs type coercion. In this case, the empty array `[]` is converted to an empty string, which is then converted to the number `0`. The expression evaluates as `0 == 0`, which yields `true`.
+Solution: The value will be `true`. The `==` operator performs type coercion. In this case, the empty array `[]` is converted to an empty string, which is further converted to the number `0`. The expression evaluates as `0 == 0`, resulting in `true`.
 
 ### Question 9: What will be the value of `undefined + 1`?
 
@@ -96,15 +96,15 @@ Solution: The result is `false`. The `===` operator performs strict equality com
 
 ### Question 17: What will be the value of `1 < 2 < 3`?
 
-Solution: The value will be `true`. The `<` operator is left-associative, which means the expression is evaluated as `(1 < 2) < 3`. The operation in the parenthesis evaluates as `true < 3`, which yields `true`. The `true` value is converted to `1`, so the expression is evaluated as `1 < 3`, which yields `true`.
+Solution: The value will be `true`. The `<` operator is left-associative, meaning the expression is evaluated as `(1 < 2) < 3`. The operation within the parentheses evaluates as `true < 3`, resulting in `true`. The `true` value is converted to `1`, so the expression is further evaluated as `1 < 3`, yielding `true`.
 
 ### Question 18: What will be the value of `undefined == null`?
 
-Solution: The value will be `true`. The `==` operator performs type coercion. In this case, both operands are converted to `null`, which yields `true`.
+Solution: The value will be `true`. The `==` operator performs type coercion. In this case, both operands are converted to `null`, resulting in `true`.
 
 ### Question 19: What will be the value of `undefined === null`?
 
-Solution: The value will be `false`. The `===` operator performs strict equality comparison, which checks for both value and type equality. In this case, the types are different, so the comparison evaluates to `false`.
+Solution: The value will be `false`. The `===` operator performs strict equality comparison, checking for both value and type equality. In this case, the types differ, so the comparison evaluates to `false`.
 
 ### Question 20: What will be the value of `"b" + "a" + +"a" + "a"`?
 
