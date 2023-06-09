@@ -25,7 +25,7 @@ const commandOptions: JsonStructure = [
       {
         id: '2',
         children: 'Blog',
-        href: '/blogs',
+        href: '/blog',
         icon: TbBrandBlogger,
       },
       {

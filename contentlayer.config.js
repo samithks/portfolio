@@ -16,7 +16,7 @@ const Author = defineNestedType(() => ({
 const computedFields = {
   url: {
     type: 'string',
-    resolve: (blog) => `/blogs/${blog._raw.flattenedPath}`,
+    resolve: (blog) => `/blog/${blog._raw.flattenedPath}`,
   },
   structuredData: {
     type: 'object',
@@ -72,7 +72,7 @@ export const Blog = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: './src/blogs',
+  contentDirPath: './src/content',
   documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkGfm],

@@ -19,6 +19,14 @@ const ibm_plex_mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'Samith K S',
   description: 'Developer, Backend Developer, Fullstack',
+  openGraph: {
+    title: 'Samith K S',
+    description: 'Developer, writer, and creator.',
+    url: 'https://samithks.website/',
+    siteName: 'Samith K S',
+    locale: 'en-US',
+    type: 'website',
+  },
   robots: {
     index: true,
     follow: true,
