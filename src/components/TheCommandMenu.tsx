@@ -84,6 +84,7 @@ const TheNavIcon: React.FC<TheNavIconProps> = ({ toggle }: TheNavIconProps) => {
     <motion.div whileTap={{ scale: 0.9 }}>
       <button
         type="button"
+        title='Command Menu'
         onClick={toggle}
         data-tooltip-id="command_icon"
         data-tooltip-content="cmd+k/ctrl+k"

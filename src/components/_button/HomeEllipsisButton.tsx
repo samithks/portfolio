@@ -30,7 +30,7 @@ const HomeEllipsisButton: React.FC = () => {
         data-tooltip-id="tech_stack_id"
         data-tooltip-content="more"
       >
-        <Link href="/#tech_stack" scroll={false} onClick={handleClick} rel="noopener noreferrer">
+        <Link role='button' aria-roledescription='more technologies' href="/#tech_stack" scroll={false} onClick={handleClick} rel="noopener noreferrer">
           <FaEllipsisH fontSize="1.5em" className="stroke-2" />
         </Link>
       </div>
