@@ -7,6 +7,10 @@ const securityHeaders = [
       return `${acc}${key} ${csp[key].join(' ')}; `
     }, ''),
   },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block'
+  },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
