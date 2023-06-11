@@ -41,10 +41,10 @@ const projects: IProject[] = [
     id: '2',
     company: 'Qburst',
     title: 'Telecom Service Platform',
-    technologies: ['EXPRESS', 'NESTJS', 'REDiS', 'AWS', 'LERNA', 'GRPC'],
+    technologies: ['EXPRESS', 'NESTJS', 'REDIS', 'AWS', 'LERNA', 'GRPC'],
     role: 'Lead Engineer',
     summary:
-      ' A telecom vendor web application that enables customers to perform various services, including recharging, changing pin, requesting technical support, and submitting identification documents.',
+      'A telecom vendor web application that enables customers to perform various services, including recharging, changing pin, requesting technical support, and submitting identification documents.',
     responsibility: [
       {
         id: '1',
@@ -108,7 +108,7 @@ const projects: IProject[] = [
       'MySQL',
     ],
     role: 'Lead Engineer',
-    summary: 'Short Video Content Manager',
+    summary: 'A mobile platform for uploading and sharing short videos, providing users with a seamless experience to showcase their creativity and engage with a vibrant community.',
     responsibility: [
       {
         id: '1',

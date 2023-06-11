@@ -1,0 +1,296 @@
+[
+  {
+    "id": "7f894967-e4bf-4531-b538-74d976d0447b",
+    "title": "Typescript",
+    "icon": "typescript",
+    "rating": 4.0,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "7262ed70-8e85-48cf-8146-db6610c42e84",
+    "title": "JavaScript",
+    "icon": "javascript",
+    "rating": 4.5,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "43ad8eab-8cbc-418e-8db8-506ec69e362a",
+    "title": "HTML",
+    "icon": "html",
+    "rating": 3.0,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "464d813a-71f4-4be9-a027-deaea1a413af",
+    "title": "CSS",
+    "icon": "css",
+    "rating": 3.0,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "6a47493a-1171-42a3-9e4f-71311b290934",
+    "title": "Python",
+    "icon": "python",
+    "rating": 2.0,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "eea8b683-1c3b-4d46-b6c3-1ef99c08e186",
+    "title": "Sass",
+    "icon": "sass",
+    "rating": 2.0,
+    "category": "LANGUAGES"
+  },
+  {
+    "id": "ad8f3def-8b23-4222-abd9-7548bc742882",
+    "title": "NodeJS",
+    "icon": "nodejs",
+    "rating": 4.5,
+    "category": "BACKEND"
+  },
+  {
+    "id": "46e2f6e1-7b0d-4114-8c76-4f30071b0e50",
+    "title": "Express",
+    "icon": "express",
+    "rating": 4.5,
+    "category": "BACKEND"
+  },
+  {
+    "id": "73f3e44d-1848-421c-a884-4f076b432a20",
+    "title": "NestJs",
+    "icon": "nestjs",
+    "rating": 4.0,
+    "category": "BACKEND"
+  },
+  {
+    "id": "2907eb60-14f0-45aa-a5c2-352d6d9e02f8",
+    "title": "Loopback",
+    "icon": "loopback",
+    "rating": 4.5,
+    "category": "BACKEND"
+  },
+  {
+    "id": "ebbc90fd-2664-485f-8bb9-19ea138f9dec",
+    "title": "TypeGraphQL",
+    "icon": "graphql",
+    "rating": 3.5,
+    "category": "BACKEND"
+  },
+  {
+    "id": "896afe4f-edec-413a-aa74-525a6eeaecfc",
+    "title": "VueJS",
+    "icon": "vue",
+    "rating": 3.0,
+    "category": "FRONTEND"
+  },
+  {
+    "id": "3868d554-a83e-4bad-a43d-6dbf65220ecc",
+    "title": "ReactJS",
+    "icon": "react",
+    "rating": 3.0,
+    "category": "FRONTEND"
+  },
+  {
+    "id": "fb649a3c-0fca-4e4e-9855-b51264c260bb",
+    "title": "NextJS",
+    "icon": "nextjs",
+    "rating": 3.0,
+    "category": "FRONTEND"
+  },
+  {
+    "id": "2b80f25b-1bdb-4deb-a775-514ccb72208e",
+    "title": "NuxtJS",
+    "icon": "nuxtjs",
+    "rating": 2.5,
+    "category": "FRONTEND"
+  },
+  {
+    "id": "49350767-4537-4d79-b639-c066cef895a9",
+    "title": "TailwindCSS",
+    "icon": "tailwindcss",
+    "rating": 3.5,
+    "category": "FRONTEND"
+  },
+  {
+    "id": "ced741c2-9347-40aa-87dd-07e2466adb92",
+    "title": "MongoDB",
+    "icon": "mongodb",
+    "rating": 4.0,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "0c75d514-888e-472b-a31c-6a5c20c1f661",
+    "title": "MySQL",
+    "icon": "mysql",
+    "rating": 4.0,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "7a50aba8-19d4-4be4-9b69-cdaf68003c7b",
+    "title": "PostgreSQL",
+    "icon": "postgresql",
+    "rating": 4.0,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "648b8547-6e92-445a-8686-23a00ddbf4e8",
+    "title": "TimescaleDB",
+    "icon": "timescaledb",
+    "rating": 3.5,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "a990fb2c-7601-4088-9103-fda40bd0cc22",
+    "title": "Redis",
+    "icon": "redis",
+    "rating": 4.0,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "ce886813-69b5-4649-a47f-fdc7f0716b84",
+    "title": "InfluxDB",
+    "icon": "influxdb",
+    "rating": 3.0,
+    "category": "DATASTORE"
+  },
+  {
+    "id": "a9389e9e-961b-4b40-9185-83e99fbd5620",
+    "title": "AWS",
+    "icon": "aws",
+    "rating": 3.0,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "6fb5adff-67fd-43ab-bfff-c9d292753b0c",
+    "title": "Azure",
+    "icon": "azure",
+    "rating": 3.0,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "2e87cfa6-0d84-4862-bb93-8eec7213da09",
+    "title": "Heroku",
+    "icon": "heroku",
+    "rating": 3.0,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "20ddc0ae-02e9-4b4b-961d-2ad3e9a7d02d",
+    "title": "Github",
+    "icon": "github",
+    "rating": 3.5,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "48a2aeac-f0e1-4434-a4fb-115d7fdfa88d",
+    "title": "Bitbucket",
+    "icon": "bitbucket",
+    "rating": 3.5,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "a8c785bd-7cf1-47d1-896b-4842a973be17",
+    "title": "Gitlab",
+    "icon": "gitlab",
+    "rating": 3.5,
+    "category": "PLATFORM"
+  },
+  {
+    "id": "3ed65c3a-4224-45d6-a4a7-587fbd46b3fa",
+    "title": "Hasura",
+    "icon": "hasura",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "461d5162-cc01-46d3-933b-3aa2e378fcd4",
+    "title": "GraphQL",
+    "icon": "graphql",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "873900ca-76eb-45de-8746-cacf64032594",
+    "title": "Keycloak",
+    "icon": "keycloak",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "d7eb0f4b-ff49-4ff8-8da9-3a07207be3ad",
+    "title": "SSO",
+    "icon": "sso",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "c052c5ea-a280-4547-9e9e-d072d81efd40",
+    "title": "CubeJS",
+    "icon": "cubejs",
+    "rating": 3.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "80cc7031-d9bf-4671-b66f-0281d7f9a65f",
+    "title": "Auth0",
+    "icon": "auth0",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "ecaaf125-df22-4d2d-be44-c28ecdc55998",
+    "title": "LaunchDarkly",
+    "icon": "launchdarkly",
+    "rating": 3.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "cf8417da-b73d-41a0-a7fa-670eacd43323",
+    "title": "Docker",
+    "icon": "docker",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "5e3d3de1-c648-4ecf-a6d1-b5717a2909b5",
+    "title": "Vercel",
+    "icon": "vercel",
+    "rating": 3.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "713fe777-a76e-463e-9001-178a067e7d7a",
+    "title": "Lerna",
+    "icon": "lerna",
+    "rating": 4.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "01f058c2-04b9-4878-9d91-4d53a68e4765",
+    "title": "Uploadcare",
+    "icon": "uploadcare",
+    "rating": 3.5,
+    "category": "TOOLS"
+  },
+  {
+    "id": "3b1dbf80-aed7-4861-ba24-0c01515deb5b",
+    "title": "gRPC",
+    "icon": "grpc",
+    "rating": 3.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "10ab2010-1841-406c-b866-c639b7949cbf",
+    "title": "PassportJS",
+    "icon": "passportjs",
+    "rating": 3.0,
+    "category": "TOOLS"
+  },
+  {
+    "id": "93a4cd07-b32f-495f-8391-ec0bd68bb324",
+    "title": "Kafka",
+    "icon": "Kafka",
+    "rating": 2.0,
+    "category": "TOOLS"
+  }
+]

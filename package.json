@@ -9,14 +9,24 @@
     "npm": "please-use-pnpm"
   },
   "scripts": {
+    "build": "prisma generate && prisma migrate deploy && next build",
     "clean": "rimraf .next && rimraf node_modules",
-    "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "db:push": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma db push",
+    "db:seed": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma db seed",
     "format": "prettier --write src/",
+    "lint": "next lint",
+    "migrate:dev": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma migrate dev",
+    "migrate:reset": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma migrate reset",
+    "prisma:generate": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma generate",
+    "prisma:studio": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma studio",
     "start": "next start"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/client": "4.15.0",
     "@tailwindcss/typography": "0.5.9",
     "@vercel/analytics": "1.0.1",
     "contentlayer": "0.3.2",
@@ -48,9 +58,11 @@
     "prettier": "2.8.8",
     "prettier-plugin-jsdoc": "0.4.2",
     "prettier-plugin-tailwindcss": "0.2.8",
+    "prisma": "4.15.0",
     "rimraf": "5.0.0",
     "sass": "1.62.1",
     "tailwindcss": "3.3.2",
+    "ts-node": "10.9.1",
     "typescript": "5.0.4"
   }
 }

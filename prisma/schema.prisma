@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_URL") // uses connection pooling
+  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+enum JobTitle {
+  SOFTWARE_ENGINEER
+  SENIOR_SOFTWARE_ENGINEER
+  TECHNICAL_LEAD
+  LEAD_ENGINEER
+  FULL_STACK_ENGINEER
+  CONSULTANT_TRAINEE
+}
+
+enum SKillCategory {
+  LANGUAGES
+  BACKEND
+  FRONTEND
+  DATASTORE
+  PLATFORM
+  TOOLS
+}
+
+model Organization {
+  id          String       @id @default(uuid()) @db.Uuid
+  name        String       @unique @db.VarChar(150)
+  description String?      @db.Text
+  webpageUrl  String?      @map("webpage_url") @db.VarChar(2048)
+  experiences Experience[]
+  projects    Project[]
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  @@map("organization")
+}
+
+model University {
+  id          String      @id @default(uuid()) @db.Uuid
+  name        String      @unique @db.VarChar(150)
+  description String?     @db.Text
+  webpageUrl  String?     @map("webpage_url") @db.VarChar(2048)
+  educations  Education[]
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  @@map("university")
+}
+
+model Experience {
+  id             String       @id @default(uuid()) @db.Uuid
+  title          JobTitle     @default(SOFTWARE_ENGINEER)
+  organizationId String       @map("organization_id") @db.Uuid
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  startedAt      DateTime     @map("started_at") @db.Date
+  endedAt        DateTime?    @map("ended_at") @db.Date
+  achievements   Json?
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  @@unique([title, organizationId])
+  @@map("experience")
+}
+
+model Education {
+  id           String     @id @default(uuid()) @db.Uuid
+  title        String     @unique @db.VarChar(150)
+  description  String?    @db.Text
+  startedAt    DateTime   @map("started_at") @db.Date
+  endedAt      DateTime?  @map("ended_at") @db.Date
+  universityId String     @map("university_id") @db.Uuid
+  university   University @relation(fields: [universityId], references: [id])
+  achievements Json?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("education")
+}
+
+model Profile {
+  id               String   @id @default(uuid()) @db.Uuid
+  name             String   @db.VarChar(100)
+  email            String   @unique @db.VarChar(254)
+  phoneNumber      String   @unique @map("phone_number") @db.VarChar(20)
+  location         Json?
+  desiredJobTitles String   @map("desired_job_titles") @db.Text
+  identifyYourself String?  @map("identify_yourself") @db.VarChar(500)
+  description      String?  @db.Text
+  summary          String?  @db.Text
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  @@map("profile")
+}
+
+model Contact {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String   @unique @db.VarChar(150)
+  description String   @db.Text
+  link        String   @db.VarChar(2048)
+  icon        String   @db.VarChar(50)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("contact")
+}
+
+model Skill {
+  id             String           @id @default(uuid()) @db.Uuid
+  title          String           @unique @db.VarChar(150)
+  description    String?          @db.Text
+  icon           String?          @db.VarChar(2048)
+  rating         Decimal          @db.Decimal(3, 1)
+  category       SKillCategory
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  ProjectToSkill ProjectToSkill[]
+
+  @@map("skill")
+}
+
+model Project {
+  id             String           @id @default(uuid()) @db.Uuid
+  title          String           @db.VarChar(150)
+  organizationId String           @map("organization_id") @db.Uuid
+  organization   Organization     @relation(fields: [organizationId], references: [id])
+  techStack      String[]         @map("tech_stack")
+  role           String           @db.VarChar(400)
+  summary        String           @db.Text
+  responsibility Json
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  ProjectToSkill ProjectToSkill[]
+
+  @@unique([title, organizationId])
+  @@map("project")
+}
+
+model ProjectToSkill {
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId String   @map("project_id") @db.Uuid
+  skill     Skill    @relation(fields: [skillId], references: [id])
+  skillId   String   @map("skill_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([projectId, skillId])
+  @@map("project_to_skill")
+}
