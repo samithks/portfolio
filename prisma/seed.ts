@@ -13,6 +13,7 @@ import projectToSkills from './data/project_to_skill.json'
 
 const prisma = new PrismaClient()
 
+/** Seed data to database */
 async function seed() {
   const profileData = await prisma.profile.upsert({
     where: { email: profile.email },

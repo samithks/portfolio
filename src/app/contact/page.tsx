@@ -1,43 +1,29 @@
 import type { Metadata } from 'next'
+import type { Contact } from '@prisma/client'
 
-import type { IContact } from '@/components/card/ContactCard'
+import type { BrandIconProps } from '@/components/_icon/BrandIcon'
 
 import ContactCard from '@/components/card/ContactCard'
+import { getContact } from '@/db/query'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Contact me',
 }
 
-const contacts: IContact[] = [
-  {
-    title: 'Email',
-    description: 'Send me an email',
-    icon: 'email',
-    to: 'mailto:samithsarasan@gmail.com',
-  },
-  {
-    title: 'LinkedIn',
-    description: 'Connect with me on LinkedIn',
-    icon: 'linkedin',
-    to: 'https://www.linkedin.com/in/samithks/',
-  },
-  {
-    title: 'GitHub',
-    description: 'Follow me on GitHub',
-    icon: 'github',
-    to: 'https://github.com/samithks',
-  },
-]
-
 /** This component renders a list of contact as cards. */
-const TheContactSection: React.FC<{ data: IContact[] }> = ({ data }) => {
+const TheContactSection: React.FC<{ contacts: Contact[] }> = ({ contacts }) => {
   return (
     <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-10">
-      {data.map((page) => {
+      {contacts.map((contact) => {
         return (
-          <div className="col-span-2 md:col-span-1" key={page.title}>
-            <ContactCard title={page.title} description={page.description} icon={page.icon} to={page.to} />
+          <div className="col-span-2 md:col-span-1" key={contact.title}>
+            <ContactCard
+              title={contact.title}
+              description={contact.description}
+              icon={contact.icon as BrandIconProps['name']}
+              to={contact.link}
+            />
           </div>
         )
       })}
@@ -46,7 +32,9 @@ const TheContactSection: React.FC<{ data: IContact[] }> = ({ data }) => {
 }
 
 /** Contact page */
-export default function Contact() {
+export default async function ContactPage() {
+  const contacts = await getContact()
+
   return (
     <div className="mb-10 space-y-20">
       <section id="Heading" className="flex flex-col gap-y-3">
@@ -58,7 +46,7 @@ export default function Contact() {
         </div>
       </section>
       <section id="Contact" className="mt-10">
-        <TheContactSection data={contacts} />
+        <TheContactSection contacts={contacts} />
       </section>
     </div>
   )

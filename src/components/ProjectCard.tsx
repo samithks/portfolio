@@ -3,6 +3,11 @@
 import { useCallback, useState } from 'react'
 import Accordion from '@/components/Accordion'
 
+export interface IResponsibility {
+  id: string
+  title: string
+}
+
 export interface IProject {
   id: string
   company: string
@@ -10,10 +15,7 @@ export interface IProject {
   technologies: string[]
   role: string
   summary: string
-  responsibility: {
-    id: string
-    title: string
-  }[]
+  responsibility: IResponsibility[]
 }
 
 type ProjectCardProps = Omit<IProject, 'id'>
