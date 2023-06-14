@@ -1,6 +1,6 @@
 {
   "default-src": ["'self'"],
-  "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "cdn.vercel-insights.com", "vercel.live"],
+  "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "cdn.vercel-insights.com vercel.live va.vercel-scripts.com"],
   "style-src": ["'self'", "'unsafe-inline'"],
   "img-src": ["'self'", "data:"],
   "media-src": ["'none'"],
