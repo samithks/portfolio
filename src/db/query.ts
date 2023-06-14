@@ -1,3 +1,5 @@
+import { groupBy } from 'lodash'
+
 import { prisma } from './db-client'
 
 const LIMIT = 10
@@ -82,4 +84,17 @@ export async function getExperience() {
       },
     },
   })
+}
+
+export async function getSkills() {
+  const skills = await prisma.skill.findMany({
+    select: {
+      id: true,
+      title: true,
+      category: true,
+      icon: true,
+      rating: true,
+    },
+  })
+  return groupBy(skills, 'category')
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
+import type { Prisma } from '@prisma/client'
 
 import { BrandIcon } from '@/components/_icon/BrandIcon'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -8,14 +9,15 @@ import { useCallback, useState } from 'react'
 import { SVGIcon } from '@/components/_icon/SVGIcon'
 
 export interface ITechnology {
+  id: string
   title: string
   icon: BrandIconProps['name']
-  rating: number
+  rating: Prisma.Decimal
 }
 
 interface TechAccordionProps {
   isExpanded: boolean
-  rating: number
+  rating: Prisma.Decimal
 }
 
 /** This component renders the rating of a technology card. */
@@ -78,7 +80,7 @@ const TechAccordion: React.FC<TechAccordionProps> = ({ isExpanded, rating }) => 
             collapsed: { opacity: 0, height: 0 },
           }}
         >
-          <TechRatings rating={rating} />
+          <TechRatings rating={rating as unknown as number} />
         </motion.div>
       )}
     </AnimatePresence>
@@ -86,7 +88,7 @@ const TechAccordion: React.FC<TechAccordionProps> = ({ isExpanded, rating }) => 
 }
 
 /** This is a React functional component that renders a technology card with a title and an icon */
-const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
+const TechCard: React.FC<Omit<ITechnology, 'id'>> = ({ title, icon, rating }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   const toggleExpansion = useCallback(() => {
@@ -120,7 +122,7 @@ const TechCard: React.FC<ITechnology> = ({ title, icon, rating }) => {
         <div className="basis-1/6">
           <BrandIcon name={icon} fontSize={'2em'} className="stroke-2" />
         </div>
-        <div className="flex basis-5/6 items-center justify-start">
+        <div className="flex basis-4/6 items-center justify-start">
           <h2 className="text-left text-xs font-medium">{title}</h2>
         </div>
       </div>

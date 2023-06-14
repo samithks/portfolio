@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@prisma/client':
     specifier: 4.15.0
@@ -19,6 +23,9 @@ dependencies:
   framer-motion:
     specifier: 10.12.15
     version: 10.12.15(react-dom@18.2.0)(react@18.2.0)
+  lodash:
+    specifier: 4.17.21
+    version: 4.17.21
   lottie-react:
     specifier: 2.4.0
     version: 2.4.0(react-dom@18.2.0)(react@18.2.0)
@@ -60,6 +67,9 @@ devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
     specifier: 3.7.2
     version: 3.7.2(prettier@2.8.8)
+  '@types/lodash':
+    specifier: 4.14.195
+    version: 4.14.195
   '@types/node':
     specifier: 20.1.0
     version: 20.1.0
@@ -1436,6 +1446,10 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
     dev: true
 
   /@types/long@4.0.2:
