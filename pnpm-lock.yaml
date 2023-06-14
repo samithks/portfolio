@@ -17,6 +17,9 @@ dependencies:
   contentlayer:
     specifier: 0.3.2
     version: 0.3.2(esbuild@0.17.19)
+  date-fn:
+    specifier: 0.0.2
+    version: 0.0.2
   date-fns:
     specifier: 2.30.0
     version: 2.30.0
@@ -2202,6 +2205,10 @@ packages:
   /data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /date-fn@0.0.2:
+    resolution: {integrity: sha512-DBIKrlB2w9d6UPZwYn6qqSeKLwHt5uRf9Mj/PiGWHGQ5CxnvMCx2KteO5owfiknkYzMngrDwz5nX4CGxYlr0uA==}
     dev: false
 
   /date-fns@2.30.0:

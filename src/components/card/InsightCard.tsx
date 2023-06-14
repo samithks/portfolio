@@ -21,7 +21,13 @@ export interface InsightCardProps {
 }
 
 /** This is a TypeScript React functional component that renders a card. */
-export const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, organization, year, achievements, link }) => {
+export const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({
+  title,
+  organization,
+  year,
+  achievements,
+  link,
+}) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   const toggleExpansion = useCallback(() => {
@@ -43,7 +49,7 @@ export const InsightCard: React.FC<Omit<InsightCardProps, 'id'>> = ({ title, org
         >
           {title}
         </button>
-        <h4 className="cursor-text truncate text-xs font-light text-black/50 dark:text-white/50">{year}</h4>
+        <h4 className="cursor-text truncate text-xs font-light uppercase text-black/50 dark:text-white/50">{year}</h4>
       </div>
       <Link href={{ pathname: link }} className="text-sm font-medium text-black/50 dark:text-gray-400" target="_blank">
         {organization}

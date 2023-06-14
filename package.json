@@ -30,6 +30,7 @@
     "@tailwindcss/typography": "0.5.9",
     "@vercel/analytics": "1.0.1",
     "contentlayer": "0.3.2",
+    "date-fn": "0.0.2",
     "date-fns": "2.30.0",
     "framer-motion": "10.12.15",
     "lodash": "4.17.21",

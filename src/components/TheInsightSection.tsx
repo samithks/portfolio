@@ -1,14 +1,20 @@
 import { getEducation, getExperience } from '@/db/query'
-import type { Experience, Prisma } from '@prisma/client'
+import type { JobTitle, Prisma } from '@prisma/client'
 import { InsightCard, InsightCardProps } from '@/components/card/InsightCard'
+import { lowerCase, startCase } from 'lodash'
 
 interface ITheInsightData {
-  experience: (Experience & {
+  experience: {
     organization: {
       name: string
       webpageUrl: string | null
     }
-  })[]
+    title: JobTitle
+    id: string
+    achievements: Prisma.JsonValue
+    startedAt: string
+    endedAt: string | null
+  }[]
   education: {
     organization: {
       name: string
@@ -16,10 +22,9 @@ interface ITheInsightData {
     }
     title: string
     id: string
-    startedAt: Date
-    endedAt: Date | null
-    universityId: string
     achievements: Prisma.JsonValue
+    startedAt: string
+    endedAt: string | null
   }[]
 }
 
@@ -29,15 +34,17 @@ const InsightCardSection: React.FC<{ data: ITheInsightData['education'] | ITheIn
 }) => {
   return (
     <div className="flex flex-col gap-y-4 pt-3">
-      {data.map((item) => {
+      {data.map(({ title, startedAt, endedAt, organization: { webpageUrl, name }, achievements, id }) => {
+        // const year = `${startedAt} - ${endedAt ?? 'Present'}`;
+        const year = `${startedAt} ${endedAt ? `- ${endedAt}` : ''}`
         return (
           <InsightCard
-            title={item.title}
-            organization={item.organization.name}
-            year={`${item.startedAt} - ${item.endedAt}`}
-            link={item.organization.webpageUrl!}
-            achievements={item.achievements as unknown as InsightCardProps['achievements']}
-            key={item.id}
+            title={startCase(lowerCase(title))}
+            organization={name}
+            year={year}
+            link={webpageUrl!}
+            achievements={achievements as unknown as InsightCardProps['achievements']}
+            key={id}
           />
         )
       })}

@@ -1,4 +1,5 @@
 import { groupBy } from 'lodash'
+import format from 'date-fns/format'
 
 import { prisma } from './db-client'
 
@@ -51,39 +52,52 @@ export async function getProjects() {
 }
 
 export async function getEducation() {
-  const education = await prisma.education.findMany({
-    select: {
-      id: true,
-      title: true,
-      startedAt: true,
-      endedAt: true,
-      universityId: true,
-      achievements: true,
-      university: {
-        select: {
-          name: true,
-          webpageUrl: true,
+  return (
+    await prisma.education.findMany({
+      select: {
+        id: true,
+        title: true,
+        startedAt: true,
+        endedAt: true,
+        achievements: true,
+        university: {
+          select: {
+            name: true,
+            webpageUrl: true,
+          },
         },
       },
-    },
-  })
-  return education.map(({ university, ...rest }) => ({
+    })
+  ).map(({ university, startedAt, endedAt, ...rest }) => ({
+    startedAt: format(startedAt, 'yyyy'),
+    endedAt: endedAt && format(endedAt, 'yyyy'),
     ...rest,
     organization: university,
   }))
 }
 
 export async function getExperience() {
-  return prisma.experience.findMany({
-    include: {
-      organization: {
-        select: {
-          name: true,
-          webpageUrl: true,
+  return (
+    await prisma.experience.findMany({
+      select: {
+        id: true,
+        title: true,
+        startedAt: true,
+        endedAt: true,
+        achievements: true,
+        organization: {
+          select: {
+            name: true,
+            webpageUrl: true,
+          },
         },
       },
-    },
-  })
+    })
+  ).map(({ startedAt, endedAt, ...rest }) => ({
+    startedAt: format(startedAt, 'MMM yyyy'),
+    endedAt: endedAt && format(endedAt, 'MMM yyyy'),
+    ...rest,
+  }))
 }
 
 export async function getSkills() {
