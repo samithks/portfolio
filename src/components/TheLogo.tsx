@@ -15,7 +15,7 @@ function TheLogo() {
       className="h-12 w-12 flex-shrink-0 rounded-md bg-slate-700 ring-2 ring-black ring-opacity-5 transition duration-300 ease-in-out hover:scale-105 dark:bg-gray-100"
     >
       <motion.div whileTap={{ scale: 0.9 }}>
-        <Link href="/" className="items-center">
+        <Link href="/" className="items-center" role='button' aria-roledescription='Home button'>
           <TbGitPullRequestDraft className="invert" fontSize="2.4em" stroke="currentColor" />
         </Link>
       </motion.div>

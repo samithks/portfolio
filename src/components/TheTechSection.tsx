@@ -1,211 +1,20 @@
+import type { SKillCategory } from '@prisma/client'
+
 import type { ITechnology } from '@/components/TechCard'
 import TechCard from '@/components/TechCard'
+import { getSkills } from '@/db/query'
+import { BrandIconProps } from './_icon/BrandIcon'
 
 interface ITechStack {
-  languages: ITechnology[]
-  backend: ITechnology[]
-  frontend: ITechnology[]
-  datastore: ITechnology[]
-  platform: ITechnology[]
-  tools: ITechnology[]
+  LANGUAGES: ITechnology[]
+  BACKEND: ITechnology[]
+  FRONTEND: ITechnology[]
+  DATASTORE: ITechnology[]
+  PLATFORM: ITechnology[]
+  TOOLS: ITechnology[]
 }
 
-type TechStackKeys = keyof ITechStack
-
-const techStack: ITechStack = {
-  languages: [
-    {
-      title: 'Typescript',
-      icon: 'typescript',
-      rating: 4,
-    },
-    {
-      title: 'JavaScript',
-      icon: 'javascript',
-      rating: 4.5,
-    },
-    {
-      title: 'HTML',
-      icon: 'html',
-      rating: 3,
-    },
-    {
-      title: 'CSS',
-      icon: 'css',
-      rating: 3,
-    },
-    {
-      title: 'Python',
-      icon: 'python',
-      rating: 2,
-    },
-    {
-      title: 'Sass',
-      icon: 'sass',
-      rating: 2,
-    },
-  ],
-  backend: [
-    {
-      title: 'NodeJS',
-      icon: 'nodejs',
-      rating: 4.5,
-    },
-    {
-      title: 'Express',
-      icon: 'express',
-      rating: 4.5,
-    },
-    {
-      title: 'NestJs',
-      icon: 'nestjs',
-      rating: 4,
-    },
-    {
-      title: 'Loopback',
-      icon: 'loopback',
-      rating: 4.5,
-    },
-    {
-      title: 'TypeGraphQL',
-      icon: 'graphql',
-      rating: 3.5,
-    },
-  ],
-  frontend: [
-    {
-      title: 'VueJS',
-      icon: 'vue',
-      rating: 3,
-    },
-    {
-      title: 'ReactJS',
-      icon: 'react',
-      rating: 3,
-    },
-    {
-      title: 'NextJS',
-      icon: 'nextjs',
-      rating: 3,
-    },
-    {
-      title: 'NuxtJS',
-      icon: 'nuxtjs',
-      rating: 2.5,
-    },
-    {
-      title: 'TailwindCSS',
-      icon: 'tailwindcss',
-      rating: 3.5,
-    },
-  ],
-  datastore: [
-    {
-      title: 'MongoDB',
-      icon: 'mongodb',
-      rating: 4,
-    },
-    {
-      title: 'MySQL',
-      icon: 'mysql',
-      rating: 4,
-    },
-    {
-      title: 'PostgreSQL',
-      icon: 'postgresql',
-      rating: 4,
-    },
-    {
-      title: 'Redis',
-      icon: 'redis',
-      rating: 4,
-    },
-    {
-      title: 'InfluxDB',
-      icon: 'influxdb',
-      rating: 3,
-    },
-  ],
-  platform: [
-    {
-      title: 'AWS',
-      icon: 'aws',
-      rating: 3,
-    },
-    {
-      title: 'Azure',
-      icon: 'azure',
-      rating: 3,
-    },
-    {
-      title: 'Heroku',
-      icon: 'heroku',
-      rating: 3,
-    },
-    {
-      title: 'Github',
-      icon: 'github',
-      rating: 3.5,
-    },
-    {
-      title: 'Bitbucket',
-      icon: 'bitbucket',
-      rating: 3.5,
-    },
-    {
-      title: 'Gitlab',
-      icon: 'gitlab',
-      rating: 3.5,
-    },
-  ],
-  tools: [
-    {
-      title: 'Hasura',
-      icon: 'hasura',
-      rating: 3.5,
-    },
-    {
-      title: 'GraphQL',
-      icon: 'graphql',
-      rating: 3.5,
-    },
-    {
-      title: 'Keycloak',
-      icon: 'keycloak',
-      rating: 3.5,
-    },
-    {
-      title: 'SSO',
-      icon: 'sso',
-      rating: 3.5,
-    },
-    {
-      title: 'CubeJS',
-      icon: 'cubejs',
-      rating: 3.5,
-    },
-    {
-      title: 'Auth0',
-      icon: 'auth0',
-      rating: 3.5,
-    },
-    {
-      title: 'LaunchDarkly',
-      icon: 'launchdarkly',
-      rating: 3,
-    },
-    {
-      title: 'Docker',
-      icon: 'docker',
-      rating: 3.5,
-    },
-    {
-      title: 'Vercel',
-      icon: 'vercel',
-      rating: 3,
-    },
-  ],
-}
+type TechStackKeys = keyof typeof SKillCategory
 
 /**
  * This is a React functional component that renders a section displaying a tech stack with a title and a list of
@@ -216,8 +25,8 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
     <div className="mt-3 grid grid-cols-4 gap-3">
       {stack.map((tech) => {
         return (
-          <div className="col-span-4 md:col-span-1" key={tech.title}>
-            <TechCard title={tech.title} icon={tech.icon} rating={tech.rating} />
+          <div className="col-span-4 md:col-span-1" key={tech.id}>
+            <TechCard title={tech.title} icon={tech.icon as BrandIconProps['name']} rating={tech.rating} />
           </div>
         )
       })}
@@ -247,13 +56,14 @@ const TheTechStack: React.FC<{ stack: ITechStack }> = ({ stack }) => {
  * @returns The code is returning a React functional component called `TheTechStack`. It renders a section with an id of
  *   "tech_stack"
  */
-const TheTechSection: React.FC = () => {
+const TheTechSection = async () => {
+  const techStack = await getSkills()
   return (
     <section id="tech_stack" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="flex flex-none">
         <h2 className="section-heading">Tech Stack</h2>
       </div>
-      <TheTechStack stack={techStack} />
+      <TheTechStack stack={techStack as unknown as ITechStack} />
     </section>
   )
 }
