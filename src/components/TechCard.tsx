@@ -1,7 +1,6 @@
 'use client'
 
 import type { BrandIconProps } from '@/components/_icon/BrandIcon'
-import type { Prisma } from '@prisma/client'
 
 import { BrandIcon } from '@/components/_icon/BrandIcon'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -12,12 +11,12 @@ export interface ITechnology {
   id: string
   title: string
   icon: BrandIconProps['name']
-  rating: Prisma.Decimal
+  rating: number
 }
 
 interface TechAccordionProps {
   isExpanded: boolean
-  rating: Prisma.Decimal
+  rating: number
 }
 
 /** This component renders the rating of a technology card. */
@@ -80,7 +79,7 @@ const TechAccordion: React.FC<TechAccordionProps> = ({ isExpanded, rating }) => 
             collapsed: { opacity: 0, height: 0 },
           }}
         >
-          <TechRatings rating={rating as unknown as number} />
+          <TechRatings rating={rating} />
         </motion.div>
       )}
     </AnimatePresence>

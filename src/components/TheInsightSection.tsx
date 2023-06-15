@@ -1,4 +1,3 @@
-import { getEducation, getExperience } from '@/db/query'
 import type { JobTitle, Prisma } from '@prisma/client'
 import { InsightCard, InsightCardProps } from '@/components/card/InsightCard'
 import { lowerCase, startCase } from 'lodash'
@@ -77,13 +76,10 @@ const TheInsight: React.FC<{
  * The InsightSubSection is a React functional component that renders a section with a single TheInsight component based
  * on data from theInsightData object.
  */
-const TheInsightSubSection = ({
-  title,
-  data,
-}: {
+const TheInsightSubSection: React.FC<{
   title: keyof ITheInsightData
   data: ITheInsightData['education'] | ITheInsightData['experience']
-}) => {
+}> = ({ title, data }) => {
   return (
     <section id={title} className="col-span-2 md:col-span-1">
       <TheInsight data={data} insight={`${title}`} />
@@ -95,9 +91,10 @@ const TheInsightSubSection = ({
  * TheInsightSection is a React functional component that renders a section with multiple TheInsight components based on
  * data from theInsightData object.
  */
-const TheInsightSection = async () => {
-  const experience = await getExperience()
-  const education = await getEducation()
+const TheInsightSection: React.FC<{
+  experience: ITheInsightData['experience']
+  education: ITheInsightData['education']
+}> = ({ experience, education }) => {
   return (
     <section id="insight" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="grid grid-cols-2 gap-x-5">

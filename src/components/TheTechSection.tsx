@@ -2,10 +2,8 @@ import type { SKillCategory } from '@prisma/client'
 
 import type { ITechnology } from '@/components/TechCard'
 import TechCard from '@/components/TechCard'
-import { getSkills } from '@/db/query'
-import { BrandIconProps } from './_icon/BrandIcon'
 
-interface ITechStack {
+export interface ITechStack {
   LANGUAGES: ITechnology[]
   BACKEND: ITechnology[]
   FRONTEND: ITechnology[]
@@ -26,7 +24,7 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
       {stack.map((tech) => {
         return (
           <div className="col-span-4 md:col-span-1" key={tech.id}>
-            <TechCard title={tech.title} icon={tech.icon as BrandIconProps['name']} rating={tech.rating} />
+            <TechCard title={tech.title} icon={tech.icon} rating={tech.rating} />
           </div>
         )
       })}
@@ -56,14 +54,13 @@ const TheTechStack: React.FC<{ stack: ITechStack }> = ({ stack }) => {
  * @returns The code is returning a React functional component called `TheTechStack`. It renders a section with an id of
  *   "tech_stack"
  */
-const TheTechSection = async () => {
-  const techStack = await getSkills()
+const TheTechSection: React.FC<{ techStack: ITechStack }> = ({ techStack }) => {
   return (
     <section id="tech_stack" className="mx-5 flex flex-col gap-y-3 px-5">
       <div className="flex flex-none">
         <h2 className="section-heading">Tech Stack</h2>
       </div>
-      <TheTechStack stack={techStack as unknown as ITechStack} />
+      <TheTechStack stack={techStack} />
     </section>
   )
 }

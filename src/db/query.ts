@@ -106,7 +106,7 @@ export async function getExperience() {
 }
 
 /** This function retrieves skills from a database using Prisma and groups them by category. */
-export async function getSkills() {
+export async function getTechStack() {
   const skills = await prisma.skill.findMany({
     select: {
       id: true,
