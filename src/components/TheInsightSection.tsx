@@ -36,7 +36,7 @@ const InsightCardSection: React.FC<{ data: ITheInsightData['education'] | ITheIn
     <div className="flex flex-col gap-y-4 pt-3">
       {data.map(({ title, startedAt, endedAt, organization: { webpageUrl, name }, achievements, id }) => {
         // const year = `${startedAt} - ${endedAt ?? 'Present'}`;
-        const year = `${startedAt} ${endedAt ? `- ${endedAt}` : ''}`
+        const year = endedAt ? startedAt.concat(` - ${endedAt}`) : startedAt;
         return (
           <InsightCard
             title={startCase(lowerCase(title))}
