@@ -1,119 +1,83 @@
 import type { JobTitle, SKillCategory } from '@prisma/client'
 
 import { PrismaClient } from '@prisma/client'
-import contacts from './data/contact.json'
-import organizations from './data/organization.json'
-import universities from './data/university.json'
-import profile from './data/profile.json'
-import skills from './data/skill.json'
-import projects from './data/project.json'
-import educations from './data/education.json'
-import experiences from './data/experience.json'
-import projectToSkills from './data/project_to_skill.json'
+
+import {
+  profile,
+  organizations,
+  universities,
+  contacts,
+  skills,
+  projectToSkill,
+  experiences,
+  educations,
+  projects,
+} from './data'
 
 const prisma = new PrismaClient()
 
 /** Seed data to database */
 async function seed() {
-  const profileData = await prisma.profile.upsert({
-    where: { email: profile.email },
-    update: {},
-    create: {
-      ...profile,
-    },
+  const parsedExperience = experiences.map(({ startedAt, endedAt, ...rest }) => {
+    return {
+      startedAt: new Date(startedAt),
+      endedAt: endedAt ? new Date(endedAt) : null,
+      ...rest,
+    }
   })
 
-  for (const organization of organizations) {
-    await prisma.organization.upsert({
-      where: { name: organization.name },
-      update: {},
-      create: {
-        ...organization,
-      },
-    })
-  }
-  for (const university of universities) {
-    await prisma.university.upsert({
-      where: { name: university.name },
-      update: {},
-      create: {
-        ...university,
-      },
-    })
-  }
+  const parsedEducations = educations.map(({ startedAt, endedAt, ...rest }) => {
+    return {
+      startedAt: new Date(startedAt),
+      endedAt: endedAt ? new Date(endedAt) : null,
+      ...rest,
+    }
+  })
 
-  for (const contact of contacts) {
-    await prisma.contact.upsert({
-      where: { title: contact.title },
-      update: {},
-      create: {
-        ...contact,
-      },
-    })
-  }
+  await Promise.all([
+    await prisma.profile.create({
+      data: profile,
+    }),
 
-  for (const skill of skills) {
-    const { category, ...rest } = skill
-    await prisma.skill.upsert({
-      where: { title: skill.title },
-      update: {},
-      create: {
-        ...rest,
-        category: category as SKillCategory,
-      },
-    })
-  }
+    await prisma.organization.createMany({
+      data: organizations,
+      skipDuplicates: true,
+    }),
 
-  for (const project of projects) {
-    await prisma.project.upsert({
-      where: { title_organizationId: { title: project.title, organizationId: project.organizationId } },
-      update: {},
-      create: {
-        ...project,
-      },
-    })
-  }
+    await prisma.university.createMany({
+      data: universities,
+      skipDuplicates: true,
+    }),
 
-  for (const projectToSkill of projectToSkills) {
-    await prisma.projectToSkill.upsert({
-      where: { projectId_skillId: { projectId: projectToSkill.projectId, skillId: projectToSkill.skillId } },
-      update: {},
-      create: {
-        ...projectToSkill,
-      },
-    })
-  }
+    await prisma.contact.createMany({
+      data: contacts,
+      skipDuplicates: true,
+    }),
+    await prisma.skill.createMany({
+      data: skills,
+      skipDuplicates: true,
+    }),
+  ])
 
-  for (const experience of experiences) {
-    const { title , startedAt, endedAt, ...rest } = experience
-    await prisma.experience.upsert({
-      where: {
-        title_organizationId: { title: title as JobTitle, organizationId: experience.organizationId },
-      },
-      update: {},
-      create: {
-        title: title as JobTitle,
-        startedAt: new Date(startedAt),
-        endedAt: endedAt ? new Date(endedAt) : null,
-        ...rest,
-      },
-    })
-  }
+  await Promise.all([
+    await prisma.project.createMany({
+      data: projects,
+      skipDuplicates: true,
+    }),
+    await prisma.experience.createMany({
+      data: parsedExperience,
+      skipDuplicates: true,
+    }),
+    await prisma.education.createMany({
+      data: parsedEducations,
+      skipDuplicates: true,
+    }),
+  ])
 
-  for (const education of educations) {
-    const { startedAt, endedAt, ...rest } = education
-    await prisma.education.upsert({
-      where: { title: education.title },
-      update: {},
-      create: {
-        startedAt: new Date(startedAt),
-        endedAt: endedAt ? new Date(endedAt) : null,
-        ...rest,
-      },
-    })
-  }
-
-  console.log({ profileData })
+  await prisma.projectToSkill.createMany({
+    data: projectToSkill,
+    skipDuplicates: true,
+  })
 }
 seed()
   .then(async () => {

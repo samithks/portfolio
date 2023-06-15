@@ -18,6 +18,7 @@
     "lint": "next lint",
     "migrate:dev": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma migrate dev",
     "migrate:reset": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma migrate reset",
+    "migrate:deploy": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma migrate deploy",
     "prisma:generate": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma generate",
     "prisma:studio": "pnpm --package=dotenv-cli dlx dotenv -e .env.local -- prisma studio",
     "start": "next start"
