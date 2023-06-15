@@ -2,7 +2,6 @@ import type { SKillCategory } from '@prisma/client'
 
 import type { ITechnology } from '@/components/TechCard'
 import TechCard from '@/components/TechCard'
-import { BrandIconProps } from './_icon/BrandIcon'
 
 export interface ITechStack {
   LANGUAGES: ITechnology[]
@@ -25,7 +24,7 @@ const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
       {stack.map((tech) => {
         return (
           <div className="col-span-4 md:col-span-1" key={tech.id}>
-            <TechCard title={tech.title} icon={tech.icon as BrandIconProps['name']} rating={tech.rating} />
+            <TechCard title={tech.title} icon={tech.icon} rating={tech.rating} />
           </div>
         )
       })}
