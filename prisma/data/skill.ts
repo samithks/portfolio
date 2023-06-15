@@ -1,4 +1,4 @@
-import type { Prisma, Skill, SKillCategory } from '@prisma/client'
+import type { Prisma, SKillCategory } from '@prisma/client'
 
 interface ISkill {
   id: string
