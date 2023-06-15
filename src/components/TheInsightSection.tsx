@@ -36,7 +36,7 @@ const InsightCardSection: React.FC<{ data: ITheInsightData['education'] | ITheIn
     <div className="flex flex-col gap-y-4 pt-3">
       {data.map(({ title, startedAt, endedAt, organization: { webpageUrl, name }, achievements, id }) => {
         // const year = `${startedAt} - ${endedAt ?? 'Present'}`;
-        const year = endedAt ? startedAt.concat(` - ${endedAt}`) : startedAt;
+        const year = endedAt ? startedAt.concat(` - ${endedAt}`) : startedAt
         return (
           <InsightCard
             title={startCase(lowerCase(title))}
@@ -73,6 +73,10 @@ const TheInsight: React.FC<{
   )
 }
 
+/**
+ * The InsightSubSection is a React functional component that renders a section with a single TheInsight component based
+ * on data from theInsightData object.
+ */
 const TheInsightSubSection = ({
   title,
   data,

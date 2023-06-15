@@ -26,6 +26,11 @@ const dots = [
   },
 ]
 
+/**
+ * This is a React component that renders a set of animated dots used for indicating loading or processing.
+ *
+ * @returns It is a functional component that renders a set of animated dots using CSS classes.
+ */
 export const LoadingDots = () => {
   return (
     <div className="flex h-auto w-full items-center justify-center gap-x-3">

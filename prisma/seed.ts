@@ -59,7 +59,7 @@ async function seed() {
       update: {},
       create: {
         ...rest,
-        category: skill.category as SKillCategory,
+        category: category as SKillCategory,
       },
     })
   }
@@ -85,14 +85,14 @@ async function seed() {
   }
 
   for (const experience of experiences) {
-    const { title, startedAt, endedAt, ...rest } = experience
+    const { title , startedAt, endedAt, ...rest } = experience
     await prisma.experience.upsert({
       where: {
-        title_organizationId: { title: experience.title as JobTitle, organizationId: experience.organizationId },
+        title_organizationId: { title: title as JobTitle, organizationId: experience.organizationId },
       },
       update: {},
       create: {
-        title: experience.title as JobTitle,
+        title: title as JobTitle,
         startedAt: new Date(startedAt),
         endedAt: endedAt ? new Date(endedAt) : null,
         ...rest,

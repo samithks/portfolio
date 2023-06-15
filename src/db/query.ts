@@ -51,6 +51,10 @@ export async function getProjects() {
   })
 }
 
+/**
+ * This function retrieves education data from a database and formats it to include university information and date
+ * formatting.
+ */
 export async function getEducation() {
   return (
     await prisma.education.findMany({
@@ -76,6 +80,7 @@ export async function getEducation() {
   }))
 }
 
+/** This function retrieves experience data from a database and formats the date fields before returning the data. */
 export async function getExperience() {
   return (
     await prisma.experience.findMany({
@@ -100,6 +105,7 @@ export async function getExperience() {
   }))
 }
 
+/** This function retrieves skills from a database using Prisma and groups them by category. */
 export async function getSkills() {
   const skills = await prisma.skill.findMany({
     select: {
