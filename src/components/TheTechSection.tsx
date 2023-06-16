@@ -21,10 +21,10 @@ type TechStackKeys = keyof typeof SKillCategory
 const TheStack: React.FC<{ stack: ITechnology[] }> = ({ stack }) => {
   return (
     <div className="mt-3 grid grid-cols-4 gap-3">
-      {stack.map((tech) => {
+      {stack.map(({id, title, icon, rating}) => {
         return (
-          <div className="col-span-4 md:col-span-1" key={tech.id}>
-            <TechCard title={tech.title} icon={tech.icon} rating={tech.rating} />
+          <div className="col-span-4 md:col-span-1" key={id}>
+            <TechCard title={title} icon={icon} rating={Number(rating)} />
           </div>
         )
       })}
