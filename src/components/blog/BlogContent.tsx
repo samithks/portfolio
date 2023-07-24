@@ -1,10 +1,13 @@
 'use client'
 
+import type { MDXComponents } from 'mdx/types'
+
 import { memo } from 'react'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
 import NoSSR from '@/utils/NoSSR'
+import Link from 'next/link'
 
 interface BlogContentProps {
   params: {
@@ -15,11 +18,16 @@ interface BlogContentProps {
   }
 }
 
+
+// Define your custom MDX components.
+const components: MDXComponents = {
+  // Override the default <a> element to use the next/link component.
+  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+}
+
 /* This component renders the content of a blog post. **/
 const BlogContent: React.FC<BlogContentProps> = ({ params }) => {
-  const components = {
-    Image,
-  }
+
 
   if (!params?.code) notFound()
 
