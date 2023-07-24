@@ -8,6 +8,7 @@ import NextImage from 'next/image'
 import { notFound } from 'next/navigation'
 import NoSSR from '@/utils/NoSSR'
 import Link from 'next/link'
+import { UrlObject } from 'url'
 
 interface BlogContentProps {
   params: {
@@ -22,7 +23,7 @@ interface BlogContentProps {
 // Define your custom MDX components.
 const components: MDXComponents = {
   // Override the default <a> element to use the next/link component.
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+  a: ({ href, children }) => <Link href={href as unknown as UrlObject}>{children}</Link>,
 }
 
 /* This component renders the content of a blog post. **/
